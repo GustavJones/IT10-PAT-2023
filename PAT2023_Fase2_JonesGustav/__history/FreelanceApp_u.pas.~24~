@@ -24,7 +24,6 @@ type
     edtDescription: TEdit;
     tsHome: TTabSheet;
     bmbLogin: TBitBtn;
-    imgHomeImage: TImage;
   private
     { Private declarations }
   public

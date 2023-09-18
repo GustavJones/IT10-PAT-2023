@@ -15,6 +15,14 @@ type
     pnlBottom: TPanel;
     tsApply: TTabSheet;
     bmbHelp: TBitBtn;
+    tsCheckout: TTabSheet;
+    bmbLogin: TBitBtn;
+    bmbSignUp: TBitBtn;
+    edtTaskName: TEdit;
+    lblApplyTitle: TLabel;
+    btnApplyNext: TButton;
+    pnlApplyBottom: TPanel;
+    edtDescription: TEdit;
   private
     { Private declarations }
   public

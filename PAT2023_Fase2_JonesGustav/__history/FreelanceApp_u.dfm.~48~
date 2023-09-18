@@ -78,7 +78,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object bmbLogin: TBitBtn
         Left = 180
         Top = 532
-        Width = 584
+        Width = 580
         Height = 41
         Margins.Left = 180
         Margins.Top = 0

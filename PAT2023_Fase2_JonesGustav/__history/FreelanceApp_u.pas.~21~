@@ -13,6 +13,17 @@ type
     lblTitle: TLabel;
     bmbClose: TBitBtn;
     pnlBottom: TPanel;
+    tsApply: TTabSheet;
+    bmbHelp: TBitBtn;
+    tsCheckout: TTabSheet;
+    bmbLogin: TBitBtn;
+    bmbSignUp: TBitBtn;
+    lblApplyTitle: TLabel;
+    btnApplyNext: TButton;
+    pnlApplyBottom: TPanel;
+    edtTaskName: TEdit;
+    edtDescription: TEdit;
+    tsHome: TTabSheet;
   private
     { Private declarations }
   public

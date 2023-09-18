@@ -17,7 +17,14 @@ type
     bmbHelp: TBitBtn;
     tsCheckout: TTabSheet;
     bmbLogin: TBitBtn;
-    BitBtn1: TBitBtn;
+    bmbSignUp: TBitBtn;
+    lblApplyTitle: TLabel;
+    btnApplyNext: TButton;
+    pnlApplyBottom: TPanel;
+    edtTaskName: TEdit;
+    edtDescription: TEdit;
+    tsHome: TTabSheet;
+    pnlHomeCenter: TPanel;
   private
     { Private declarations }
   public

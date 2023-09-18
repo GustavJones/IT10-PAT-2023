@@ -55,6 +55,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Width = 938
         Height = 628
         Align = alClient
+        AutoSize = True
         ExplicitLeft = 488
         ExplicitTop = 360
         ExplicitWidth = 105
