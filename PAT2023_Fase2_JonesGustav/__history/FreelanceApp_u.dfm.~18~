@@ -47,23 +47,16 @@ object frmFreelanceApp: TfrmFreelanceApp
         Left = 0
         Top = 0
         Width = 580
-        Height = 21
+        Height = 15
         Align = alTop
-        Alignment = taCenter
         Caption = 'Enter Information to Apply:'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        ExplicitWidth = 187
+        ExplicitWidth = 144
       end
       object Edit1: TEdit
         Left = 0
-        Top = 21
+        Top = 15
         Width = 580
-        Height = 297
+        Height = 303
         Align = alClient
         TabOrder = 0
         Text = 'Edit1'

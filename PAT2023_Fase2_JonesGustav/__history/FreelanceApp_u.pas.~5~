@@ -13,13 +13,8 @@ type
     lblTitle: TLabel;
     bmbClose: TBitBtn;
     pnlBottom: TPanel;
-    tsApply: TTabSheet;
+    tsHome: TTabSheet;
     bmbHelp: TBitBtn;
-    tsCheckout: TTabSheet;
-    bmbLogin: TBitBtn;
-    bmbSignUp: TBitBtn;
-    Edit1: TEdit;
-    lblApplyTitle: TLabel;
   private
     { Private declarations }
   public

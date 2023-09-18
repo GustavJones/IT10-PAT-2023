@@ -16,10 +16,6 @@ type
     tsApply: TTabSheet;
     bmbHelp: TBitBtn;
     tsCheckout: TTabSheet;
-    bmbLogin: TBitBtn;
-    bmbSignUp: TBitBtn;
-    Edit1: TEdit;
-    lblApplyTitle: TLabel;
   private
     { Private declarations }
   public
