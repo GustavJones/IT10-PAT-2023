@@ -1,4 +1,4 @@
 PAT2023_Fase2_JonesGustav/Win32
 .vscode
-*.dcu
-*.exe
+PAT2023_Fase2_JonesGustav/*.dcu
+PAT2023_Fase2_JonesGustav/*.exe
