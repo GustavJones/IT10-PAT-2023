@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Login_u in 'Login_u.pas' {frmLogin};
 
 type
   TfrmFreelanceApp = class(TForm)
@@ -24,6 +24,8 @@ type
     edtDescription: TEdit;
     tsHome: TTabSheet;
     bmbLogin: TBitBtn;
+    imgHomeImage: TImage;
+    procedure bmbLoginClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,5 +38,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmFreelanceApp.bmbLoginClick(Sender: TObject);
+begin
+  TfrmLogin
+end;
 
 end.

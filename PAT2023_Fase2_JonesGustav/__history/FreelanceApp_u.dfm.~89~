@@ -4,7 +4,7 @@ object frmFreelanceApp: TfrmFreelanceApp
   Top = 0
   Caption = 'Freelance Application'
   ClientHeight = 441
-  ClientWidth = 670
+  ClientWidth = 690
   Color = clBtnFace
   Constraints.MinHeight = 480
   Constraints.MinWidth = 640
@@ -21,7 +21,7 @@ object frmFreelanceApp: TfrmFreelanceApp
   object lblTitle: TLabel
     Left = 5
     Top = 2
-    Width = 660
+    Width = 680
     Height = 31
     Align = alTop
     Alignment = taCenter
@@ -35,18 +35,20 @@ object frmFreelanceApp: TfrmFreelanceApp
     ParentFont = False
     ExplicitLeft = 15
     ExplicitTop = 5
+    ExplicitWidth = 660
   end
   object pgcPages: TPageControl
     AlignWithMargins = True
     Left = 8
     Top = 36
-    Width = 654
+    Width = 674
     Height = 357
     ActivePage = tsHome
     Align = alClient
     TabOrder = 0
     ExplicitLeft = 18
     ExplicitTop = 45
+    ExplicitWidth = 654
     ExplicitHeight = 343
     object tsHome: TTabSheet
       Caption = 'Home'
@@ -55,7 +57,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 160
         Top = 3
-        Width = 326
+        Width = 346
         Height = 245
         Margins.Left = 160
         Margins.Right = 160
@@ -9331,7 +9333,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 270
         Top = 294
-        Width = 106
+        Width = 126
         Height = 30
         Margins.Left = 270
         Margins.Top = 5
@@ -9353,7 +9355,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 270
         Top = 256
-        Width = 106
+        Width = 126
         Height = 30
         Margins.Left = 270
         Margins.Top = 5
@@ -9377,7 +9379,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyTitle: TLabel
         Left = 0
         Top = 0
-        Width = 646
+        Width = 666
         Height = 25
         Align = alTop
         Alignment = taCenter
@@ -9394,7 +9396,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 3
         Top = 281
-        Width = 640
+        Width = 660
         Height = 43
         Align = alBottom
         TabOrder = 0
@@ -9402,7 +9404,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         ExplicitWidth = 574
         object btnApplyNext: TButton
           AlignWithMargins = True
-          Left = 489
+          Left = 509
           Top = 6
           Width = 143
           Height = 31
@@ -9420,7 +9422,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 25
         Top = 63
-        Width = 596
+        Width = 616
         Height = 29
         Margins.Left = 25
         Margins.Right = 25
@@ -9439,7 +9441,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 25
         Top = 28
-        Width = 596
+        Width = 616
         Height = 29
         Margins.Left = 25
         Margins.Right = 25
@@ -9464,7 +9466,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     AlignWithMargins = True
     Left = 8
     Top = 397
-    Width = 654
+    Width = 674
     Height = 41
     Margins.Top = 1
     Margins.Bottom = 1
@@ -9478,7 +9480,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     ExplicitWidth = 952
     object bmbClose: TBitBtn
       AlignWithMargins = True
-      Left = 558
+      Left = 578
       Top = 7
       Width = 81
       Height = 27
@@ -9494,7 +9496,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     end
     object bmbHelp: TBitBtn
       AlignWithMargins = True
-      Left = 447
+      Left = 467
       Top = 7
       Width = 81
       Height = 27

@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage
+  Login_u in 'Login_u.pas';
 
 type
   TfrmFreelanceApp = class(TForm)
@@ -16,13 +17,15 @@ type
     tsApply: TTabSheet;
     bmbHelp: TBitBtn;
     tsCheckout: TTabSheet;
-    bmbLogin: TBitBtn;
     bmbSignUp: TBitBtn;
-    edtTaskName: TEdit;
     lblApplyTitle: TLabel;
     btnApplyNext: TButton;
     pnlApplyBottom: TPanel;
+    edtTaskName: TEdit;
     edtDescription: TEdit;
+    tsHome: TTabSheet;
+    bmbLogin: TBitBtn;
+    imgHomeImage: TImage;
   private
     { Private declarations }
   public
