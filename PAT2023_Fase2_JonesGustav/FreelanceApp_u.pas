@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math,
   Login_u, Signup_u;
 
 type
@@ -28,8 +28,14 @@ type
     imgHomeImage: TImage;
     procedure bmbLoginClick(Sender: TObject);
     procedure bmbSignUpClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
-    { Private declarations }
+    var
+      iDefaultWidth : Integer;
+      iDefaultHeight : Integer;
+      rWidthScale : Real;
+      rHeightScale : Real;
   public
     { Public declarations }
   end;
@@ -49,6 +55,27 @@ end;
 procedure TfrmFreelanceApp.bmbSignUpClick(Sender: TObject);
 begin
   frmSignup.Show;
+end;
+
+procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
+begin
+  iDefaultWidth := ClientWidth;
+  iDefaultHeight := ClientHeight;
+end;
+
+procedure TfrmFreelanceApp.FormResize(Sender: TObject);
+begin
+  rWidthScale := (ClientWidth / iDefaultWidth);
+  rHeightScale := (ClientHeight / iDefaultHeight);
+
+  lblTitle.Font.Size := Trunc(rWidthScale	* 25);
+
+  bmbLogin.Margins.Left := Trunc(rWidthScale * 180);
+  bmbLogin.Margins.Right := Trunc(rWidthScale * 180);
+
+  bmbSignUp.Margins.Left := Trunc(rWidthScale * 180);
+  bmbSignUp.Margins.Right := Trunc(rWidthScale * 180);
+
 end;
 
 end.

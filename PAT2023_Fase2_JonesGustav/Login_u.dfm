@@ -1,19 +1,20 @@
 object frmLogin: TfrmLogin
-  Left = 0
-  Top = 0
+  Left = 715
+  Top = 415
   BorderStyle = bsDialog
   Caption = 'Log In'
-  ClientHeight = 261
-  ClientWidth = 384
+  ClientHeight = 362
+  ClientWidth = 588
   Color = clBtnFace
-  Constraints.MaxHeight = 300
-  Constraints.MaxWidth = 400
-  Constraints.MinHeight = 300
-  Constraints.MinWidth = 400
+  Constraints.MaxHeight = 400
+  Constraints.MaxWidth = 600
+  Constraints.MinHeight = 400
+  Constraints.MinWidth = 600
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesigned
   TextHeight = 15
 end
