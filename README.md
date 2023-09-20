@@ -2,6 +2,6 @@
 
 ## Freelancing Application (Name work in progress)
 
-![Home Page](PAT2023_Fase2_JonesGustav/images/demo/Home%20Page.png)
+![Home Page](PAT2023_Fase2_JonesGustav/images/demo/HomePage.png)
 
-![Sign In](PAT2023_Fase2_JonesGustav/images/demo/Sign%20In.png)
+![Sign In](PAT2023_Fase2_JonesGustav/images/demo/SignIn.png)
