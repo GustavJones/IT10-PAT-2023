@@ -3,8 +3,8 @@ object frmFreelanceApp: TfrmFreelanceApp
   Left = 551
   Top = 208
   Caption = 'Freelance Application'
-  ClientHeight = 618
-  ClientWidth = 833
+  ClientHeight = 441
+  ClientWidth = 670
   Color = clBtnFace
   Constraints.MinHeight = 480
   Constraints.MinWidth = 640
@@ -24,28 +24,31 @@ object frmFreelanceApp: TfrmFreelanceApp
   object lblTitle: TLabel
     Left = 5
     Top = 2
-    Width = 823
-    Height = 60
+    Width = 660
+    Height = 45
     Align = alTop
     Alignment = taCenter
     Caption = 'Freelance Application'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -48
+    Font.Height = -37
     Font.Name = 'Fixedsys'
     Font.Style = [fsBold]
     ParentFont = False
-    ExplicitWidth = 694
+    ExplicitWidth = 526
   end
   object pgcPages: TPageControl
     AlignWithMargins = True
     Left = 8
-    Top = 65
-    Width = 817
-    Height = 505
+    Top = 50
+    Width = 654
+    Height = 343
     ActivePage = tsHome
     Align = alClient
     TabOrder = 0
+    ExplicitTop = 65
+    ExplicitWidth = 817
+    ExplicitHeight = 505
     object tsHome: TTabSheet
       Caption = 'Home'
       ImageIndex = 2
@@ -53,8 +56,8 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 135
         Top = 3
-        Width = 539
-        Height = 383
+        Width = 376
+        Height = 221
         Margins.Left = 135
         Margins.Right = 135
         Align = alClient
@@ -7242,8 +7245,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object bmbSignUp: TBitBtn
         AlignWithMargins = True
         Left = 270
-        Top = 437
-        Width = 269
+        Top = 275
+        Width = 106
         Height = 35
         Margins.Left = 270
         Margins.Top = 5
@@ -7255,7 +7258,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Constraints.MinWidth = 100
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -19
+        Font.Height = -16
         Font.Name = 'JetBrains Mono'
         Font.Style = []
         Kind = bkOK
@@ -7263,12 +7266,14 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 0
         OnClick = bmbSignUpClick
+        ExplicitTop = 437
+        ExplicitWidth = 269
       end
       object bmbLogin: TBitBtn
         AlignWithMargins = True
         Left = 270
-        Top = 394
-        Width = 269
+        Top = 232
+        Width = 106
         Height = 35
         Margins.Left = 270
         Margins.Top = 5
@@ -7280,7 +7285,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Constraints.MinWidth = 100
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -19
+        Font.Height = -16
         Font.Name = 'JetBrains Mono'
         Font.Style = []
         Kind = bkOK
@@ -7288,6 +7293,8 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 1
         OnClick = bmbLoginClick
+        ExplicitTop = 394
+        ExplicitWidth = 269
       end
     end
     object tsApply: TTabSheet
@@ -7297,7 +7304,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyTitle: TLabel
         Left = 0
         Top = 0
-        Width = 227
+        Width = 646
         Height = 25
         Align = alTop
         Alignment = taCenter
@@ -7308,18 +7315,20 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 227
       end
       object pnlApplyBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 430
-        Width = 807
+        Top = 267
+        Width = 640
         Height = 43
         Align = alBottom
         TabOrder = 0
+        ExplicitTop = 252
         object btnApplyNext: TButton
           AlignWithMargins = True
-          Left = 656
+          Left = 489
           Top = 6
           Width = 143
           Height = 31
@@ -7336,7 +7345,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 25
         Top = 63
-        Width = 763
+        Width = 596
         Height = 29
         Margins.Left = 25
         Margins.Right = 25
@@ -7354,7 +7363,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 25
         Top = 28
-        Width = 763
+        Width = 596
         Height = 29
         Margins.Left = 25
         Margins.Right = 25
@@ -7379,8 +7388,8 @@ object frmFreelanceApp: TfrmFreelanceApp
   object pnlBottom: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 574
-    Width = 817
+    Top = 397
+    Width = 654
     Height = 41
     Margins.Top = 1
     Margins.Bottom = 1
@@ -7389,9 +7398,11 @@ object frmFreelanceApp: TfrmFreelanceApp
     Padding.Right = 14
     Padding.Bottom = 6
     TabOrder = 1
+    ExplicitTop = 574
+    ExplicitWidth = 817
     object bmbClose: TBitBtn
       AlignWithMargins = True
-      Left = 721
+      Left = 558
       Top = 7
       Width = 81
       Height = 27
@@ -7403,10 +7414,11 @@ object frmFreelanceApp: TfrmFreelanceApp
       Kind = bkClose
       NumGlyphs = 2
       TabOrder = 0
+      ExplicitLeft = 721
     end
     object bmbHelp: TBitBtn
       AlignWithMargins = True
-      Left = 610
+      Left = 447
       Top = 7
       Width = 81
       Height = 27
@@ -7418,6 +7430,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       Kind = bkHelp
       NumGlyphs = 2
       TabOrder = 1
+      ExplicitLeft = 610
     end
   end
 end

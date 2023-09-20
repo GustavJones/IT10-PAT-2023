@@ -22,6 +22,12 @@ type
     imgPF3: TImage;
     imgPF5: TImage;
     imgPF4: TImage;
+    procedure FormActivate(Sender: TObject);
+    procedure imgPF1Click(Sender: TObject);
+    procedure imgPF2Click(Sender: TObject);
+    procedure imgPF3Click(Sender: TObject);
+    procedure imgPF4Click(Sender: TObject);
+    procedure imgPF5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,5 +40,40 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmSignup.FormActivate(Sender: TObject);
+begin
+  btnSignUp.SetFocus;
+end;
+
+procedure TfrmSignup.imgPF1Click(Sender: TObject);
+begin
+  imgPF1.Picture.LoadFromFile('images\profiles\pf1_Clicked.png');
+
+  imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
+  imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
+  imgPF4.Picture.LoadFromFile('images\profiles\pf4.png');
+  imgPF5.Picture.LoadFromFile('images\profiles\pf5.png');
+end;
+
+procedure TfrmSignup.imgPF2Click(Sender: TObject);
+begin
+  imgPF2.Picture.LoadFromFile('images\profiles\pf2_Clicked.png');
+end;
+
+procedure TfrmSignup.imgPF3Click(Sender: TObject);
+begin
+  imgPF3.Picture.LoadFromFile('images\profiles\pf3_Clicked.png');
+end;
+
+procedure TfrmSignup.imgPF4Click(Sender: TObject);
+begin
+  imgPF4.Picture.LoadFromFile('images\profiles\pf4_Clicked.png');
+end;
+
+procedure TfrmSignup.imgPF5Click(Sender: TObject);
+begin
+  imgPF5.Picture.LoadFromFile('images\profiles\pf5_Clicked.png');
+end;
 
 end.
