@@ -22,6 +22,8 @@ type
     imgPF3: TImage;
     imgPF5: TImage;
     imgPF4: TImage;
+    rgpUserType: TRadioGroup;
+    btnPickProfile: TButton;
     procedure FormActivate(Sender: TObject);
     procedure imgPF1Click(Sender: TObject);
     procedure imgPF2Click(Sender: TObject);

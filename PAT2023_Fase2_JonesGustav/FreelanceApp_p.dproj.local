@@ -2,18 +2,21 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2023/09/19 12:46:02.000.713,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
-    <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
-    <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm</Transaction>
+    <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.pas</Transaction>
+    <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.dfm</Transaction>
     <Transaction>2023/09/19 13:08:07.000.068,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
-    <Transaction>2023/09/19 13:08:19.000.751,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Signup_u.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm</Transaction>
-    <Transaction>2023/09/19 13:08:19.000.751,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Signup_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
+    <Transaction>2023/09/19 13:08:19.000.751,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Signup_u.pas</Transaction>
+    <Transaction>2023/09/19 13:08:19.000.751,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Signup_u.dfm</Transaction>
+    <Transaction>2023/09/20 13:12:14.311,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
+    <Transaction>2023/09/20 13:12:31.551,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
+    <Transaction>2023/09/20 13:12:31.551,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="FreelanceApp_u.pas"/>
     <File Path="FreelanceApp_u.dfm"/>
-    <File Path="Login_u.pas"/>
-    <File Path="Login_u.dfm"/>
     <File Path="Signup_u.pas"/>
     <File Path="Signup_u.dfm"/>
+    <File Path="Login_u.pas"/>
+    <File Path="Login_u.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

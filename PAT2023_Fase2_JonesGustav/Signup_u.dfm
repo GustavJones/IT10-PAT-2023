@@ -34,14 +34,14 @@ object frmSignup: TfrmSignup
       576
       353)
     object lblCrededentials: TLabel
-      Left = 15
-      Top = 8
-      Width = 236
-      Height = 48
+      Left = 11
+      Top = 6
+      Width = 248
+      Height = 51
       Caption = 'Crededentials:'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -37
+      Font.Height = -39
       Font.Name = 'Sylfaen'
       Font.Style = [fsBold]
       ParentFont = False
@@ -63,8 +63,8 @@ object frmSignup: TfrmSignup
       Constraints.MaxWidth = 263
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
-      Font.Name = 'Unispace'
+      Font.Height = -19
+      Font.Name = 'Arial Narrow'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
@@ -87,8 +87,8 @@ object frmSignup: TfrmSignup
       Constraints.MaxWidth = 263
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
-      Font.Name = 'Unispace'
+      Font.Height = -19
+      Font.Name = 'Arial Narrow'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
@@ -111,31 +111,31 @@ object frmSignup: TfrmSignup
       Constraints.MaxWidth = 263
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
-      Font.Name = 'Unispace'
+      Font.Height = -19
+      Font.Name = 'Arial Narrow'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
       TextHint = 'Re-Enter Password:'
     end
     object btnSignUp: TButton
-      Left = 56
-      Top = 302
-      Width = 144
-      Height = 43
+      Left = 64
+      Top = 308
+      Width = 105
+      Height = 32
       Caption = 'Sign Up!'
       Default = True
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
+      Font.Height = -15
       Font.Name = 'Source Code Pro'
       Font.Style = []
       ParentFont = False
       TabOrder = 3
     end
     object pnlIcons: TPanel
-      Left = 257
-      Top = 8
+      Left = 265
+      Top = 12
       Width = 303
       Height = 193
       TabOrder = 4
@@ -37996,12 +37996,37 @@ object frmSignup: TfrmSignup
       Constraints.MaxWidth = 263
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
-      Font.Name = 'Unispace'
+      Font.Height = -19
+      Font.Name = 'Arial Narrow'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 5
       TextHint = 'Enter First Name:'
+    end
+    object rgpUserType: TRadioGroup
+      Left = 265
+      Top = 250
+      Width = 303
+      Height = 90
+      Caption = 'User Type:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Rockwell'
+      Font.Style = []
+      Items.Strings = (
+        'User'
+        'Developer')
+      ParentFont = False
+      TabOrder = 6
+    end
+    object btnPickProfile: TButton
+      Left = 336
+      Top = 219
+      Width = 145
+      Height = 25
+      Caption = 'Pick Profile Picture'
+      TabOrder = 7
     end
   end
 end
