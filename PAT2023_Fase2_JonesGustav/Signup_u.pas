@@ -44,6 +44,12 @@ implementation
 procedure TfrmSignup.FormActivate(Sender: TObject);
 begin
   btnSignUp.SetFocus;
+
+  imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
+  imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
+  imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
+  imgPF4.Picture.LoadFromFile('images\profiles\pf4.png');
+  imgPF5.Picture.LoadFromFile('images\profiles\pf5.png');
 end;
 
 procedure TfrmSignup.imgPF1Click(Sender: TObject);
@@ -59,21 +65,41 @@ end;
 procedure TfrmSignup.imgPF2Click(Sender: TObject);
 begin
   imgPF2.Picture.LoadFromFile('images\profiles\pf2_Clicked.png');
+
+  imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
+  imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
+  imgPF4.Picture.LoadFromFile('images\profiles\pf4.png');
+  imgPF5.Picture.LoadFromFile('images\profiles\pf5.png');
 end;
 
 procedure TfrmSignup.imgPF3Click(Sender: TObject);
 begin
   imgPF3.Picture.LoadFromFile('images\profiles\pf3_Clicked.png');
+
+  imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
+  imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
+  imgPF4.Picture.LoadFromFile('images\profiles\pf4.png');
+  imgPF5.Picture.LoadFromFile('images\profiles\pf5.png');
 end;
 
 procedure TfrmSignup.imgPF4Click(Sender: TObject);
 begin
   imgPF4.Picture.LoadFromFile('images\profiles\pf4_Clicked.png');
+
+  imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
+  imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
+  imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
+  imgPF5.Picture.LoadFromFile('images\profiles\pf5.png');
 end;
 
 procedure TfrmSignup.imgPF5Click(Sender: TObject);
 begin
   imgPF5.Picture.LoadFromFile('images\profiles\pf5_Clicked.png');
+
+  imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
+  imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
+  imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
+  imgPF4.Picture.LoadFromFile('images\profiles\pf4.png');
 end;
 
 end.
