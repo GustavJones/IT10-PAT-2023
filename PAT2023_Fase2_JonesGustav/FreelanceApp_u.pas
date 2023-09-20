@@ -22,14 +22,20 @@ type
     btnApplyNext: TButton;
     pnlApplyBottom: TPanel;
     edtTaskName: TEdit;
-    edtDescription: TEdit;
     tsHome: TTabSheet;
     bmbLogin: TBitBtn;
     imgHomeImage: TImage;
+    redDescription: TRichEdit;
+    lblDescription: TLabel;
+    btnEditGUI: TButton;
+    bmbSignOut: TBitBtn;
+    dtpDueDate: TDateTimePicker;
+    lblDueDate: TLabel;
     procedure bmbLoginClick(Sender: TObject);
     procedure bmbSignUpClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure bmbCloseClick(Sender: TObject);
   private
     var
       iDefaultWidth : Integer;
@@ -46,6 +52,18 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmFreelanceApp.bmbCloseClick(Sender: TObject);
+var
+  iExit : Integer;
+begin
+  iExit := MessageDlg('Are you sure you want to exit?', mtInformation, mbYesNo, 0);
+
+  if iExit = 6 then
+  begin
+    frmFreelanceApp.Close;
+  end;
+end;
 
 procedure TfrmFreelanceApp.bmbLoginClick(Sender: TObject);
 begin

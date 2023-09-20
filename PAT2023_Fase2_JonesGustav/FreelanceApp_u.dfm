@@ -43,12 +43,9 @@ object frmFreelanceApp: TfrmFreelanceApp
     Top = 50
     Width = 654
     Height = 343
-    ActivePage = tsHome
+    ActivePage = tsApply
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 65
-    ExplicitWidth = 817
-    ExplicitHeight = 505
     object tsHome: TTabSheet
       Caption = 'Home'
       ImageIndex = 2
@@ -7266,8 +7263,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 0
         OnClick = bmbSignUpClick
-        ExplicitTop = 437
-        ExplicitWidth = 269
       end
       object bmbLogin: TBitBtn
         AlignWithMargins = True
@@ -7293,29 +7288,61 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 1
         OnClick = bmbLoginClick
-        ExplicitTop = 394
-        ExplicitWidth = 269
       end
     end
     object tsApply: TTabSheet
       Caption = 'Apply'
-      Enabled = False
       TabVisible = False
       object lblApplyTitle: TLabel
         Left = 0
         Top = 0
         Width = 646
-        Height = 25
+        Height = 28
         Align = alTop
         Alignment = taCenter
         Caption = 'Enter Information to Apply:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -19
+        Font.Height = -20
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 227
+        ExplicitWidth = 238
+      end
+      object lblDescription: TLabel
+        Left = 0
+        Top = 63
+        Width = 646
+        Height = 21
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Application Description:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        ExplicitTop = 60
+        ExplicitWidth = 164
+      end
+      object lblDueDate: TLabel
+        Left = 0
+        Top = 180
+        Width = 646
+        Height = 25
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Due Date:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Microsoft YaHei UI'
+        Font.Style = []
+        ParentFont = False
+        ExplicitLeft = 27
+        ExplicitTop = 208
+        ExplicitWidth = 91
       end
       object pnlApplyBottom: TPanel
         AlignWithMargins = True
@@ -7325,7 +7352,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Height = 43
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 252
         object btnApplyNext: TButton
           AlignWithMargins = True
           Left = 489
@@ -7340,11 +7366,26 @@ object frmFreelanceApp: TfrmFreelanceApp
           Caption = 'Next Page'
           TabOrder = 0
         end
+        object btnEditGUI: TButton
+          AlignWithMargins = True
+          Left = 339
+          Top = 6
+          Width = 143
+          Height = 31
+          Margins.Left = 0
+          Margins.Top = 5
+          Margins.Right = 7
+          Margins.Bottom = 5
+          Align = alRight
+          Caption = 'Create GUI'
+          TabOrder = 1
+          ExplicitLeft = 489
+        end
       end
-      object edtDescription: TEdit
+      object edtTaskName: TEdit
         AlignWithMargins = True
         Left = 25
-        Top = 63
+        Top = 31
         Width = 596
         Height = 29
         Margins.Left = 25
@@ -7357,30 +7398,46 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        TextHint = 'Description'
+        TextHint = 'Application Name:'
+        ExplicitTop = 28
       end
-      object edtTaskName: TEdit
+      object redDescription: TRichEdit
         AlignWithMargins = True
         Left = 25
-        Top = 28
+        Top = 87
         Width = 596
-        Height = 29
+        Height = 90
         Margins.Left = 25
         Margins.Right = 25
         Align = alTop
-        Font.Charset = DEFAULT_CHARSET
+        Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
-        Font.Height = -16
+        Font.Height = -12
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ScrollBars = ssVertical
         TabOrder = 2
-        TextHint = 'Application Name:'
+      end
+      object dtpDueDate: TDateTimePicker
+        AlignWithMargins = True
+        Left = 60
+        Top = 208
+        Width = 526
+        Height = 23
+        Margins.Left = 60
+        Margins.Right = 60
+        Align = alTop
+        Date = 45189.000000000000000000
+        Time = 0.573046990743023300
+        TabOrder = 3
+        ExplicitLeft = 172
+        ExplicitTop = 210
+        ExplicitWidth = 129
       end
     end
     object tsCheckout: TTabSheet
       Caption = 'Checkout'
-      Enabled = False
       ImageIndex = 1
       TabVisible = False
     end
@@ -7398,8 +7455,6 @@ object frmFreelanceApp: TfrmFreelanceApp
     Padding.Right = 14
     Padding.Bottom = 6
     TabOrder = 1
-    ExplicitTop = 574
-    ExplicitWidth = 817
     object bmbClose: TBitBtn
       AlignWithMargins = True
       Left = 558
@@ -7411,10 +7466,11 @@ object frmFreelanceApp: TfrmFreelanceApp
       Margins.Right = 0
       Margins.Bottom = 0
       Align = alRight
-      Kind = bkClose
+      Caption = 'Close'
+      Kind = bkCancel
       NumGlyphs = 2
       TabOrder = 0
-      ExplicitLeft = 721
+      OnClick = bmbCloseClick
     end
     object bmbHelp: TBitBtn
       AlignWithMargins = True
@@ -7430,7 +7486,23 @@ object frmFreelanceApp: TfrmFreelanceApp
       Kind = bkHelp
       NumGlyphs = 2
       TabOrder = 1
-      ExplicitLeft = 610
+    end
+    object bmbSignOut: TBitBtn
+      AlignWithMargins = True
+      Left = 31
+      Top = 7
+      Width = 81
+      Height = 27
+      Margins.Left = 30
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Align = alLeft
+      Caption = 'Sign Out'
+      Kind = bkCancel
+      NumGlyphs = 2
+      TabOrder = 2
+      ExplicitLeft = 232
     end
   end
 end
