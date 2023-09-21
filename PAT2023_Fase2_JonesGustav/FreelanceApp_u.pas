@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes,
-  Login_u, Signup_u;
+  Login_u, Signup_u, Help_u;
 
 type
   TfrmFreelanceApp = class(TForm)
@@ -31,9 +31,7 @@ type
     lblDueDate: TLabel;
     btnApply: TButton;
     bmbReset: TBitBtn;
-    pnlAccountBottom: TPanel;
-    btnAccountNext: TButton;
-    Image1: TImage;
+    imgAccount: TImage;
     btnSignUp: TButton;
     btnLogin: TButton;
     procedure bmbLoginClick(Sender: TObject);
@@ -43,6 +41,10 @@ type
     procedure bmbCloseClick(Sender: TObject);
     procedure bmbSignOutClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnSignUpClick(Sender: TObject);
+    procedure btnLoginClick(Sender: TObject);
+    procedure bmbHelpClick(Sender: TObject);
+    procedure btnAccountNextClick(Sender: TObject);
   private
   var
     iDefaultWidth: Integer;
@@ -73,6 +75,11 @@ begin
   end;
 end;
 
+procedure TfrmFreelanceApp.bmbHelpClick(Sender: TObject);
+begin
+  frmHelp.Show;
+end;
+
 procedure TfrmFreelanceApp.bmbLoginClick(Sender: TObject);
 begin
   frmLogin.Show;
@@ -101,6 +108,21 @@ begin
   frmSignup.Show;
 end;
 
+procedure TfrmFreelanceApp.btnAccountNextClick(Sender: TObject);
+begin
+  pgcPages.TabIndex := pgcPages.TabIndex + 1;
+end;
+
+procedure TfrmFreelanceApp.btnLoginClick(Sender: TObject);
+begin
+  frmLogin.Show;
+end;
+
+procedure TfrmFreelanceApp.btnSignUpClick(Sender: TObject);
+begin
+  frmSignup.Show;
+end;
+
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
 begin
   bLoggedIn	:= frmLogin.bSuccess;
@@ -111,7 +133,6 @@ begin
     tsCheckout.TabVisible := True;
 
     bmbSignOut.Enabled := True;
-    btnAccountNext.Enabled := True;
   end;
 end;
 
@@ -128,11 +149,11 @@ begin
 
   lblTitle.Font.Size := Trunc(rWidthScale * 25);
 
-  btnLogin.Margins.Left := Trunc(rWidthScale * 180);
-  btnLogin.Margins.Right := Trunc(rWidthScale * 180);
-
-  btnSignUp.Margins.Left := Trunc(rWidthScale * 180);
-  btnSignUp.Margins.Right := Trunc(rWidthScale * 180);
+//  btnLogin.Margins.Left := Trunc(rWidthScale * 180);
+//  btnLogin.Margins.Right := Trunc(rWidthScale * 180);
+//
+//  btnSignUp.Margins.Left := Trunc(rWidthScale * 180);
+//  btnSignUp.Margins.Right := Trunc(rWidthScale * 180);
 
 end;
 

@@ -1,7 +1,7 @@
 object frmFreelanceApp: TfrmFreelanceApp
   AlignWithMargins = True
-  Left = 694
-  Top = 332
+  Left = 349
+  Top = 118
   Caption = 'Freelance Application'
   ClientHeight = 482
   ClientWidth = 628
@@ -47,16 +47,14 @@ object frmFreelanceApp: TfrmFreelanceApp
     ActivePage = tsAccount
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 608
-    ExplicitHeight = 382
     object tsAccount: TTabSheet
       Caption = 'Account'
       ImageIndex = 2
-      object Image1: TImage
+      object imgAccount: TImage
         Left = 0
         Top = 0
-        Width = 434
-        Height = 305
+        Width = 604
+        Height = 281
         Align = alClient
         Center = True
         Picture.Data = {
@@ -9203,67 +9201,36 @@ object frmFreelanceApp: TfrmFreelanceApp
           07F18D507C60950000000049454E44AE426082}
         Proportional = True
         Stretch = True
-        ExplicitWidth = 417
-      end
-      object pnlAccountBottom: TPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 308
-        Width = 598
-        Height = 42
-        Align = alBottom
-        TabOrder = 0
-        Visible = False
-        ExplicitTop = 307
-        ExplicitWidth = 594
-        object btnAccountNext: TButton
-          AlignWithMargins = True
-          Left = 447
-          Top = 6
-          Width = 143
-          Height = 30
-          Margins.Left = 0
-          Margins.Top = 5
-          Margins.Right = 7
-          Margins.Bottom = 5
-          Align = alRight
-          Caption = 'Next Page'
-          Enabled = False
-          TabOrder = 0
-          ExplicitLeft = 443
-        end
+        ExplicitWidth = 409
+        ExplicitHeight = 305
       end
       object btnSignUp: TButton
         AlignWithMargins = True
-        Left = 524
-        Top = 135
-        Width = 75
-        Height = 35
-        Margins.Left = 5
-        Margins.Top = 135
-        Margins.Right = 5
-        Margins.Bottom = 135
-        Align = alRight
+        Left = 170
+        Top = 320
+        Width = 264
+        Height = 30
+        Margins.Left = 170
+        Margins.Right = 170
+        Align = alBottom
         Caption = 'Sign Up'
-        TabOrder = 1
-        ExplicitLeft = 520
-        ExplicitHeight = 34
+        TabOrder = 0
+        OnClick = btnSignUpClick
+        ExplicitTop = 264
       end
       object btnLogin: TButton
         AlignWithMargins = True
-        Left = 439
-        Top = 135
-        Width = 75
-        Height = 35
-        Margins.Left = 5
-        Margins.Top = 135
-        Margins.Right = 5
-        Margins.Bottom = 135
-        Align = alRight
+        Left = 170
+        Top = 284
+        Width = 264
+        Height = 30
+        Margins.Left = 170
+        Margins.Right = 170
+        Align = alBottom
         Caption = 'Login'
-        TabOrder = 2
-        ExplicitLeft = 435
-        ExplicitHeight = 34
+        TabOrder = 1
+        OnClick = btnLoginClick
+        ExplicitTop = 232
       end
     end
     object tsApply: TTabSheet
@@ -9453,8 +9420,6 @@ object frmFreelanceApp: TfrmFreelanceApp
     Padding.Right = 14
     Padding.Bottom = 6
     TabOrder = 1
-    ExplicitTop = 437
-    ExplicitWidth = 608
     object bmbClose: TBitBtn
       AlignWithMargins = True
       Left = 516
@@ -9471,7 +9436,6 @@ object frmFreelanceApp: TfrmFreelanceApp
       NumGlyphs = 2
       TabOrder = 0
       OnClick = bmbCloseClick
-      ExplicitLeft = 512
     end
     object bmbHelp: TBitBtn
       AlignWithMargins = True
@@ -9487,7 +9451,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       Kind = bkHelp
       NumGlyphs = 2
       TabOrder = 1
-      ExplicitLeft = 401
+      OnClick = bmbHelpClick
     end
     object bmbSignOut: TBitBtn
       AlignWithMargins = True

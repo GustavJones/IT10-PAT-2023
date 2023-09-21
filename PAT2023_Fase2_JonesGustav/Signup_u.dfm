@@ -1,6 +1,6 @@
 object frmSignup: TfrmSignup
-  Left = 143
-  Top = 104
+  Left = 363
+  Top = 148
   BorderStyle = bsDialog
   Caption = 'Sign Up'
   ClientHeight = 362
@@ -26,8 +26,6 @@ object frmSignup: TfrmSignup
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -1
-    ExplicitTop = -1
     DesignSize = (
       580
       354)
@@ -67,7 +65,6 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 0
       TextHint = 'Enter Username:'
-      ExplicitLeft = 7
     end
     object edtPassword: TEdit
       AlignWithMargins = True
@@ -92,7 +89,6 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 1
       TextHint = 'Enter Password:'
-      ExplicitLeft = 7
     end
     object edtConfirmPassword: TEdit
       AlignWithMargins = True
@@ -117,7 +113,6 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 2
       TextHint = 'Re-Enter Password:'
-      ExplicitLeft = 7
     end
     object btnSignUp: TButton
       Left = 64
@@ -164,7 +159,6 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 5
       TextHint = 'Enter First Name:'
-      ExplicitLeft = 7
     end
     object rgpUserType: TRadioGroup
       Left = 265
@@ -6791,7 +6785,7 @@ object frmSignup: TfrmSignup
         OnClick = imgPF1Click
       end
       object imgPF2: TImage
-        Left = 125
+        Left = 118
         Top = 22
         Width = 77
         Height = 81
@@ -22530,7 +22524,7 @@ object frmSignup: TfrmSignup
         OnClick = imgPF3Click
       end
       object imgPF4: TImage
-        Left = 43
+        Left = 75
         Top = 109
         Width = 76
         Height = 81
@@ -30291,7 +30285,7 @@ object frmSignup: TfrmSignup
         OnClick = imgPF4Click
       end
       object imgPF5: TImage
-        Left = 173
+        Left = 165
         Top = 109
         Width = 76
         Height = 81

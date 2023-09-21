@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   FreelanceApp_u in 'FreelanceApp_u.pas' {frmFreelanceApp},
   Signup_u in 'Signup_u.pas' {frmSignup},
-  Login_u in 'Login_u.pas' {frmLogin};
+  Login_u in 'Login_u.pas' {frmLogin},
+  Help_u in 'Help_u.pas' {frmHelp};
 
 {$R *.res}
 
@@ -14,5 +15,6 @@ begin
   Application.CreateForm(TfrmFreelanceApp, frmFreelanceApp);
   Application.CreateForm(TfrmSignup, frmSignup);
   Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TfrmHelp, frmHelp);
   Application.Run;
 end.

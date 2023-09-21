@@ -1,6 +1,6 @@
 object frmLogin: TfrmLogin
-  Left = 837
-  Top = 436
+  Left = 581
+  Top = 236
   BorderStyle = bsDialog
   Caption = 'Log In'
   ClientHeight = 212
@@ -27,8 +27,6 @@ object frmLogin: TfrmLogin
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 176
-    ExplicitHeight = 203
     DesignSize = (
       207
       204)
