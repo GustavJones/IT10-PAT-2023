@@ -5,7 +5,7 @@ object frmFreelanceApp: TfrmFreelanceApp
   Caption = 'Freelance Application'
   ClientHeight = 482
   ClientWidth = 628
-  Color = clBtnFace
+  Color = clWindow
   Constraints.MinHeight = 520
   Constraints.MinWidth = 640
   Font.Charset = DEFAULT_CHARSET
@@ -26,35 +26,48 @@ object frmFreelanceApp: TfrmFreelanceApp
     Left = 5
     Top = 2
     Width = 618
-    Height = 45
+    Height = 40
     Align = alTop
     Alignment = taCenter
     Caption = 'Freelance Application'
+    Color = 77
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -37
-    Font.Name = 'Fixedsys'
-    Font.Style = [fsBold]
+    Font.Height = -35
+    Font.Name = 'Arial Rounded MT Bold'
+    Font.Style = []
+    ParentColor = False
     ParentFont = False
-    ExplicitWidth = 526
+    Transparent = True
+    ExplicitWidth = 372
   end
   object pgcPages: TPageControl
     AlignWithMargins = True
     Left = 8
-    Top = 50
+    Top = 45
     Width = 612
-    Height = 383
-    ActivePage = tsAccount
+    Height = 388
+    ActivePage = tsAccountH
     Align = alClient
     TabOrder = 0
+    object tsAccountH: TTabSheet
+      Caption = 'Account (Signed In)'
+      ImageIndex = 4
+    end
     object tsAccount: TTabSheet
-      Caption = 'Account'
+      Caption = 'Account (Sign In)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 7344915
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       ImageIndex = 2
+      ParentFont = False
       object imgAccount: TImage
         Left = 0
         Top = 0
         Width = 604
-        Height = 281
+        Height = 286
         Align = alClient
         Center = True
         Picture.Data = {
@@ -9204,33 +9217,49 @@ object frmFreelanceApp: TfrmFreelanceApp
         ExplicitWidth = 409
         ExplicitHeight = 305
       end
-      object btnSignUp: TButton
-        AlignWithMargins = True
-        Left = 170
-        Top = 320
-        Width = 264
-        Height = 30
-        Margins.Left = 170
-        Margins.Right = 170
-        Align = alBottom
-        Caption = 'Sign Up'
-        TabOrder = 0
-        OnClick = btnSignUpClick
-        ExplicitTop = 264
-      end
       object btnLogin: TButton
         AlignWithMargins = True
         Left = 170
-        Top = 284
+        Top = 325
         Width = 264
         Height = 30
         Margins.Left = 170
         Margins.Right = 170
         Align = alBottom
         Caption = 'Login'
-        TabOrder = 1
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 7344915
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
         OnClick = btnLoginClick
-        ExplicitTop = 232
+        ExplicitLeft = 171
+        ExplicitTop = 287
+        ExplicitWidth = 262
+      end
+      object btnSignUp: TButton
+        AlignWithMargins = True
+        Left = 170
+        Top = 289
+        Width = 264
+        Height = 30
+        Margins.Left = 170
+        Margins.Right = 170
+        Align = alBottom
+        Caption = 'Sign Up'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 7344915
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnSignUpClick
+        ExplicitLeft = 171
+        ExplicitTop = 287
+        ExplicitWidth = 262
       end
     end
     object tsApply: TTabSheet
@@ -9287,16 +9316,17 @@ object frmFreelanceApp: TfrmFreelanceApp
       object pnlApplyBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 307
+        Top = 312
         Width = 598
         Height = 43
         Align = alBottom
         TabOrder = 0
+        ExplicitTop = 311
         object btnApplyNext: TButton
           AlignWithMargins = True
-          Left = 447
+          Left = 490
           Top = 6
-          Width = 143
+          Width = 100
           Height = 31
           Margins.Left = 0
           Margins.Top = 5
@@ -9305,12 +9335,13 @@ object frmFreelanceApp: TfrmFreelanceApp
           Align = alRight
           Caption = 'Next Page'
           TabOrder = 0
+          ExplicitLeft = 470
         end
         object btnEditGUI: TButton
           AlignWithMargins = True
-          Left = 297
+          Left = 276
           Top = 6
-          Width = 143
+          Width = 100
           Height = 31
           Margins.Left = 0
           Margins.Top = 5
@@ -9319,6 +9350,8 @@ object frmFreelanceApp: TfrmFreelanceApp
           Align = alRight
           Caption = 'Create GUI'
           TabOrder = 1
+          OnClick = btnEditGUIClick
+          ExplicitLeft = 256
         end
         object bmbReset: TBitBtn
           AlignWithMargins = True
@@ -9335,6 +9368,21 @@ object frmFreelanceApp: TfrmFreelanceApp
           Kind = bkRetry
           NumGlyphs = 2
           TabOrder = 2
+        end
+        object btnHome: TButton
+          AlignWithMargins = True
+          Left = 383
+          Top = 6
+          Width = 100
+          Height = 31
+          Margins.Left = 0
+          Margins.Top = 5
+          Margins.Right = 7
+          Margins.Bottom = 5
+          Align = alRight
+          Caption = 'Home'
+          TabOrder = 3
+          ExplicitLeft = 363
         end
       end
       object edtTaskName: TEdit
@@ -9405,6 +9453,69 @@ object frmFreelanceApp: TfrmFreelanceApp
       Caption = 'Checkout'
       ImageIndex = 1
       TabVisible = False
+      object lblInformation: TLabel
+        Left = 0
+        Top = 0
+        Width = 604
+        Height = 29
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Applications information:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -24
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ExplicitLeft = 168
+        ExplicitTop = 3
+        ExplicitWidth = 260
+      end
+      object ListBox1: TListBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 32
+        Width = 598
+        Height = 292
+        Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ItemHeight = 21
+        Items.Strings = (
+          'List'
+          'Of'
+          'Individual'
+          'Items')
+        ParentFont = False
+        TabOrder = 0
+        ExplicitLeft = 192
+        ExplicitTop = 80
+        ExplicitWidth = 121
+        ExplicitHeight = 97
+      end
+      object btnApplicationInformation: TButton
+        AlignWithMargins = True
+        Left = 200
+        Top = 330
+        Width = 204
+        Height = 25
+        Margins.Left = 200
+        Margins.Right = 200
+        Align = alBottom
+        Caption = 'Display Application Information'
+        TabOrder = 1
+        ExplicitLeft = 384
+        ExplicitTop = 264
+        ExplicitWidth = 75
+      end
+    end
+    object tsGUICreator: TTabSheet
+      Caption = 'GUI Creator'
+      ImageIndex = 3
+      TabVisible = False
     end
   end
   object pnlBottom: TPanel
@@ -9416,6 +9527,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     Margins.Top = 2
     Margins.Bottom = 1
     Align = alBottom
+    Color = 6114056
     Padding.Top = 6
     Padding.Right = 14
     Padding.Bottom = 6
