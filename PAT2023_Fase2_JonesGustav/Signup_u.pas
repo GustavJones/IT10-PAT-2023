@@ -23,7 +23,7 @@ type
     imgPF5: TImage;
     imgPF4: TImage;
     rgpUserType: TRadioGroup;
-    btnPickProfile: TButton;
+    gpbProfiles: TGroupBox;
     procedure FormActivate(Sender: TObject);
     procedure imgPF1Click(Sender: TObject);
     procedure imgPF2Click(Sender: TObject);

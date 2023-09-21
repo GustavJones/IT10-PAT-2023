@@ -3,9 +3,10 @@ unit FreelanceApp_u;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math,
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes,
   Login_u, Signup_u;
 
 type
@@ -17,33 +18,40 @@ type
     tsApply: TTabSheet;
     bmbHelp: TBitBtn;
     tsCheckout: TTabSheet;
-    bmbSignUp: TBitBtn;
     lblApplyTitle: TLabel;
     btnApplyNext: TButton;
     pnlApplyBottom: TPanel;
     edtTaskName: TEdit;
-    tsHome: TTabSheet;
-    bmbLogin: TBitBtn;
-    imgHomeImage: TImage;
+    tsAccount: TTabSheet;
     redDescription: TRichEdit;
     lblDescription: TLabel;
     btnEditGUI: TButton;
     bmbSignOut: TBitBtn;
     dtpDueDate: TDateTimePicker;
     lblDueDate: TLabel;
+    btnApply: TButton;
+    bmbReset: TBitBtn;
+    pnlAccountBottom: TPanel;
+    btnAccountNext: TButton;
+    Image1: TImage;
+    btnSignUp: TButton;
+    btnLogin: TButton;
     procedure bmbLoginClick(Sender: TObject);
     procedure bmbSignUpClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
+    procedure bmbSignOutClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-    var
-      iDefaultWidth : Integer;
-      iDefaultHeight : Integer;
-      rWidthScale : Real;
-      rHeightScale : Real;
+  var
+    iDefaultWidth: Integer;
+    iDefaultHeight: Integer;
+    rWidthScale: Real;
+    rHeightScale: Real;
   public
-    { Public declarations }
+  var
+    bLoggedIn : Boolean;
   end;
 
 var
@@ -55,11 +63,11 @@ implementation
 
 procedure TfrmFreelanceApp.bmbCloseClick(Sender: TObject);
 var
-  iExit : Integer;
+  iExit: Integer;
 begin
   iExit := MessageDlg('Are you sure you want to exit?', mtInformation, mbYesNo, 0);
 
-  if iExit = 6 then
+  if iExit = idYes then
   begin
     frmFreelanceApp.Close;
   end;
@@ -70,12 +78,44 @@ begin
   frmLogin.Show;
 end;
 
+procedure TfrmFreelanceApp.bmbSignOutClick(Sender: TObject);
+var
+  iSignOut : Integer;
+begin
+  iSignOut := MessageDlg('Are you sure you want to sign out?', mtInformation, mbYesNo, 0);
+
+  if iSignOut = idYes then
+  begin
+    bLoggedIn := False;
+
+    tsApply.TabVisible := False;
+    tsCheckout.TabVisible := False;
+
+    bmbSignOut.Enabled := False;
+  end;
+
+end;
+
 procedure TfrmFreelanceApp.bmbSignUpClick(Sender: TObject);
 begin
   frmSignup.Show;
 end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
+begin
+  bLoggedIn	:= frmLogin.bSuccess;
+
+  if bLoggedIn then
+  begin
+    tsApply.TabVisible := True;
+    tsCheckout.TabVisible := True;
+
+    bmbSignOut.Enabled := True;
+    btnAccountNext.Enabled := True;
+  end;
+end;
+
+procedure TfrmFreelanceApp.FormCreate(Sender: TObject);
 begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
@@ -86,13 +126,13 @@ begin
   rWidthScale := (ClientWidth / iDefaultWidth);
   rHeightScale := (ClientHeight / iDefaultHeight);
 
-  lblTitle.Font.Size := Trunc(rWidthScale	* 25);
+  lblTitle.Font.Size := Trunc(rWidthScale * 25);
 
-  bmbLogin.Margins.Left := Trunc(rWidthScale * 180);
-  bmbLogin.Margins.Right := Trunc(rWidthScale * 180);
+  btnLogin.Margins.Left := Trunc(rWidthScale * 180);
+  btnLogin.Margins.Right := Trunc(rWidthScale * 180);
 
-  bmbSignUp.Margins.Left := Trunc(rWidthScale * 180);
-  bmbSignUp.Margins.Right := Trunc(rWidthScale * 180);
+  btnSignUp.Margins.Left := Trunc(rWidthScale * 180);
+  btnSignUp.Margins.Right := Trunc(rWidthScale * 180);
 
 end;
 

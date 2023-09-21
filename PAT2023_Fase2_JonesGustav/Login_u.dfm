@@ -1,41 +1,39 @@
 object frmLogin: TfrmLogin
-  Left = 0
-  Top = 0
+  Left = 837
+  Top = 436
   BorderStyle = bsDialog
   Caption = 'Log In'
-  ClientHeight = 211
-  ClientWidth = 184
+  ClientHeight = 212
+  ClientWidth = 215
   Color = clBtnFace
-  Constraints.MaxHeight = 250
-  Constraints.MaxWidth = 200
-  Constraints.MinHeight = 250
-  Constraints.MinWidth = 200
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesigned
   OnActivate = FormActivate
+  OnCreate = FormCreate
   TextHeight = 15
   object pnlSignUp: TPanel
     AlignWithMargins = True
     Left = 4
     Top = 4
-    Width = 176
-    Height = 203
+    Width = 207
+    Height = 204
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 576
-    ExplicitHeight = 353
+    ExplicitWidth = 176
+    ExplicitHeight = 203
     DesignSize = (
-      176
-      203)
+      207
+      204)
     object lblLogIn: TLabel
-      Left = 32
+      Left = 48
       Top = 6
       Width = 103
       Height = 47
@@ -49,9 +47,9 @@ object frmLogin: TfrmLogin
     end
     object edtUsername: TEdit
       AlignWithMargins = True
-      Left = 12
+      Left = 16
       Top = 63
-      Width = 152
+      Width = 168
       Height = 31
       Margins.Left = 158
       Margins.Top = 7
@@ -73,9 +71,9 @@ object frmLogin: TfrmLogin
     end
     object edtPassword: TEdit
       AlignWithMargins = True
-      Left = 12
+      Left = 16
       Top = 112
-      Width = 152
+      Width = 168
       Height = 31
       Margins.Left = 158
       Margins.Top = 7
@@ -96,7 +94,7 @@ object frmLogin: TfrmLogin
       TextHint = 'Enter Password:'
     end
     object btnLogIn: TButton
-      Left = 32
+      Left = 48
       Top = 153
       Width = 105
       Height = 32
@@ -109,6 +107,7 @@ object frmLogin: TfrmLogin
       Font.Style = []
       ParentFont = False
       TabOrder = 2
+      OnClick = btnLogInClick
     end
   end
 end
