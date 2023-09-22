@@ -30,7 +30,7 @@ type
     dtpDueDate: TDateTimePicker;
     lblDueDate: TLabel;
     btnApply: TButton;
-    bmbReset: TBitBtn;
+    bmbApplyReset: TBitBtn;
     imgAccount: TImage;
     btnLogin: TButton;
     btnSignUp: TButton;
@@ -45,8 +45,17 @@ type
     btnChangePassword: TButton;
     pnlAccountHBottom: TPanel;
     btnAccountHNext: TButton;
-    procedure bmbLoginClick(Sender: TObject);
-    procedure bmbSignUpClick(Sender: TObject);
+    pnlCheckoutBottom: TPanel;
+    btnCheckoutNext: TButton;
+    btnCheckoutCreateGUI: TButton;
+    bmbCheckoutReset: TBitBtn;
+    btnCheckoutHome: TButton;
+    btnApplyBack: TButton;
+    btnCheckoutBack: TButton;
+    pnlGUICreatorBottom: TPanel;
+    bmbGUICreatorReset: TBitBtn;
+    btnGUICreatorHome: TButton;
+    btnGUICreatorBack: TButton;
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
@@ -55,9 +64,11 @@ type
     procedure btnSignUpClick(Sender: TObject);
     procedure btnLoginClick(Sender: TObject);
     procedure bmbHelpClick(Sender: TObject);
-    procedure btnAccountNextClick(Sender: TObject);
     procedure btnEditGUIClick(Sender: TObject);
-    procedure btnAccountHNextClick(Sender: TObject);
+    procedure btnNextClick(Sender: TObject);
+    procedure btnHomeClick(Sender: TObject);
+    procedure btnBackClick(Sender: TObject);
+    procedure bmbApplyResetClick(Sender: TObject);
   private
   var
     iDefaultWidth: Integer;
@@ -93,9 +104,9 @@ begin
   frmHelp.Show;
 end;
 
-procedure TfrmFreelanceApp.bmbLoginClick(Sender: TObject);
+procedure TfrmFreelanceApp.bmbApplyResetClick(Sender: TObject);
 begin
-  frmLogin.Show;
+  //
 end;
 
 procedure TfrmFreelanceApp.bmbSignOutClick(Sender: TObject);
@@ -123,24 +134,24 @@ begin
 
 end;
 
-procedure TfrmFreelanceApp.bmbSignUpClick(Sender: TObject);
-begin
-  frmSignup.Show;
-end;
-
-procedure TfrmFreelanceApp.btnAccountHNextClick(Sender: TObject);
+procedure TfrmFreelanceApp.btnNextClick(Sender: TObject);
 begin
   pgcPages.TabIndex := pgcPages.TabIndex + 1;
 end;
 
-procedure TfrmFreelanceApp.btnAccountNextClick(Sender: TObject);
+procedure TfrmFreelanceApp.btnBackClick(Sender: TObject);
 begin
-  pgcPages.TabIndex := pgcPages.TabIndex + 1;
+  pgcPages.TabIndex := pgcPages.TabIndex - 1;
 end;
 
 procedure TfrmFreelanceApp.btnEditGUIClick(Sender: TObject);
 begin
   pgcPages.TabIndex := pgcPages.PageCount - 1;
+end;
+
+procedure TfrmFreelanceApp.btnHomeClick(Sender: TObject);
+begin
+  pgcPages.TabIndex := 0;
 end;
 
 procedure TfrmFreelanceApp.btnLoginClick(Sender: TObject);
