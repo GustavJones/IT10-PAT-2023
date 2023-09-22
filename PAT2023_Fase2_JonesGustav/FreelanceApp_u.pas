@@ -40,6 +40,11 @@ type
     btnApplicationInformation: TButton;
     btnHome: TButton;
     tsAccountH: TTabSheet;
+    imgAccountProfile: TImage;
+    lblAccountWelcome: TLabel;
+    btnChangePassword: TButton;
+    pnlAccountHBottom: TPanel;
+    btnAccountHNext: TButton;
     procedure bmbLoginClick(Sender: TObject);
     procedure bmbSignUpClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
@@ -52,6 +57,7 @@ type
     procedure bmbHelpClick(Sender: TObject);
     procedure btnAccountNextClick(Sender: TObject);
     procedure btnEditGUIClick(Sender: TObject);
+    procedure btnAccountHNextClick(Sender: TObject);
   private
   var
     iDefaultWidth: Integer;
@@ -106,6 +112,11 @@ begin
     tsApply.TabVisible := False;
     tsCheckout.TabVisible := False;
     tsGUICreator.TabVisible := False;
+    tsAccount.TabVisible := True;
+
+    pgcPages.TabIndex := + 1;
+
+    tsAccountH.TabVisible := False;
 
     bmbSignOut.Enabled := False;
   end;
@@ -115,6 +126,11 @@ end;
 procedure TfrmFreelanceApp.bmbSignUpClick(Sender: TObject);
 begin
   frmSignup.Show;
+end;
+
+procedure TfrmFreelanceApp.btnAccountHNextClick(Sender: TObject);
+begin
+  pgcPages.TabIndex := pgcPages.TabIndex + 1;
 end;
 
 procedure TfrmFreelanceApp.btnAccountNextClick(Sender: TObject);
@@ -146,8 +162,10 @@ begin
     tsApply.TabVisible := True;
     tsCheckout.TabVisible := True;
     tsGUICreator.TabVisible := True;
+    tsAccountH.TabVisible := True;
 
-    pgcPages.TabIndex := pgcPages.TabIndex + 1;
+    pgcPages.TabIndex := pgcPages.TabIndex - 1;
+    tsAccount.TabVisible := False;
 
     bmbSignOut.Enabled := True;
   end;

@@ -47,12 +47,87 @@ object frmFreelanceApp: TfrmFreelanceApp
     Top = 45
     Width = 612
     Height = 388
-    ActivePage = tsAccountH
+    ActivePage = tsAccount
     Align = alClient
     TabOrder = 0
     object tsAccountH: TTabSheet
       Caption = 'Account (Signed In)'
       ImageIndex = 4
+      TabVisible = False
+      object imgAccountProfile: TImage
+        AlignWithMargins = True
+        Left = 150
+        Top = 45
+        Width = 304
+        Height = 259
+        Margins.Left = 150
+        Margins.Top = 5
+        Margins.Right = 150
+        Margins.Bottom = 5
+        Align = alClient
+        Proportional = True
+        Stretch = True
+        ExplicitTop = 5
+        ExplicitHeight = 228
+      end
+      object lblAccountWelcome: TLabel
+        Left = 0
+        Top = 0
+        Width = 604
+        Height = 40
+        Align = alTop
+        Alignment = taCenter
+        Caption = 'Welcome $USERNAME'
+        Color = clWindow
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -32
+        Font.Name = 'Source Code Pro'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        Transparent = False
+        ExplicitTop = -3
+      end
+      object pnlAccountHBottom: TPanel
+        AlignWithMargins = True
+        Left = 3
+        Top = 312
+        Width = 598
+        Height = 43
+        Align = alBottom
+        TabOrder = 0
+        ExplicitTop = 333
+        object btnAccountHNext: TButton
+          AlignWithMargins = True
+          Left = 490
+          Top = 6
+          Width = 100
+          Height = 31
+          Margins.Left = 0
+          Margins.Top = 5
+          Margins.Right = 7
+          Margins.Bottom = 5
+          Align = alRight
+          Caption = 'Next Page'
+          TabOrder = 0
+          OnClick = btnAccountHNextClick
+        end
+        object btnChangePassword: TButton
+          AlignWithMargins = True
+          Left = 16
+          Top = 6
+          Width = 137
+          Height = 31
+          Margins.Left = 15
+          Margins.Top = 5
+          Margins.Right = 15
+          Margins.Bottom = 5
+          Align = alLeft
+          Caption = 'Change Password'
+          TabOrder = 1
+        end
+      end
     end
     object tsAccount: TTabSheet
       Caption = 'Account (Sign In)'
@@ -9235,9 +9310,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 0
         OnClick = btnLoginClick
-        ExplicitLeft = 171
-        ExplicitTop = 287
-        ExplicitWidth = 262
       end
       object btnSignUp: TButton
         AlignWithMargins = True
@@ -9257,9 +9329,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 1
         OnClick = btnSignUpClick
-        ExplicitLeft = 171
-        ExplicitTop = 287
-        ExplicitWidth = 262
       end
     end
     object tsApply: TTabSheet
@@ -9283,7 +9352,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       end
       object lblDescription: TLabel
         Left = 0
-        Top = 63
+        Top = 159
         Width = 604
         Height = 21
         Align = alTop
@@ -9295,6 +9364,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ExplicitTop = 63
         ExplicitWidth = 164
       end
       object lblDueDate: TLabel
@@ -9321,7 +9391,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Height = 43
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 311
         object btnApplyNext: TButton
           AlignWithMargins = True
           Left = 490
@@ -9335,7 +9404,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Align = alRight
           Caption = 'Next Page'
           TabOrder = 0
-          ExplicitLeft = 470
         end
         object btnEditGUI: TButton
           AlignWithMargins = True
@@ -9351,7 +9419,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Caption = 'Create GUI'
           TabOrder = 1
           OnClick = btnEditGUIClick
-          ExplicitLeft = 256
         end
         object bmbReset: TBitBtn
           AlignWithMargins = True
@@ -9382,7 +9449,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Align = alRight
           Caption = 'Home'
           TabOrder = 3
-          ExplicitLeft = 363
         end
       end
       object edtTaskName: TEdit
@@ -9406,7 +9472,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object redDescription: TRichEdit
         AlignWithMargins = True
         Left = 25
-        Top = 87
+        Top = 66
         Width = 554
         Height = 90
         Margins.Left = 25
@@ -9420,6 +9486,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         ScrollBars = ssVertical
         TabOrder = 2
+        ExplicitLeft = -15
       end
       object dtpDueDate: TDateTimePicker
         AlignWithMargins = True
@@ -9467,8 +9534,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 168
-        ExplicitTop = 3
         ExplicitWidth = 260
       end
       object ListBox1: TListBox
@@ -9491,10 +9556,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           'Items')
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 192
-        ExplicitTop = 80
-        ExplicitWidth = 121
-        ExplicitHeight = 97
       end
       object btnApplicationInformation: TButton
         AlignWithMargins = True
@@ -9507,9 +9568,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Align = alBottom
         Caption = 'Display Application Information'
         TabOrder = 1
-        ExplicitLeft = 384
-        ExplicitTop = 264
-        ExplicitWidth = 75
       end
     end
     object tsGUICreator: TTabSheet
