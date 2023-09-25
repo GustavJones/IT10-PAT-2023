@@ -56,6 +56,13 @@ type
     bmbGUICreatorReset: TBitBtn;
     btnGUICreatorHome: TButton;
     btnGUICreatorBack: TButton;
+    tsTaskList: TTabSheet;
+    ListBox2: TListBox;
+    pnlTaskListBottom: TPanel;
+    btnTaskListNext: TButton;
+    bmbTaskListReset: TBitBtn;
+    btnTaskListHome: TButton;
+    btnTaskListBack: TButton;
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
@@ -75,6 +82,8 @@ type
     iDefaultHeight: Integer;
     rWidthScale: Real;
     rHeightScale: Real;
+
+    bIsUser : Boolean;
   public
   var
     bLoggedIn : Boolean;
@@ -118,7 +127,7 @@ begin
   if iSignOut = idYes then
   begin
     bLoggedIn := False;
-    frmLogin.bSuccess := False;
+    frmLogin.bLogin := False;
 
     tsApply.TabVisible := False;
     tsCheckout.TabVisible := False;
@@ -166,9 +175,9 @@ end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
 begin
-  bLoggedIn	:= frmLogin.bSuccess;
+  bLoggedIn	:= frmLogin.bLogin;
 
-  if bLoggedIn then
+  if (bLoggedIn) and (bIsUser) then
   begin
     tsApply.TabVisible := True;
     tsCheckout.TabVisible := True;
@@ -179,6 +188,14 @@ begin
     tsAccount.TabVisible := False;
 
     bmbSignOut.Enabled := True;
+  end
+  else if (bLoggedIn) and not (bIsUser) then       
+  begin
+    tsTaskList.TabVisible := True;
+    tsAccountH.TabVisible := True;
+
+    pgcPages.TabIndex := pgcPages.TabIndex - 1;
+    tsAccount.TabVisible := False;
   end;
 end;
 
@@ -186,6 +203,8 @@ procedure TfrmFreelanceApp.FormCreate(Sender: TObject);
 begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
+
+  bIsUser := False;
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);

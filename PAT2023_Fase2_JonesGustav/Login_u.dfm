@@ -27,6 +27,8 @@ object frmLogin: TfrmLogin
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 203
+    ExplicitHeight = 203
     DesignSize = (
       207
       204)
@@ -45,7 +47,7 @@ object frmLogin: TfrmLogin
     end
     object edtUsername: TEdit
       AlignWithMargins = True
-      Left = 16
+      Left = 14
       Top = 63
       Width = 168
       Height = 31
@@ -66,10 +68,11 @@ object frmLogin: TfrmLogin
       ParentFont = False
       TabOrder = 0
       TextHint = 'Enter Username:'
+      ExplicitLeft = 12
     end
     object edtPassword: TEdit
       AlignWithMargins = True
-      Left = 16
+      Left = 14
       Top = 112
       Width = 168
       Height = 31
@@ -90,6 +93,7 @@ object frmLogin: TfrmLogin
       ParentFont = False
       TabOrder = 1
       TextHint = 'Enter Password:'
+      ExplicitLeft = 12
     end
     object btnLogIn: TButton
       Left = 48

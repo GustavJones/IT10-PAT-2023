@@ -21,7 +21,7 @@ type
     { Private declarations }
   public
   var
-    bSuccess: Boolean;
+    bLogin: Boolean;
   end;
 
 var
@@ -33,21 +33,21 @@ implementation
 
 procedure TfrmLogin.btnLogInClick(Sender: TObject);
 begin
-  bSuccess := True;
+  bLogin := True;
 
   Close;
 end;
 
 procedure TfrmLogin.FormActivate(Sender: TObject);
 begin
-  bSuccess := False;
+  bLogin := False;
 
   btnLogIn.SetFocus;
 end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
-  bSuccess := False;
+  bLogin := False;
 end;
 
 end.
