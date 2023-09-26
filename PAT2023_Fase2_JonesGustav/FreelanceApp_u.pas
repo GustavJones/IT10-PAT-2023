@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes,
-  Login_u, Signup_u, Help_u;
+  Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u, Vcl.Samples.Spin;
 
 type
   TfrmFreelanceApp = class(TForm)
@@ -36,7 +36,7 @@ type
     btnSignUp: TButton;
     tsGUICreator: TTabSheet;
     lblInformation: TLabel;
-    ListBox1: TListBox;
+    ltbCheckoutItems: TListBox;
     btnApplicationInformation: TButton;
     btnHome: TButton;
     tsAccountH: TTabSheet;
@@ -57,12 +57,23 @@ type
     btnGUICreatorHome: TButton;
     btnGUICreatorBack: TButton;
     tsTaskList: TTabSheet;
-    ListBox2: TListBox;
+    lstTaskListItems: TListBox;
     pnlTaskListBottom: TPanel;
     btnTaskListNext: TButton;
     bmbTaskListReset: TBitBtn;
     btnTaskListHome: TButton;
     btnTaskListBack: TButton;
+    btnTaskListEdit: TButton;
+    pnlGUICreatorForm: TPanel;
+    pnlGUICreatorObjectList: TPanel;
+    lblGUICreatorLabel: TLabel;
+    btnGUICreatorButton: TButton;
+    pnlGUICreatorPanel: TPanel;
+    edtGUICreatorEdit: TEdit;
+    chkGUICreatorCheckbox: TCheckBox;
+    sedGUICreatorSpinEdit: TSpinEdit;
+    pnlGUICreatorObjectEditor: TPanel;
+    tsPriceEditor: TTabSheet;
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
@@ -76,6 +87,8 @@ type
     procedure btnHomeClick(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
     procedure bmbApplyResetClick(Sender: TObject);
+    procedure btnTaskListEditClick(Sender: TObject);
+    procedure btnApplicationInformationClick(Sender: TObject);
   private
   var
     iDefaultWidth: Integer;
@@ -148,6 +161,11 @@ begin
   pgcPages.TabIndex := pgcPages.TabIndex + 1;
 end;
 
+procedure TfrmFreelanceApp.btnApplicationInformationClick(Sender: TObject);
+begin
+  frmApplicationInformation.Show;
+end;
+
 procedure TfrmFreelanceApp.btnBackClick(Sender: TObject);
 begin
   pgcPages.TabIndex := pgcPages.TabIndex - 1;
@@ -155,7 +173,7 @@ end;
 
 procedure TfrmFreelanceApp.btnEditGUIClick(Sender: TObject);
 begin
-  pgcPages.TabIndex := pgcPages.PageCount - 1;
+  pgcPages.TabIndex := pgcPages.PageCount - 4;
 end;
 
 procedure TfrmFreelanceApp.btnHomeClick(Sender: TObject);
@@ -171,6 +189,11 @@ end;
 procedure TfrmFreelanceApp.btnSignUpClick(Sender: TObject);
 begin
   frmSignup.Show;
+end;
+
+procedure TfrmFreelanceApp.btnTaskListEditClick(Sender: TObject);
+begin
+  frmTaskEditor.Show;
 end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
@@ -191,6 +214,7 @@ begin
   end
   else if (bLoggedIn) and not (bIsUser) then       
   begin
+    tsPriceEditor.TabVisible := True;
     tsTaskList.TabVisible := True;
     tsAccountH.TabVisible := True;
 
@@ -204,7 +228,7 @@ begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
 
-  bIsUser := False;
+  bIsUser := False	; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);
