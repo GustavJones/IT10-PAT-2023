@@ -1,9 +1,9 @@
 object frmTaskEditor: TfrmTaskEditor
-  Left = 0
-  Top = 0
+  Left = 421
+  Top = 192
   BorderStyle = bsDialog
   Caption = 'Task Editor'
-  ClientHeight = 415
+  ClientHeight = 455
   ClientWidth = 404
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object frmTaskEditor: TfrmTaskEditor
   Font.Height = -19
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poDesigned
   TextHeight = 25
   object lblProjectName: TLabel
     Left = 8
@@ -39,6 +40,13 @@ object frmTaskEditor: TfrmTaskEditor
     Width = 99
     Height = 25
     Caption = 'Comments: '
+  end
+  object lblTotalCost: TLabel
+    Left = 8
+    Top = 360
+    Width = 91
+    Height = 25
+    Caption = 'Total Cost: '
   end
   object sedLinesOfCode: TSpinEdit
     Left = 153
@@ -69,7 +77,7 @@ object frmTaskEditor: TfrmTaskEditor
   end
   object chkCompleted: TCheckBox
     Left = 89
-    Top = 320
+    Top = 326
     Width = 185
     Height = 17
     Caption = 'Project Completed'
@@ -77,7 +85,7 @@ object frmTaskEditor: TfrmTaskEditor
   end
   object btnSave: TButton
     Left = 265
-    Top = 360
+    Top = 408
     Width = 75
     Height = 25
     Caption = 'Save'
@@ -102,7 +110,7 @@ object frmTaskEditor: TfrmTaskEditor
   object bmbReset: TBitBtn
     AlignWithMargins = True
     Left = 26
-    Top = 360
+    Top = 408
     Width = 81
     Height = 25
     Margins.Left = 7

@@ -1,6 +1,6 @@
 object frmApplicationInformation: TfrmApplicationInformation
-  Left = 715
-  Top = 415
+  Left = 596
+  Top = 222
   BorderStyle = bsDialog
   Caption = 'Application Information'
   ClientHeight = 351
@@ -49,11 +49,18 @@ object frmApplicationInformation: TfrmApplicationInformation
     ParentColor = False
     ParentFont = False
   end
+  object lblTotalCost: TLabel
+    Left = 8
+    Top = 271
+    Width = 91
+    Height = 25
+    Caption = 'Total Cost: '
+  end
   object redComments: TRichEdit
     Left = 8
     Top = 160
     Width = 200
-    Height = 139
+    Height = 89
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13

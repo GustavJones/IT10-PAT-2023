@@ -14,6 +14,7 @@ type
     redComments: TRichEdit;
     lblStatus: TLabel;
     bmbClose: TBitBtn;
+    lblTotalCost: TLabel;
   private
     { Private declarations }
   public

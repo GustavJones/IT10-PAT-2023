@@ -21,28 +21,28 @@ type
     lblApplyTitle: TLabel;
     btnApplyNext: TButton;
     pnlApplyBottom: TPanel;
-    edtTaskName: TEdit;
+    edtApplyTaskName: TEdit;
     tsAccount: TTabSheet;
-    redDescription: TRichEdit;
-    lblDescription: TLabel;
+    redApplyDescription: TRichEdit;
+    lblApplyDescription: TLabel;
     btnEditGUI: TButton;
     bmbSignOut: TBitBtn;
-    dtpDueDate: TDateTimePicker;
-    lblDueDate: TLabel;
+    dtpApplyDueDate: TDateTimePicker;
+    lblApplyDueDate: TLabel;
     btnApply: TButton;
     bmbApplyReset: TBitBtn;
-    imgAccount: TImage;
-    btnLogin: TButton;
-    btnSignUp: TButton;
+    imgAccountAccount: TImage;
+    btnAccountLogin: TButton;
+    btnAccountSignUp: TButton;
     tsGUICreator: TTabSheet;
-    lblInformation: TLabel;
+    lblCheckoutInformation: TLabel;
     ltbCheckoutItems: TListBox;
-    btnApplicationInformation: TButton;
+    btnCheckoutApplicationInformation: TButton;
     btnHome: TButton;
     tsAccountH: TTabSheet;
-    imgAccountProfile: TImage;
-    lblAccountWelcome: TLabel;
-    btnChangePassword: TButton;
+    imgAccountHProfile: TImage;
+    lblAccountHWelcome: TLabel;
+    btnAccountHChangePassword: TButton;
     pnlAccountHBottom: TPanel;
     btnAccountHNext: TButton;
     pnlCheckoutBottom: TPanel;
@@ -78,19 +78,24 @@ type
     edtPriceEditorPricePerLine: TEdit;
     lblPriceEditorPricePerLine: TLabel;
     edtPriceEditorConsultFee: TEdit;
-    imgMoneyIcon: TImage;
+    imgPriceEditorMoneyIcon: TImage;
     pnlPriceEditorBottom: TPanel;
     bmbPriceEditorReset: TBitBtn;
     btnPriceEditorHome: TButton;
     btnPriceEditorBack: TButton;
-    sedPosX: TSpinEdit;
+    sedGUICreatorPosX: TSpinEdit;
+    lblGUICreatorPosX: TLabel;
+    lblGUICreatorPosY: TLabel;
+    sedGUICreatorPosY: TSpinEdit;
+    lblGUICreatorCaption: TLabel;
+    edtGUICreatorCaption: TEdit;
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
     procedure bmbSignOutClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure btnSignUpClick(Sender: TObject);
-    procedure btnLoginClick(Sender: TObject);
+    procedure btnAccountSignUpClick(Sender: TObject);
+    procedure btnAccountLoginClick(Sender: TObject);
     procedure bmbHelpClick(Sender: TObject);
     procedure btnEditGUIClick(Sender: TObject);
     procedure btnNextClick(Sender: TObject);
@@ -98,7 +103,7 @@ type
     procedure btnBackClick(Sender: TObject);
     procedure bmbResetClick(Sender: TObject);
     procedure btnTaskListEditClick(Sender: TObject);
-    procedure btnApplicationInformationClick(Sender: TObject);
+    procedure btnCheckoutApplicationInformationClick(Sender: TObject);
   private
   var
     iDefaultWidth: Integer;
@@ -171,7 +176,7 @@ begin
   pgcPages.TabIndex := pgcPages.TabIndex + 1;
 end;
 
-procedure TfrmFreelanceApp.btnApplicationInformationClick(Sender: TObject);
+procedure TfrmFreelanceApp.btnCheckoutApplicationInformationClick(Sender: TObject);
 begin
   frmApplicationInformation.Show;
 end;
@@ -191,12 +196,12 @@ begin
   pgcPages.TabIndex := 0;
 end;
 
-procedure TfrmFreelanceApp.btnLoginClick(Sender: TObject);
+procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);
 begin
   frmLogin.Show;
 end;
 
-procedure TfrmFreelanceApp.btnSignUpClick(Sender: TObject);
+procedure TfrmFreelanceApp.btnAccountSignUpClick(Sender: TObject);
 begin
   frmSignup.Show;
 end;
@@ -238,7 +243,7 @@ begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
 
-  bIsUser := True; // User Override (Temporary)
+  bIsUser := False; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);

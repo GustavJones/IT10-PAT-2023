@@ -19,6 +19,7 @@ type
     lblComments: TLabel;
     redComments: TRichEdit;
     bmbReset: TBitBtn;
+    lblTotalCost: TLabel;
   private
     { Private declarations }
   public
