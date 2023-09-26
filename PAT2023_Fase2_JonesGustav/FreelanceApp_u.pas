@@ -74,6 +74,16 @@ type
     sedGUICreatorSpinEdit: TSpinEdit;
     pnlGUICreatorObjectEditor: TPanel;
     tsPriceEditor: TTabSheet;
+    lblPriceEditorConsultFee: TLabel;
+    edtPriceEditorPricePerLine: TEdit;
+    lblPriceEditorPricePerLine: TLabel;
+    edtPriceEditorConsultFee: TEdit;
+    imgMoneyIcon: TImage;
+    pnlPriceEditorBottom: TPanel;
+    bmbPriceEditorReset: TBitBtn;
+    btnPriceEditorHome: TButton;
+    btnPriceEditorBack: TButton;
+    sedPosX: TSpinEdit;
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
@@ -86,7 +96,7 @@ type
     procedure btnNextClick(Sender: TObject);
     procedure btnHomeClick(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
-    procedure bmbApplyResetClick(Sender: TObject);
+    procedure bmbResetClick(Sender: TObject);
     procedure btnTaskListEditClick(Sender: TObject);
     procedure btnApplicationInformationClick(Sender: TObject);
   private
@@ -126,7 +136,7 @@ begin
   frmHelp.Show;
 end;
 
-procedure TfrmFreelanceApp.bmbApplyResetClick(Sender: TObject);
+procedure TfrmFreelanceApp.bmbResetClick(Sender: TObject);
 begin
   //
 end;
@@ -228,7 +238,7 @@ begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
 
-  bIsUser := False	; // User Override (Temporary)
+  bIsUser := True; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);

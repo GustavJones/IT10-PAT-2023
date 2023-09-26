@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Samples.Spin,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls, Vcl.Buttons;
 
 type
   TfrmTaskEditor = class(TForm)
@@ -16,6 +16,9 @@ type
     lblLinesOfCode: TLabel;
     chkCompleted: TCheckBox;
     btnSave: TButton;
+    lblComments: TLabel;
+    redComments: TRichEdit;
+    bmbReset: TBitBtn;
   private
     { Private declarations }
   public

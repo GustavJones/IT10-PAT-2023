@@ -30,8 +30,15 @@ object frmTaskEditor: TfrmTaskEditor
     Left = 8
     Top = 264
     Width = 126
-    Height = 35
+    Height = 25
     Caption = 'Lines Of Code: '
+  end
+  object lblComments: TLabel
+    Left = 8
+    Top = 160
+    Width = 99
+    Height = 25
+    Caption = 'Comments: '
   end
   object sedLinesOfCode: TSpinEdit
     Left = 153
@@ -47,13 +54,17 @@ object frmTaskEditor: TfrmTaskEditor
     Left = 8
     Top = 95
     Width = 385
-    Height = 146
+    Height = 50
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
+    Lines.Strings = (
+      'This will Contain the user description (ReadOnly)')
     ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssVertical
     TabOrder = 1
   end
   object chkCompleted: TCheckBox
@@ -65,11 +76,42 @@ object frmTaskEditor: TfrmTaskEditor
     TabOrder = 2
   end
   object btnSave: TButton
-    Left = 153
+    Left = 265
     Top = 360
     Width = 75
     Height = 25
     Caption = 'Save'
     TabOrder = 3
+  end
+  object redComments: TRichEdit
+    Left = 8
+    Top = 191
+    Width = 385
+    Height = 50
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Lines.Strings = (
+      'This will Contain the developer comments')
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 4
+  end
+  object bmbReset: TBitBtn
+    AlignWithMargins = True
+    Left = 26
+    Top = 360
+    Width = 81
+    Height = 25
+    Margins.Left = 7
+    Margins.Top = 5
+    Margins.Right = 0
+    Margins.Bottom = 5
+    Caption = 'Reset'
+    Kind = bkRetry
+    NumGlyphs = 2
+    TabOrder = 5
   end
 end

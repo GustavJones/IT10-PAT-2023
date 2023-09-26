@@ -56,10 +56,15 @@ object frmApplicationInformation: TfrmApplicationInformation
     Height = 139
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
+    Lines.Strings = (
+      'This will Contain Developer '
+      'comments (ReadOnly)')
     ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssVertical
     TabOrder = 0
   end
   object bmbClose: TBitBtn
