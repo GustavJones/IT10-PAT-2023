@@ -3,7 +3,7 @@ object frmSignup: TfrmSignup
   Top = 148
   BorderStyle = bsDialog
   Caption = 'Sign Up'
-  ClientHeight = 362
+  ClientHeight = 398
   ClientWidth = 588
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,16 +19,17 @@ object frmSignup: TfrmSignup
     Left = 4
     Top = 4
     Width = 580
-    Height = 354
+    Height = 390
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 354
     DesignSize = (
       580
-      354)
+      390)
     object lblCrededentials: TLabel
       Left = 11
       Top = 6
@@ -40,6 +41,19 @@ object frmSignup: TfrmSignup
       Font.Height = -39
       Font.Name = 'Sylfaen'
       Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblAge: TLabel
+      Left = 11
+      Top = 298
+      Width = 30
+      Height = 21
+      Caption = 'Age:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       ParentFont = False
     end
     object edtUsername: TEdit
@@ -115,8 +129,8 @@ object frmSignup: TfrmSignup
       TextHint = 'Re-Enter Password:'
     end
     object btnSignUp: TButton
-      Left = 64
-      Top = 308
+      Left = 72
+      Top = 348
       Width = 105
       Height = 32
       Caption = 'Sign Up!'
@@ -162,7 +176,7 @@ object frmSignup: TfrmSignup
     end
     object rgpUserType: TRadioGroup
       Left = 265
-      Top = 250
+      Top = 283
       Width = 303
       Height = 90
       Caption = 'User Type:'
@@ -181,7 +195,7 @@ object frmSignup: TfrmSignup
       Left = 265
       Top = 51
       Width = 303
-      Height = 193
+      Height = 214
       Caption = 'Profiles:'
       DefaultHeaderFont = False
       HeaderFont.Charset = DEFAULT_CHARSET
@@ -195,6 +209,7 @@ object frmSignup: TfrmSignup
         Top = 22
         Width = 77
         Height = 81
+        Center = True
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
           020008020000007B1A43AD000000DE74455874706172616D6574657273006675
@@ -6789,6 +6804,7 @@ object frmSignup: TfrmSignup
         Top = 22
         Width = 77
         Height = 81
+        Center = True
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
           02000806000000F478D4FA000000207A5458745261772070726F66696C652074
@@ -14700,6 +14716,7 @@ object frmSignup: TfrmSignup
         Top = 22
         Width = 77
         Height = 81
+        Center = True
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
           02000806000000F478D4FA000000207A5458745261772070726F66696C652074
@@ -22525,9 +22542,10 @@ object frmSignup: TfrmSignup
       end
       object imgPF4: TImage
         Left = 75
-        Top = 109
+        Top = 115
         Width = 76
         Height = 81
+        Center = True
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
           02000806000000F478D4FA000000207A5458745261772070726F66696C652074
@@ -30286,9 +30304,10 @@ object frmSignup: TfrmSignup
       end
       object imgPF5: TImage
         Left = 165
-        Top = 109
+        Top = 115
         Width = 76
         Height = 81
+        Center = True
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
           02000806000000F478D4FA000000207A5458745261772070726F66696C652074
@@ -38029,6 +38048,16 @@ object frmSignup: TfrmSignup
         Stretch = True
         OnClick = imgPF5Click
       end
+    end
+    object sedAge: TSpinEdit
+      Left = 56
+      Top = 298
+      Width = 190
+      Height = 27
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 8
+      Value = 0
     end
   end
 end

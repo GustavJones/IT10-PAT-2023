@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Vcl.Samples.Spin;
 
 type
   TfrmSignup = class(TForm)
@@ -24,6 +24,8 @@ type
     imgPF4: TImage;
     rgpUserType: TRadioGroup;
     gpbProfiles: TGroupBox;
+    sedAge: TSpinEdit;
+    lblAge: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure imgPF1Click(Sender: TObject);
     procedure imgPF2Click(Sender: TObject);

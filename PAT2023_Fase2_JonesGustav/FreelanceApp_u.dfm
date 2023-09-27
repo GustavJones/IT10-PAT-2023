@@ -6659,7 +6659,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblAccountHWelcome: TLabel
         Left = 0
         Top = 0
-        Width = 604
+        Width = 323
         Height = 40
         Align = alTop
         Alignment = taCenter
@@ -6673,7 +6673,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentColor = False
         ParentFont = False
         Transparent = False
-        ExplicitWidth = 323
       end
       object pnlAccountHBottom: TPanel
         AlignWithMargins = True
@@ -15922,7 +15921,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyTitle: TLabel
         Left = 0
         Top = 0
-        Width = 604
+        Width = 238
         Height = 28
         Align = alTop
         Alignment = taCenter
@@ -15933,12 +15932,11 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 238
       end
       object lblApplyDescription: TLabel
         Left = 0
         Top = 63
-        Width = 604
+        Width = 164
         Height = 21
         Align = alTop
         Alignment = taCenter
@@ -15949,12 +15947,11 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 164
       end
       object lblApplyDueDate: TLabel
         Left = 0
         Top = 180
-        Width = 604
+        Width = 91
         Height = 25
         Align = alTop
         Alignment = taCenter
@@ -15965,7 +15962,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Microsoft YaHei UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 91
       end
       object pnlApplyBottom: TPanel
         AlignWithMargins = True
@@ -16378,7 +16374,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 3
         Top = 95
-        Width = 598
+        Width = 105
         Height = 25
         Margins.Top = 35
         Align = alTop
@@ -16392,13 +16388,12 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentColor = False
         ParentFont = False
         Transparent = True
-        ExplicitWidth = 105
       end
       object lblPriceEditorPricePerLine: TLabel
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 598
+        Width = 124
         Height = 25
         Align = alTop
         Caption = 'Price Per Line: '
@@ -16411,7 +16406,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentColor = False
         ParentFont = False
         Transparent = True
-        ExplicitWidth = 124
       end
       object imgPriceEditorMoneyIcon: TImage
         AlignWithMargins = True
@@ -17411,7 +17405,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 31
-          Width = 137
+          Width = 37
           Height = 21
           Margins.Top = 30
           Align = alTop
@@ -17423,7 +17417,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 37
         end
         object btnGUICreatorButton: TButton
           AlignWithMargins = True
@@ -17546,7 +17539,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 41
-          Width = 116
+          Width = 61
           Height = 17
           Margins.Top = 40
           Align = alTop
@@ -17557,15 +17550,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitLeft = 6
-          ExplicitTop = 53
-          ExplicitWidth = 61
         end
         object lblGUICreatorPosY: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 97
-          Width = 116
+          Width = 60
           Height = 17
           Align = alTop
           Caption = 'Position Y:'
@@ -17575,15 +17565,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitLeft = 6
-          ExplicitTop = 93
-          ExplicitWidth = 60
         end
         object lblGUICreatorCaption: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 153
-          Width = 116
+          Width = 48
           Height = 17
           Align = alTop
           Caption = 'Caption:'
@@ -17593,7 +17580,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 48
         end
         object sedGUICreatorPosX: TSpinEdit
           AlignWithMargins = True
