@@ -89,6 +89,11 @@ type
     sedGUICreatorPosY: TSpinEdit;
     lblGUICreatorCaption: TLabel;
     edtGUICreatorCaption: TEdit;
+    btnPriceEditorSave: TButton;
+    pnlPriceEditorTop: TPanel;
+    lblPriceEditorPriorityCost: TLabel;
+    edtPriceEditorPriorityCost: TEdit;
+    chkApplyPriority: TCheckBox;
     procedure FormResize(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure bmbCloseClick(Sender: TObject);
@@ -227,7 +232,7 @@ begin
 
     bmbSignOut.Enabled := True;
   end
-  else if (bLoggedIn) and not (bIsUser) then       
+  else if (bLoggedIn) and not (bIsUser) then
   begin
     tsPriceEditor.TabVisible := True;
     tsTaskList.TabVisible := True;

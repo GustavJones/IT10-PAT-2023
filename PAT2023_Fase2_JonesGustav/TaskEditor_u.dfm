@@ -29,14 +29,14 @@ object frmTaskEditor: TfrmTaskEditor
   end
   object lblLinesOfCode: TLabel
     Left = 8
-    Top = 264
+    Top = 260
     Width = 126
     Height = 25
     Caption = 'Lines Of Code: '
   end
   object lblComments: TLabel
     Left = 8
-    Top = 160
+    Top = 165
     Width = 99
     Height = 25
     Caption = 'Comments: '
@@ -49,9 +49,9 @@ object frmTaskEditor: TfrmTaskEditor
     Caption = 'Total Cost: '
   end
   object sedLinesOfCode: TSpinEdit
-    Left = 153
-    Top = 261
-    Width = 121
+    Left = 224
+    Top = 260
+    Width = 169
     Height = 35
     MaxValue = 0
     MinValue = 0
@@ -76,10 +76,10 @@ object frmTaskEditor: TfrmTaskEditor
     TabOrder = 1
   end
   object chkCompleted: TCheckBox
-    Left = 89
-    Top = 326
+    Left = 97
+    Top = 309
     Width = 185
-    Height = 17
+    Height = 35
     Caption = 'Project Completed'
     TabOrder = 2
   end
@@ -93,7 +93,7 @@ object frmTaskEditor: TfrmTaskEditor
   end
   object redComments: TRichEdit
     Left = 8
-    Top = 191
+    Top = 196
     Width = 385
     Height = 50
     Font.Charset = ANSI_CHARSET
