@@ -240,6 +240,8 @@ begin
 
     pgcPages.TabIndex := pgcPages.TabIndex - 1;
     tsAccount.TabVisible := False;
+
+    bmbSignOut.Enabled := True;
   end;
 end;
 
@@ -248,7 +250,7 @@ begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
 
-  bIsUser := False; // User Override (Temporary)
+  bIsUser := True; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);
