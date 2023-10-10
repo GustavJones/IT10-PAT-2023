@@ -29,17 +29,17 @@ object frmFreelanceApp: TfrmFreelanceApp
     Height = 40
     Align = alTop
     Alignment = taCenter
-    Caption = 'Freelance Development'
+    Caption = 'Code Hub Marketplace'
     Color = 77
     Font.Charset = ANSI_CHARSET
-    Font.Color = clBtnText
+    Font.Color = clHotLight
     Font.Height = -35
     Font.Name = 'Arial Rounded MT Bold'
     Font.Style = []
     ParentColor = False
     ParentFont = False
     Transparent = True
-    ExplicitWidth = 357
+    ExplicitWidth = 390
   end
   object pgcPages: TPageControl
     AlignWithMargins = True
@@ -50,8 +50,6 @@ object frmFreelanceApp: TfrmFreelanceApp
     ActivePage = tsAccount
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 608
-    ExplicitHeight = 387
     object tsAccountH: TTabSheet
       Caption = 'Account (Signed In)'
       ImageIndex = 4
@@ -13295,8 +13293,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 0
         OnClick = btnAccountLoginClick
-        ExplicitTop = 324
-        ExplicitWidth = 260
       end
       object btnAccountSignUp: TButton
         AlignWithMargins = True
@@ -13316,8 +13312,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         TabOrder = 1
         OnClick = btnAccountSignUpClick
-        ExplicitTop = 288
-        ExplicitWidth = 260
       end
     end
     object tsApply: TTabSheet
@@ -15131,8 +15125,6 @@ object frmFreelanceApp: TfrmFreelanceApp
     Padding.Right = 14
     Padding.Bottom = 6
     TabOrder = 1
-    ExplicitTop = 437
-    ExplicitWidth = 608
     object bmbClose: TBitBtn
       AlignWithMargins = True
       Left = 516
@@ -15149,7 +15141,6 @@ object frmFreelanceApp: TfrmFreelanceApp
       NumGlyphs = 2
       TabOrder = 0
       OnClick = bmbCloseClick
-      ExplicitLeft = 512
     end
     object bmbHelp: TBitBtn
       AlignWithMargins = True
@@ -15166,7 +15157,6 @@ object frmFreelanceApp: TfrmFreelanceApp
       NumGlyphs = 2
       TabOrder = 1
       OnClick = bmbHelpClick
-      ExplicitLeft = 401
     end
     object bmbSignOut: TBitBtn
       AlignWithMargins = True

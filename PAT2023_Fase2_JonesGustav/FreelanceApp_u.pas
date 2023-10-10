@@ -250,7 +250,7 @@ begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
 
-  bIsUser := True; // User Override (Temporary)
+  bIsUser := False; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);
