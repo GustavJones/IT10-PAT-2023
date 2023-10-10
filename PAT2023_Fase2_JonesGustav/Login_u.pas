@@ -35,6 +35,10 @@ procedure TfrmLogin.btnLogInClick(Sender: TObject);
 begin
   bLogin := True;
 
+  // Login Function Call
+
+  ShowMessage('Login Complete');
+
   Close;
 end;
 
