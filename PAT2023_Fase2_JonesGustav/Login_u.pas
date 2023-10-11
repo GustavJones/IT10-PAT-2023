@@ -32,7 +32,23 @@ implementation
 {$R *.dfm}
 
 procedure TfrmLogin.btnLogInClick(Sender: TObject);
+var
+  sUsername : String;
+  sPassword : String;
 begin
+  sUsername := edtUsername.Text;
+  sPassword := edtPassword.Text;
+
+  if (sUsername = '') then
+  begin
+    exit;
+  end;
+
+  if (sPassword = '') then
+  begin
+    exit;
+  end;
+
   bLogin := True;
 
   // Login Function Call

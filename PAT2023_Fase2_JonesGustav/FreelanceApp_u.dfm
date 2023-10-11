@@ -47,7 +47,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     Top = 45
     Width = 612
     Height = 388
-    ActivePage = tsAccount
+    ActivePage = tsAccountH
     Align = alClient
     TabOrder = 0
     object tsAccountH: TTabSheet
@@ -4109,6 +4109,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Align = alLeft
           Caption = 'Change Password'
           TabOrder = 1
+          OnClick = btnAccountHChangePasswordClick
         end
       end
     end
@@ -13513,6 +13514,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Align = alBottom
         Caption = 'Apply'
         TabOrder = 4
+        OnClick = btnApplyClick
       end
       object chkApplyPriority: TCheckBox
         AlignWithMargins = True
