@@ -22,6 +22,7 @@ type
   public
   var
     bLogin: Boolean;
+    bIsUser: Boolean;
   end;
 
 var
@@ -61,6 +62,7 @@ end;
 procedure TfrmLogin.FormActivate(Sender: TObject);
 begin
   bLogin := False;
+  bIsUser := True;
 
   btnLogIn.SetFocus;
 end;
@@ -68,6 +70,7 @@ end;
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
   bLogin := False;
+  bIsUser := True;
 end;
 
 end.

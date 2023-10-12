@@ -13,6 +13,7 @@ object frmSignup: TfrmSignup
   Font.Style = []
   Position = poDesigned
   OnActivate = FormActivate
+  OnCreate = FormCreate
   TextHeight = 17
   object pnlSignUp: TPanel
     AlignWithMargins = True
