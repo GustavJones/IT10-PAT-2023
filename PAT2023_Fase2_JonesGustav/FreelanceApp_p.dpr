@@ -7,7 +7,8 @@ uses
   Login_u in 'Login_u.pas' {frmLogin},
   Help_u in 'Help_u.pas' {frmHelp},
   TaskEditor_u in 'TaskEditor_u.pas' {frmTaskEditor},
-  ApplicationInformation_u in 'ApplicationInformation_u.pas' {frmApplicationInformation};
+  ApplicationInformation_u in 'ApplicationInformation_u.pas' {frmApplicationInformation},
+  FileIO_u in 'FileIO_u.pas';
 
 {$R *.res}
 

@@ -6,8 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes,
-  Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u, Vcl.Samples.Spin;
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes, Vcl.Samples.Spin, FileIO_u,
+  Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u;
 
 type
   TfrmFreelanceApp = class(TForm)
@@ -109,6 +109,8 @@ type
     procedure bmbResetClick(Sender: TObject);
     procedure btnTaskListEditClick(Sender: TObject);
     procedure btnCheckoutApplicationInformationClick(Sender: TObject);
+    procedure btnApplyClick(Sender: TObject);
+    procedure btnAccountHChangePasswordClick(Sender: TObject);
   private
   var
     iDefaultWidth: Integer;
@@ -201,6 +203,11 @@ begin
   pgcPages.TabIndex := 0;
 end;
 
+procedure TfrmFreelanceApp.btnAccountHChangePasswordClick(Sender: TObject);
+begin
+  ReadFile('FileName.txt');
+end;
+
 procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);
 begin
   frmLogin.Show;
@@ -209,6 +216,19 @@ end;
 procedure TfrmFreelanceApp.btnAccountSignUpClick(Sender: TObject);
 begin
   frmSignup.Show;
+end;
+
+procedure TfrmFreelanceApp.btnApplyClick(Sender: TObject);
+var
+  sName : String;
+  sDescription : String;
+  dDate : TDate;
+  bPriority : Boolean;
+begin
+  sName := edtApplyTaskName.Text;
+  sDescription := redApplyDescription.Text; // Needs testing
+  dDate := dtpApplyDueDate.Date;
+  bPriority := chkApplyPriority.Checked;
 end;
 
 procedure TfrmFreelanceApp.btnTaskListEditClick(Sender: TObject);
@@ -250,7 +270,7 @@ begin
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
 
-  bIsUser := True; // User Override (Temporary)
+  bIsUser := False; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);
