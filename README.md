@@ -1,6 +1,8 @@
+<!-- https://github.com/GustavJones/IT10-PAT-2023.git -->
+
 # IT PAT 2023
 
-## Freelancing Application (Name work in progress)
+## Code Hub Marketplace
 
 ![Home Page](PAT2023_Fase2_JonesGustav/images/demo/HomePage.png)
 
