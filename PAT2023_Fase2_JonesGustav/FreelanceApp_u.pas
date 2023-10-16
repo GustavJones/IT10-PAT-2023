@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
-  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes, Vcl.Samples.Spin, FileIO_u,
+  Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes, Vcl.Samples.Spin,
   Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u;
 
 type
@@ -208,9 +208,9 @@ end;
 
 procedure TfrmFreelanceApp.btnAccountHChangePasswordClick(Sender: TObject);
 begin
-  ShowMessage(ReadFile('TestFile.txt'));
-  WriteFile('TestFile.txt', 'Test Writing');
-  ClearFile('TestFile.txt');
+  // ShowMessage(ReadFile('TestFile.txt'));
+  // WriteFile('TestFile.txt', 'Test Writing');
+  // ClearFile('TestFile.txt');
 end;
 
 procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);
@@ -229,9 +229,15 @@ var
   sDescription: String;
   dDate: TDate;
   bPriority: Boolean;
+  i: Integer;
 begin
   sName := edtApplyTaskName.Text;
-  sDescription := redApplyDescription.Text; // Needs testing
+  for i := 1 to redApplyDescription.Lines.Count do
+  begin
+    sDescription := sDescription + redApplyDescription.Lines[i];
+  end;
+
+//  sDescription := redApplyDescription.Lines;
   dDate := dtpApplyDueDate.Date;
   bPriority := chkApplyPriority.Checked;
 end;

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.Samples.Spin;
+  Vcl.Imaging.pngimage, Vcl.Samples.Spin, FileIO_u;
 
 type
   TfrmSignup = class(TForm)
@@ -36,12 +36,12 @@ type
     procedure btnSignUpClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    var
-      bPFSelect: Boolean;
+  var
+    bPFSelect: Boolean;
   public
-    var
-      bLogin: Boolean;
-      bIsUser : Boolean;
+  var
+    bLogin: Boolean;
+    bIsUser: Boolean;
   end;
 
 var
@@ -53,12 +53,16 @@ implementation
 
 procedure TfrmSignup.btnSignUpClick(Sender: TObject);
 var
-  sName : String;
-  sUsername : String;
-  sPassword : String;
-  sPassword2 : String;
+  sName: String;
+  sUsername: String;
+  sPassword: String;
+  sPassword2: String;
+  sFileContent: String;
 
-  iAge : Integer;
+  iAge: Integer;
+
+const
+  FileNameStr = 'accounts.txt';
 begin
   iAge := sedAge.Value;
   sName := edtName.Text;
@@ -75,9 +79,10 @@ begin
     bIsUser := False;
   end;
 
-  if (iAge < 18) then
+  if not(iAge in [18 .. 125]) then
   begin
-    ShowMessage('Error: User must be older than 18');
+    ShowMessage
+      ('Error: User must be older than 18 and younger than 125 years old');
     exit;
   end;
 
@@ -111,20 +116,27 @@ begin
     exit;
   end;
 
-  if not (bPFSelect) then
+  if not(bPFSelect) then
   begin
     ShowMessage('Select Profile Picture');
     exit;
   end;
 
-  // Sign up function call
-
-  if (sPassword = sPassword2) then
+  if (sPassword = sPassword2) and (FileIO_u.FileExists(FileNameStr)) then
   begin
-    // Store info
+    sFileContent := FileIO_u.ReadFile(FileNameStr);
+    FileIO_u.WriteFile(FileNameStr, sFileContent + sUsername + sPassword);
     bLogin := True;
     Close;
-    ShowMessage('Sign Up Complete!'); 
+    ShowMessage('Sign Up Complete!');
+  end
+  else
+  begin
+    FileIO_u.CreateFile(FileNameStr);
+    FileIO_u.WriteFile(FileNameStr, sUsername + sPassword);
+    bLogin := True;
+    Close;
+    ShowMessage('Sign Up Complete!');
   end;
 end;
 

@@ -42,11 +42,13 @@ begin
 
   if (sUsername = '') then
   begin
+    ShowMessage('Enter a username');
     exit;
   end;
 
   if (sPassword = '') then
   begin
+    ShowMessage('Enter a password');
     exit;
   end;
 
