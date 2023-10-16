@@ -47,7 +47,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     Top = 45
     Width = 612
     Height = 388
-    ActivePage = tsAccountH
+    ActivePage = tsAccount
     Align = alClient
     TabOrder = 0
     object tsAccountH: TTabSheet
@@ -14704,7 +14704,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 76
-          Width = 290
+          Width = 105
           Height = 25
           Margins.Top = 15
           Align = alTop
@@ -14718,13 +14718,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
-          ExplicitWidth = 105
         end
         object lblPriceEditorPricePerLine: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 4
-          Width = 290
+          Width = 124
           Height = 25
           Align = alTop
           Caption = 'Price Per Line: '
@@ -14737,13 +14736,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
-          ExplicitWidth = 124
         end
         object lblPriceEditorPriorityCost: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 148
-          Width = 290
+          Width = 111
           Height = 25
           Margins.Top = 15
           Align = alTop
@@ -14757,7 +14755,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
-          ExplicitWidth = 111
         end
         object edtPriceEditorPricePerLine: TEdit
           AlignWithMargins = True
@@ -14878,7 +14875,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 31
-          Width = 137
+          Width = 37
           Height = 21
           Margins.Top = 30
           Align = alTop
@@ -14890,7 +14887,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 37
         end
         object btnGUICreatorButton: TButton
           AlignWithMargins = True
@@ -15013,7 +15009,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 41
-          Width = 116
+          Width = 61
           Height = 17
           Margins.Top = 40
           Align = alTop
@@ -15024,13 +15020,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 61
         end
         object lblGUICreatorPosY: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 97
-          Width = 116
+          Width = 60
           Height = 17
           Align = alTop
           Caption = 'Position Y:'
@@ -15040,13 +15035,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 60
         end
         object lblGUICreatorCaption: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 153
-          Width = 116
+          Width = 48
           Height = 17
           Align = alTop
           Caption = 'Caption:'
@@ -15056,7 +15050,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 48
         end
         object sedGUICreatorPosX: TSpinEdit
           AlignWithMargins = True

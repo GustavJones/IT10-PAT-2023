@@ -243,7 +243,13 @@ end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
 begin
-  bLoggedIn := frmLogin.bLogin;
+  if (frmLogin.bLogin) or (frmSignup.bLogin) then
+    bLoggedIn := True;
+
+  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then
+    bIsUser := False
+  else if (frmLogin.bIsUser) and (frmSignup.bIsUser) then
+    bIsUser := True;
 
   if (bLoggedIn) and (bIsUser) then
   begin

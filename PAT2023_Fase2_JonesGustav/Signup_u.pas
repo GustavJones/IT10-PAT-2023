@@ -34,11 +34,14 @@ type
     procedure imgPF4Click(Sender: TObject);
     procedure imgPF5Click(Sender: TObject);
     procedure btnSignUpClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     var
       bPFSelect: Boolean;
   public
-    { Public declarations }
+    var
+      bLogin: Boolean;
+      bIsUser : Boolean;
   end;
 
 var
@@ -49,32 +52,54 @@ implementation
 {$R *.dfm}
 
 procedure TfrmSignup.btnSignUpClick(Sender: TObject);
+var
+  sName : String;
+  sUsername : String;
+  sPassword : String;
+  sPassword2 : String;
+
+  iAge : Integer;
 begin
-  if (sedAge.Value < 18) then
+  iAge := sedAge.Value;
+  sName := edtName.Text;
+  sUsername := edtUsername.Text;
+  sPassword := edtPassword.Text;
+  sPassword2 := edtConfirmPassword.Text;
+
+  if (rgpUserType.ItemIndex = 0) then
+  begin
+    bIsUser := True;
+  end
+  else if (rgpUserType.ItemIndex = 1) then
+  begin
+    bIsUser := False;
+  end;
+
+  if (iAge < 18) then
   begin
     ShowMessage('Error: User must be older than 18');
     exit;
   end;
 
-  if (edtName.Text = '') then
+  if (sName = '') then
   begin
     ShowMessage('Enter a valid Name');
     exit;
   end;
 
-  if (edtUsername.Text = '') then
+  if (sUsername = '') then
   begin
     ShowMessage('Enter a valid Username');
     exit;
   end;
 
-  if (edtPassword.Text = '') then
+  if (sPassword = '') then
   begin
     ShowMessage('Enter a valid Password');
     exit;
   end;
 
-  if (edtConfirmPassword.Text = '') then
+  if (sPassword2 = '') then
   begin
     ShowMessage('Please confirm Password');
     exit;
@@ -94,19 +119,34 @@ begin
 
   // Sign up function call
 
-  ShowMessage('Sign Up Complete!');  
+  if (sPassword = sPassword2) then
+  begin
+    // Store info
+    bLogin := True;
+    Close;
+    ShowMessage('Sign Up Complete!'); 
+  end;
 end;
 
 procedure TfrmSignup.FormActivate(Sender: TObject);
 begin
   btnSignUp.SetFocus;
   bPFSelect := False;
+  bLogin := False;
+  bIsUser := True;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
   imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
   imgPF4.Picture.LoadFromFile('images\profiles\pf4.png');
   imgPF5.Picture.LoadFromFile('images\profiles\pf5.png');
+end;
+
+procedure TfrmSignup.FormCreate(Sender: TObject);
+begin
+  bPFSelect := False;
+  bLogin := False;
+  bIsUser := True;
 end;
 
 procedure TfrmSignup.imgPF1Click(Sender: TObject);
