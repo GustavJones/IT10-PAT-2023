@@ -118,10 +118,10 @@ type
     rWidthScale: Real;
     rHeightScale: Real;
 
-    bIsUser : Boolean;
+    bIsUser: Boolean;
   public
   var
-    bLoggedIn : Boolean;
+    bLoggedIn: Boolean;
   end;
 
 var
@@ -135,7 +135,8 @@ procedure TfrmFreelanceApp.bmbCloseClick(Sender: TObject);
 var
   iExit: Integer;
 begin
-  iExit := MessageDlg('Are you sure you want to exit?', mtInformation, mbYesNo, 0);
+  iExit := MessageDlg('Are you sure you want to exit?', mtInformation,
+    mbYesNo, 0);
 
   if iExit = idYes then
   begin
@@ -155,9 +156,10 @@ end;
 
 procedure TfrmFreelanceApp.bmbSignOutClick(Sender: TObject);
 var
-  iSignOut : Integer;
+  iSignOut: Integer;
 begin
-  iSignOut := MessageDlg('Are you sure you want to sign out?', mtInformation, mbYesNo, 0);
+  iSignOut := MessageDlg('Are you sure you want to sign out?', mtInformation,
+    mbYesNo, 0);
 
   if iSignOut = idYes then
   begin
@@ -169,7 +171,7 @@ begin
     tsGUICreator.TabVisible := False;
     tsAccount.TabVisible := True;
 
-    pgcPages.TabIndex := + 1;
+    pgcPages.TabIndex := +1;
 
     tsAccountH.TabVisible := False;
 
@@ -183,7 +185,8 @@ begin
   pgcPages.TabIndex := pgcPages.TabIndex + 1;
 end;
 
-procedure TfrmFreelanceApp.btnCheckoutApplicationInformationClick(Sender: TObject);
+procedure TfrmFreelanceApp.btnCheckoutApplicationInformationClick
+  (Sender: TObject);
 begin
   frmApplicationInformation.Show;
 end;
@@ -205,7 +208,9 @@ end;
 
 procedure TfrmFreelanceApp.btnAccountHChangePasswordClick(Sender: TObject);
 begin
-  ReadFile('FileName.txt');
+  ShowMessage(ReadFile('TestFile.txt'));
+  WriteFile('TestFile.txt', 'Test Writing');
+  ClearFile('TestFile.txt');
 end;
 
 procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);
@@ -220,10 +225,10 @@ end;
 
 procedure TfrmFreelanceApp.btnApplyClick(Sender: TObject);
 var
-  sName : String;
-  sDescription : String;
-  dDate : TDate;
-  bPriority : Boolean;
+  sName: String;
+  sDescription: String;
+  dDate: TDate;
+  bPriority: Boolean;
 begin
   sName := edtApplyTaskName.Text;
   sDescription := redApplyDescription.Text; // Needs testing
@@ -238,7 +243,7 @@ end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
 begin
-  bLoggedIn	:= frmLogin.bLogin;
+  bLoggedIn := frmLogin.bLogin;
 
   if (bLoggedIn) and (bIsUser) then
   begin
@@ -252,7 +257,7 @@ begin
 
     bmbSignOut.Enabled := True;
   end
-  else if (bLoggedIn) and not (bIsUser) then
+  else if (bLoggedIn) and not(bIsUser) then
   begin
     tsPriceEditor.TabVisible := True;
     tsTaskList.TabVisible := True;
@@ -280,11 +285,11 @@ begin
 
   lblTitle.Font.Size := Trunc(rWidthScale * 25);
 
-//  btnLogin.Margins.Left := Trunc(rWidthScale * 180);
-//  btnLogin.Margins.Right := Trunc(rWidthScale * 180);
-//
-//  btnSignUp.Margins.Left := Trunc(rWidthScale * 180);
-//  btnSignUp.Margins.Right := Trunc(rWidthScale * 180);
+  // btnLogin.Margins.Left := Trunc(rWidthScale * 180);
+  // btnLogin.Margins.Right := Trunc(rWidthScale * 180);
+  //
+  // btnSignUp.Margins.Left := Trunc(rWidthScale * 180);
+  // btnSignUp.Margins.Right := Trunc(rWidthScale * 180);
 
 end;
 
