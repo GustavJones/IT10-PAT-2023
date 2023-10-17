@@ -2,14 +2,14 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2023/09/19 12:46:02.000.713,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
-    <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
     <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm</Transaction>
+    <Transaction>2023/09/19 12:46:18.000.834,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
     <Transaction>2023/09/19 13:08:07.000.068,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
     <Transaction>2023/09/19 13:08:19.000.751,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Signup_u.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm</Transaction>
     <Transaction>2023/09/19 13:08:19.000.751,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Signup_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
     <Transaction>2023/09/20 13:12:14.000.311,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
-    <Transaction>2023/09/20 13:12:31.000.551,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.dfm</Transaction>
     <Transaction>2023/09/20 13:12:31.000.551,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.pas</Transaction>
+    <Transaction>2023/09/20 13:12:31.000.551,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Login_u.dfm</Transaction>
     <Transaction>2023/09/21 10:23:37.000.711,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
     <Transaction>2023/09/21 10:24:01.000.036,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Help_u.pas</Transaction>
     <Transaction>2023/09/21 10:24:01.000.036,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.dfm=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Help_u.dfm</Transaction>
@@ -21,6 +21,8 @@
     <Transaction>2023/09/25 20:39:19.000.330,C:\Users\Gustav Jones\Documents\Embarcadero\Studio\Projects\IT10-PAT-2023\PAT2023_Fase2_JonesGustav\Unit1.pas=C:\Users\Gustav Jones\Documents\Embarcadero\Studio\Projects\IT10-PAT-2023\PAT2023_Fase2_JonesGustav\ApplicationInformation_u.pas</Transaction>
     <Transaction>2023/10/11 08:18:08.000.733,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
     <Transaction>2023/10/11 08:18:25.000.215,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\FileIO_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
+    <Transaction>2023/10/17 12:40:03.000.215,=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
+    <Transaction>2023/10/17 12:40:17.000.430,K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Parser_u.pas=K:\IT10 PAT 2023\PAT2023_Fase2_JonesGustav\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="FreelanceApp_u.pas"/>
@@ -36,5 +38,6 @@
     <File Path="ApplicationInformation_u.pas"/>
     <File Path="ApplicationInformation_u.dfm"/>
     <File Path="FileIO_u.pas"/>
+    <File Path="Parser_u.pas"/>
   </ProjectSortOrder>
 </BorlandProject>

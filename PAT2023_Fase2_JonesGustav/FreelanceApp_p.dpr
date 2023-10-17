@@ -8,7 +8,8 @@ uses
   Help_u in 'Help_u.pas' {frmHelp},
   TaskEditor_u in 'TaskEditor_u.pas' {frmTaskEditor},
   ApplicationInformation_u in 'ApplicationInformation_u.pas' {frmApplicationInformation},
-  FileIO_u in 'FileIO_u.pas';
+  FileIO_u in 'FileIO_u.pas',
+  Parser_u in 'Parser_u.pas';
 
 {$R *.res}
 
