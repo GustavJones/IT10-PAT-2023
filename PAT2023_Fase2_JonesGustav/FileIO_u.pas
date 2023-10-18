@@ -4,11 +4,11 @@ interface
 
 uses System.SysUtils;
 
-function FileExists(sFileName : String) : Boolean;
+function FileExists(sFileName: String): Boolean;
 function ReadFile(sFileName: string): string;
 procedure WriteFile(sFileName: String; sText: String);
 procedure ClearFile(sFileName: String);
-procedure CreateFile(sFileName : String);
+procedure CreateFile(sFileName: String);
 
 implementation
 
@@ -19,7 +19,7 @@ var
 begin
   AssignFile(FileToRead, sFileName);
   Reset(FileToRead);
-  while not (Eof(FileToRead)) do
+  while not(Eof(FileToRead)) do
   begin
     ReadLn(FileToRead, sTemp);
     sOutput := sOutput + sTemp;
@@ -49,25 +49,23 @@ begin
   Close(FileToClear);
 end;
 
-function FileExists(sFileName : String) : Boolean;
-var
-  FileToCheck : TextFile;
+function FileExists(sFileName: String): Boolean;
 begin
   if (System.SysUtils.FileExists(sFileName)) then
   begin
     Result := True;
-  end    
+  end
   else
   begin
     Result := False;
   end;
 end;
 
-procedure CreateFile(sFileName : String);
+procedure CreateFile(sFileName: String);
 var
-  FileToCreate: TextFile;
+  FileToCreate: File;
 begin
-  System.SysUtils.FileCreate(sFileName);
+  System.SysUtils.FileClose(System.SysUtils.FileCreate(sFileName));
 end;
 
 end.

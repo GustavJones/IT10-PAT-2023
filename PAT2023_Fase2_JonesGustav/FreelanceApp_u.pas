@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes, Vcl.Samples.Spin,
-  Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u, Parser_u, FileIO_u;
+  Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u, Parser_u,
+  FileIO_u;
 
 type
   TfrmFreelanceApp = class(TForm)
@@ -208,15 +209,14 @@ end;
 
 procedure TfrmFreelanceApp.btnAccountHChangePasswordClick(Sender: TObject);
 var
-  sRawData : String;
+  sRawData: String;
 begin
   sRawData := FileIO_u.ReadFile('example.json');
-  ShowMessage(IntToStr(Parser_u.GetEntryCount(sRawData)));
-  ShowMessage(Parser_u.ReadEntry(sRawData, 2));
-
-  // ShowMessage(ReadFile('TestFile.txt'));
-  // WriteFile('TestFile.txt', 'Test Writing');
-  // ClearFile('TestFile.txt');
+  ShowMessage(Parser_u.WriteEntryValue(sRawData, 'Test value', 2));
+  ShowMessage(Parser_u.WriteEntryKey(sRawData, 'Test key', 2));
+  ShowMessage(IntToStr(Parser_u.GetPropertyIndex(sRawData, 'Description')));
+  // ShowMessage(IntToStr(Parser_u.GetEntryCount(sRawData)));
+  // ShowMessage(Parser_u.ReadEntry(sRawData, 2));
 end;
 
 procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);
@@ -243,7 +243,7 @@ begin
     sDescription := sDescription + redApplyDescription.Lines[i];
   end;
 
-//  sDescription := redApplyDescription.Lines;
+  // sDescription := redApplyDescription.Lines;
   dDate := dtpApplyDueDate.Date;
   bPriority := chkApplyPriority.Checked;
 end;
