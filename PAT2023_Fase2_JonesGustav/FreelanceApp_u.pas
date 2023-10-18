@@ -211,7 +211,8 @@ var
   sRawData : String;
 begin
   sRawData := FileIO_u.ReadFile('example.json');
-  ShowMessage(Parser_u.ReadEntry(sRawData, 4));
+  ShowMessage(IntToStr(Parser_u.GetEntryCount(sRawData)));
+  ShowMessage(Parser_u.ReadEntry(sRawData, 2));
 
   // ShowMessage(ReadFile('TestFile.txt'));
   // WriteFile('TestFile.txt', 'Test Writing');
