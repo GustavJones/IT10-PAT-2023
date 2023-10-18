@@ -2,46 +2,83 @@ unit Parser_u;
 
 interface
 
-function ReadEntry(sRawData : String; iPropertyIndex : Integer) : String;
+function ReadEntry(sRawData: String; iPropertyIndex: Integer): String;
 
 implementation
 
-function ReadEntry(sRawData : String; iPropertyIndex : Integer) : String;
+function ReadEntry(sRawData: String; iPropertyIndex: Integer): String;
 var
-    i, j, k, l, iKeyEnd : Integer;
-    sOutput : String;
+  i, j, k, l : Integer;
+  iKeyCount : Integer;
+  iKeyPos : Integer;
+  iKeyQuoteCount, iValueQuoteCount : Integer;
+  iKeyStartPos: Integer;
+  iValueEndPos : Integer;
+  bHasKey, bHasValue : Boolean;
+  sOutput: String;
 begin
-  for i := 1 to Length(sRawData) do
+  iKeyCount := 0;
+  iKeyPos := 0;
+  iKeyQuoteCount := 0;
+  iValueQuoteCount := 0;
+  iKeyStartPos := 0;
+  iValueEndPos := 0;
+  bHasKey := False;
+  bHasValue := False;
+
+  sOutput := '';
+
+  for i := 1 to Length(sRawData) do // Loop through text
   begin
-
-    if (sRawData[i] = '{') and (sRawData[i + 1] = #10) then
+    if (iKeyCount = iPropertyIndex) and (sRawData[i - 1] = ':') then
     begin
+      iKeyPos := i - 1; // Get Selected KeyValue pair position
+    end;
 
-        for j := i + 2 to Length(sRawData) do
-        begin
-
-          if (sRawData[j] = ' ') and (sRawData[j + 1] = ' ' ) and (sRawData[j + 2] = ' ' ) and (sRawData[j + 3] = ' ' ) then
-          begin
-
-            for k := j + 5 to Length(sRawData) do
-            begin
-
-              if (sRawData[k] = '"') then
-              begin
-                iKeyEnd := k;
-              end;
-            end;
-
-            for l := j + 5 to iKeyEnd do
-            begin
-              sOutput := sOutput + sRawData[l];
-            end;
-
-            Result := sOutput;
-          end;
-        end;    
+    if (sRawData[i] = ':') then // Check for key value pairs
+    begin
+      Inc(iKeyCount);
     end;
   end;
+
+  j := iKeyPos;
+  while not (bHasKey) do // Loop through text
+  begin
+    if (sRawData[j] = '"') then
+    begin
+      Inc(iKeyQuoteCount);
+      if (iKeyQuoteCount = 2) then
+      begin
+        iKeyStartPos := j;
+        bHasKey := True;
+      end;
+    end;
+
+    Dec(j);
+  end;
+
+  k := iKeyPos;
+  while not (bHasValue) do
+  begin
+    if (sRawData[k] = '"') then
+    begin
+      Inc(iValueQuoteCount);
+      if (iValueQuoteCount = 2) then
+      begin
+        iValueEndPos := k;
+        bHasValue := True;
+      end;
+    end;
+
+    for l := iKeyStartPos to iValueEndPos do
+    begin
+      sOutput := sOutput + sRawData[l];
+    end;
+
+    Inc(k);
+  end;
+
+  Result := sOutput;
 
 end;
 
