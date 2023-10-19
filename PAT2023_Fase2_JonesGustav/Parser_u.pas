@@ -2,7 +2,9 @@ unit Parser_u;
 
 interface
 
-function ReadEntry(sEntry: String; iPropertyIndex: Integer): String;
+function CreateEntry(sKeysSepByComma: String): String;
+function ReadEntryKey(sEntry: String; iPropertyIndex: Integer): String;
+function ReadEntryValue(sEntry: String; iPropertyIndex: Integer): String;
 function GetPropertyCount(sEntry: String): Integer;
 function GetPropertyIndex(sEntry: String; sKey: String): Integer;
 function WriteEntryValue(sEntry: String; sValue: String;
@@ -12,16 +14,91 @@ function WriteEntryKey(sEntry: String; sKey: String;
 
 implementation
 
-function ReadEntry(sEntry: String; iPropertyIndex: Integer): String;
+function CreateEntry(sKeysSepByComma: String): String;
 var
-  i, j, k, l: Integer;
+  i, j, iOffset: Integer;
+  iKeysCount: Integer;
+  iCommaPos: Integer;
+  sKey: String;
+  sOutput: String;
+  bFoundComma: Boolean;
+begin
+  iKeysCount := 1;
+  iOffset := 1;
+  iCommaPos := 0;
+  sKey := '';
+  sOutput := '{' + #10;
+  bFoundComma := False;
+
+  i := 1;
+  while (i <> Length(sKeysSepByComma)) do
+  // loop through keys string
+  begin
+    if (sKeysSepByComma[i] = ',') then
+    begin
+      Inc(iKeysCount);
+    end;
+
+    Inc(i);
+  end;
+
+  for i := 1 to iKeysCount do
+  begin
+    // iCommaPos := Pos(',', sKeysSepByComma, iOffset);
+
+    j := iOffset;
+    while not(bFoundComma) do
+    begin
+      if (sKeysSepByComma[j] = ',') then
+      begin
+        iCommaPos := j;
+        bFoundComma := True;
+      end
+      else if (j = Length(sKeysSepByComma)) then
+      begin
+        iCommaPos := j + 1;
+        bFoundComma := True;
+      end;
+
+      Inc(j);
+    end;
+
+    for j := iOffset to iCommaPos - 1 do
+    begin
+      sKey := sKey + sKeysSepByComma[j]
+    end;
+
+    sOutput := sOutput + '    "' + sKey + '": ""';
+
+    if (i <> iKeysCount) then
+    begin
+      sOutput := sOutput + ',' + #10;
+    end
+    else
+    begin
+      sOutput := sOutput + #10 + '}';
+    end;
+
+    iOffset := iCommaPos + 1;
+    bFoundComma := False;
+    sKey := '';
+  end;
+
+  Result := sOutput;
+end;
+
+function ReadEntryKey(sEntry: String; iPropertyIndex: Integer): String;
+var
+  i, j, k, l, m, n: Integer;
   iPropertyCount: Integer;
   iPropertyPos: Integer;
   iKeyQuoteCount, iValueQuoteCount: Integer;
   iKeyStartPos: Integer;
   iValueEndPos: Integer;
   bHasKey, bHasValue: Boolean;
-  sOutput: String;
+  sOutput, sKeyOutput: String;
+  iOutputKeyStart, iOutputKeyEnd: Integer;
+  iOutputKeyMidPos, iOutputQuoteCount: Integer;
 begin
   if (iPropertyIndex > GetPropertyCount(sEntry)) then
   // Check if entry index is less than entry count
@@ -39,6 +116,11 @@ begin
   bHasValue := False;
 
   sOutput := '';
+  sKeyOutput := '';
+  iOutputKeyStart := 0;
+  iOutputKeyEnd := 0;
+  iOutputKeyMidPos := 0;
+  iOutputQuoteCount := 0;
 
   for i := 1 to Length(sEntry) do // Loop through text
   begin
@@ -90,7 +172,148 @@ begin
     Inc(k);
   end;
 
-  Result := sOutput;
+  for m := 1 to Length(sOutput) do
+  begin
+    if (sOutput[m] = ':') then
+    begin
+      iOutputKeyMidPos := m;
+    end;
+  end;
+
+  for m := iOutputKeyMidPos downto 1 do
+  begin
+    if (sOutput[m] = '"') then
+    begin
+      Inc(iOutputQuoteCount);
+
+      if (iOutputQuoteCount = 1) then
+        iOutputKeyEnd := m
+      else if (iOutputQuoteCount = 2) then
+        iOutputKeyStart := m;
+    end;
+  end;
+
+  for n := iOutputKeyStart + 1 to iOutputKeyEnd - 1 do
+  begin
+    sKeyOutput := sKeyOutput + sOutput[n];
+  end;
+
+  Result := sKeyOutput;
+
+end;
+
+function ReadEntryValue(sEntry: String; iPropertyIndex: Integer): String;
+var
+  i, j, k, l, m, n: Integer;
+  iPropertyCount: Integer;
+  iPropertyPos: Integer;
+  iKeyQuoteCount, iValueQuoteCount: Integer;
+  iKeyStartPos: Integer;
+  iValueEndPos: Integer;
+  bHasKey, bHasValue: Boolean;
+  sOutput, sValueOutput: String;
+  iOutputValueStart, iOutputValueEnd: Integer;
+  iOutputValueMidPos, iOutputQuoteCount: Integer;
+begin
+  if (iPropertyIndex > GetPropertyCount(sEntry)) then
+  // Check if entry index is less than entry count
+  begin
+    exit;
+  end;
+
+  iPropertyCount := 0;
+  iPropertyPos := 0;
+  iKeyQuoteCount := 0;
+  iValueQuoteCount := 0;
+  iKeyStartPos := 0;
+  iValueEndPos := 0;
+  bHasKey := False;
+  bHasValue := False;
+
+  sOutput := '';
+  sValueOutput := '';
+  iOutputValueStart := 0;
+  iOutputValueEnd := 0;
+  iOutputValueMidPos := 0;
+  iOutputQuoteCount := 0;
+
+  for i := 1 to Length(sEntry) do // Loop through text
+  begin
+    if (iPropertyCount = iPropertyIndex) and (sEntry[i - 1] = ':') then
+    begin
+      iPropertyPos := i - 1; // Get Selected KeyValue pair position
+    end;
+
+    if (sEntry[i] = ':') then // Check for key value pairs
+    begin
+      Inc(iPropertyCount);
+    end;
+  end;
+
+  j := iPropertyPos;
+  while not(bHasKey) do // Loop through text
+  begin
+    if (sEntry[j] = '"') then
+    begin
+      Inc(iKeyQuoteCount);
+      if (iKeyQuoteCount = 2) then
+      begin
+        iKeyStartPos := j;
+        bHasKey := True;
+      end;
+    end;
+
+    Dec(j);
+  end;
+
+  k := iPropertyPos;
+  while not(bHasValue) do
+  begin
+    if (sEntry[k] = '"') then
+    begin
+      Inc(iValueQuoteCount);
+      if (iValueQuoteCount = 2) then
+      begin
+        iValueEndPos := k;
+        bHasValue := True;
+      end;
+    end;
+
+    for l := iKeyStartPos to iValueEndPos do
+    begin
+      sOutput := sOutput + sEntry[l];
+    end;
+
+    Inc(k);
+  end;
+
+  for m := 1 to Length(sOutput) do
+  begin
+    if (sOutput[m] = ':') then
+    begin
+      iOutputValueMidPos := m;
+    end;
+  end;
+
+  for m := iOutputValueMidPos to Length(sOutput) do
+  begin
+    if (sOutput[m] = '"') then
+    begin
+      Inc(iOutputQuoteCount);
+
+      if (iOutputQuoteCount = 1) then
+        iOutputValueStart := m
+      else if (iOutputQuoteCount = 2) then
+        iOutputValueEnd := m;
+    end;
+  end;
+
+  for n := iOutputValueStart + 1 to iOutputValueEnd - 1 do
+  begin
+    sValueOutput := sValueOutput + sOutput[n];
+  end;
+
+  Result := sValueOutput;
 
 end;
 

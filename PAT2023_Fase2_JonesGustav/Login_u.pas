@@ -3,9 +3,10 @@ unit Login_u;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, FileIO_u, Parser_u;
 
 type
   TfrmLogin = class(TForm)
@@ -34,8 +35,10 @@ implementation
 
 procedure TfrmLogin.btnLogInClick(Sender: TObject);
 var
-  sUsername : String;
-  sPassword : String;
+  sUsername: String;
+  sPassword: String;
+
+  sFileContents: String;
 begin
   sUsername := edtUsername.Text;
   sPassword := edtPassword.Text;
@@ -52,13 +55,25 @@ begin
     exit;
   end;
 
-  bLogin := True;
+  if not(FileIO_u.FileExists(sUsername + '.json')) then
+  begin
+    ShowMessage('Account Not Found');
+    exit;
+  end;
 
-  // Login Function Call
+  sFileContents := FileIO_u.ReadFile(sUsername + '.json');
 
-  ShowMessage('Login Complete');
-
-  Close;
+  if not(Parser_u.ReadEntryValue(sFileContents, 2) = sPassword) then
+  begin
+    ShowMessage('Passwords don'' t match ');
+    exit;
+  end
+  else
+  begin
+    bLogin := True;
+    ShowMessage('Login Complete');
+    Close;
+  end;
 end;
 
 procedure TfrmLogin.FormActivate(Sender: TObject);

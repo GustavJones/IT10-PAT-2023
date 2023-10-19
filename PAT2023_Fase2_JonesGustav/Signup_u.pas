@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage, Vcl.Samples.Spin, FileIO_u;
+  Vcl.Imaging.pngimage, Vcl.Samples.Spin, FileIO_u, Parser_u;
 
 type
   TfrmSignup = class(TForm)
@@ -38,6 +38,7 @@ type
   private
   var
     bPFSelect: Boolean;
+    iPFSelection: Integer;
   public
   var
     bLogin: Boolean;
@@ -57,12 +58,10 @@ var
   sUsername: String;
   sPassword: String;
   sPassword2: String;
-  sFileContent: String;
 
   iAge: Integer;
 
-const
-  FileNameStr = 'accounts.txt';
+  sEntry: String;
 begin
   iAge := sedAge.Value;
   sName := edtName.Text;
@@ -122,28 +121,51 @@ begin
     exit;
   end;
 
-  if (sPassword = sPassword2) and (FileIO_u.FileExists(FileNameStr)) then
+  if not(sPassword = sPassword2) then
   begin
-    sFileContent := FileIO_u.ReadFile(FileNameStr);
-    FileIO_u.WriteFile(FileNameStr, sFileContent + sUsername + sPassword);
-    bLogin := True;
-    Close;
-    ShowMessage('Sign Up Complete!');
+    ShowMessage('Re-enter password correctly');
+    exit;
+  end;
+
+  if (FileIO_u.FileExists(sUsername + '.json')) then
+  begin
+    ShowMessage('Account Exists');
+    exit;
   end
   else
   begin
-    FileIO_u.CreateFile(FileNameStr);
-    FileIO_u.WriteFile(FileNameStr, sUsername + sPassword);
-    bLogin := True;
-    Close;
-    ShowMessage('Sign Up Complete!');
+    FileIO_u.CreateFile(sUsername + '.json');
   end;
+
+  sEntry := Parser_u.CreateEntry('Name,Password,Age,UserType,ProfilePic');
+
+  sEntry := Parser_u.WriteEntryValue(sEntry, sName, 1);
+  sEntry := Parser_u.WriteEntryValue(sEntry, sPassword, 2);
+  sEntry := Parser_u.WriteEntryValue(sEntry, IntToStr(iAge), 3);
+
+  if (bIsUser) then
+  begin
+    sEntry := Parser_u.WriteEntryValue(sEntry, '1', 4);
+  end
+  else
+  begin
+    sEntry := Parser_u.WriteEntryValue(sEntry, '2', 4);
+  end;
+
+  sEntry := Parser_u.WriteEntryValue(sEntry, IntToStr(iPFSelection), 5);
+
+  FileIO_u.WriteFile(sUsername + '.json', sEntry);
+
+  bLogin := True;
+  Close;
+  ShowMessage('Sign Up Complete!');
 end;
 
 procedure TfrmSignup.FormActivate(Sender: TObject);
 begin
   btnSignUp.SetFocus;
   bPFSelect := False;
+  iPFSelection := 0;
   bLogin := False;
   bIsUser := True;
 
@@ -165,6 +187,7 @@ procedure TfrmSignup.imgPF1Click(Sender: TObject);
 begin
   imgPF1.Picture.LoadFromFile('images\profiles\pf1_Clicked.png');
   bPFSelect := True;
+  iPFSelection := 1;
 
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
   imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
@@ -176,6 +199,7 @@ procedure TfrmSignup.imgPF2Click(Sender: TObject);
 begin
   imgPF2.Picture.LoadFromFile('images\profiles\pf2_Clicked.png');
   bPFSelect := True;
+  iPFSelection := 2;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
@@ -187,6 +211,7 @@ procedure TfrmSignup.imgPF3Click(Sender: TObject);
 begin
   imgPF3.Picture.LoadFromFile('images\profiles\pf3_Clicked.png');
   bPFSelect := True;
+  iPFSelection := 3;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
@@ -198,6 +223,7 @@ procedure TfrmSignup.imgPF4Click(Sender: TObject);
 begin
   imgPF4.Picture.LoadFromFile('images\profiles\pf4_Clicked.png');
   bPFSelect := True;
+  iPFSelection := 4;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
@@ -209,6 +235,7 @@ procedure TfrmSignup.imgPF5Click(Sender: TObject);
 begin
   imgPF5.Picture.LoadFromFile('images\profiles\pf5_Clicked.png');
   bPFSelect := True;
+  iPFSelection := 5;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');

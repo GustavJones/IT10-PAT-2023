@@ -212,9 +212,12 @@ var
   sRawData: String;
 begin
   sRawData := FileIO_u.ReadFile('example.json');
-  ShowMessage(Parser_u.WriteEntryValue(sRawData, 'Test value', 2));
-  ShowMessage(Parser_u.WriteEntryKey(sRawData, 'Test key', 2));
-  ShowMessage(IntToStr(Parser_u.GetPropertyIndex(sRawData, 'Description')));
+  // ShowMessage(Parser_u.CreateEntry('Name,Date,Description'));
+  // ShowMessage(Parser_u.ReadEntryKey(sRawData, 2));
+  // ShowMessage(Parser_u.ReadEntryValue(sRawData, 2));
+  // ShowMessage(Parser_u.WriteEntryValue(sRawData, 'Test value', 2));
+  // ShowMessage(Parser_u.WriteEntryKey(sRawData, 'Test key', 2));
+  // ShowMessage(IntToStr(Parser_u.GetPropertyIndex(sRawData, 'Description')));
   // ShowMessage(IntToStr(Parser_u.GetEntryCount(sRawData)));
   // ShowMessage(Parser_u.ReadEntry(sRawData, 2));
 end;

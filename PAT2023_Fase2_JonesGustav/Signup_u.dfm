@@ -27,6 +27,8 @@ object frmSignup: TfrmSignup
     Margins.Bottom = 4
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 576
+    ExplicitHeight = 389
     DesignSize = (
       580
       390)
@@ -58,7 +60,7 @@ object frmSignup: TfrmSignup
     end
     object edtUsername: TEdit
       AlignWithMargins = True
-      Left = 7
+      Left = 6
       Top = 125
       Width = 238
       Height = 31
@@ -79,10 +81,11 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 0
       TextHint = 'Enter Username:'
+      ExplicitLeft = 5
     end
     object edtPassword: TEdit
       AlignWithMargins = True
-      Left = 7
+      Left = 6
       Top = 183
       Width = 238
       Height = 31
@@ -103,10 +106,11 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 1
       TextHint = 'Enter Password:'
+      ExplicitLeft = 5
     end
     object edtConfirmPassword: TEdit
       AlignWithMargins = True
-      Left = 7
+      Left = 6
       Top = 242
       Width = 238
       Height = 31
@@ -127,6 +131,7 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 2
       TextHint = 'Re-Enter Password:'
+      ExplicitLeft = 5
     end
     object btnSignUp: TButton
       Left = 72
@@ -153,7 +158,7 @@ object frmSignup: TfrmSignup
     end
     object edtName: TEdit
       AlignWithMargins = True
-      Left = 7
+      Left = 6
       Top = 67
       Width = 238
       Height = 32
@@ -174,6 +179,7 @@ object frmSignup: TfrmSignup
       ParentFont = False
       TabOrder = 5
       TextHint = 'Enter First Name:'
+      ExplicitLeft = 5
     end
     object rgpUserType: TRadioGroup
       Left = 265
