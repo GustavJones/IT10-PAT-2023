@@ -23,6 +23,8 @@ type
   public
   var
     bLogin: Boolean;
+    sUsername : String;
+    iProfilePicIndex : Integer;
     bIsUser: Boolean;
   end;
 
@@ -35,7 +37,6 @@ implementation
 
 procedure TfrmLogin.btnLogInClick(Sender: TObject);
 var
-  sUsername: String;
   sPassword: String;
 
   sFileContents: String;
@@ -61,23 +62,30 @@ begin
     exit;
   end;
 
-  sFileContents := FileIO_u.ReadFile(sUsername + '.json');
+  sFileContents := FileIO_u.ReadFile(sUsername + '.json'); // Get Account details from file
 
-  if not(Parser_u.ReadEntryValue(sFileContents, 2) = sPassword) then
+  if not(Parser_u.ReadEntryValue(sFileContents, 2) = sPassword) then // Check if passwords match
   begin
     ShowMessage('Passwords don'' t match ');
     exit;
-  end
-  else
-  begin
-    bLogin := True;
-    ShowMessage('Login Complete');
-    Close;
   end;
+
+  if (Parser_u.ReadEntryValue(sFileContents, 4) = 1) then // Gets User type
+    bIsUser := True
+  else if (Parser_u.ReadEntryValue(sFileContents, 4) = 2) then
+    bIsUser := False;
+
+  iProfilePicIndex := StrToInt(Parser_u.ReadEntryValue(sFileContents, 5)); // Get User Profile Picture
+  
+  bLogin := True;
+  ShowMessage('Login Complete');
+  Close;
 end;
 
 procedure TfrmLogin.FormActivate(Sender: TObject);
 begin
+  sUsername := '';
+  iProfilePicIndex := -1;
   bLogin := False;
   bIsUser := True;
 

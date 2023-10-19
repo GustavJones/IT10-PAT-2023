@@ -38,10 +38,11 @@ type
   private
   var
     bPFSelect: Boolean;
-    iPFSelection: Integer;
   public
   var
     bLogin: Boolean;
+    sUsername : String;
+    iProfilePicIndex : Integer;
     bIsUser: Boolean;
   end;
 
@@ -55,7 +56,6 @@ implementation
 procedure TfrmSignup.btnSignUpClick(Sender: TObject);
 var
   sName: String;
-  sUsername: String;
   sPassword: String;
   sPassword2: String;
 
@@ -152,7 +152,7 @@ begin
     sEntry := Parser_u.WriteEntryValue(sEntry, '2', 4);
   end;
 
-  sEntry := Parser_u.WriteEntryValue(sEntry, IntToStr(iPFSelection), 5);
+  sEntry := Parser_u.WriteEntryValue(sEntry, IntToStr(iProfilePicIndex), 5);
 
   FileIO_u.WriteFile(sUsername + '.json', sEntry);
 
@@ -165,7 +165,8 @@ procedure TfrmSignup.FormActivate(Sender: TObject);
 begin
   btnSignUp.SetFocus;
   bPFSelect := False;
-  iPFSelection := 0;
+  sUsername := '';
+  iProfilePicIndex := -1;
   bLogin := False;
   bIsUser := True;
 
@@ -187,7 +188,7 @@ procedure TfrmSignup.imgPF1Click(Sender: TObject);
 begin
   imgPF1.Picture.LoadFromFile('images\profiles\pf1_Clicked.png');
   bPFSelect := True;
-  iPFSelection := 1;
+  iProfilePicIndex := 1;
 
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
   imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
@@ -199,7 +200,7 @@ procedure TfrmSignup.imgPF2Click(Sender: TObject);
 begin
   imgPF2.Picture.LoadFromFile('images\profiles\pf2_Clicked.png');
   bPFSelect := True;
-  iPFSelection := 2;
+  iProfilePicIndex := 2;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
@@ -211,7 +212,7 @@ procedure TfrmSignup.imgPF3Click(Sender: TObject);
 begin
   imgPF3.Picture.LoadFromFile('images\profiles\pf3_Clicked.png');
   bPFSelect := True;
-  iPFSelection := 3;
+  iProfilePicIndex := 3;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
@@ -223,7 +224,7 @@ procedure TfrmSignup.imgPF4Click(Sender: TObject);
 begin
   imgPF4.Picture.LoadFromFile('images\profiles\pf4_Clicked.png');
   bPFSelect := True;
-  iPFSelection := 4;
+  iProfilePicIndex := 4;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
@@ -235,7 +236,7 @@ procedure TfrmSignup.imgPF5Click(Sender: TObject);
 begin
   imgPF5.Picture.LoadFromFile('images\profiles\pf5_Clicked.png');
   bPFSelect := True;
-  iPFSelection := 5;
+  iProfilePicIndex := 5;
 
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');

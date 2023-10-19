@@ -114,12 +114,14 @@ type
     procedure btnAccountHChangePasswordClick(Sender: TObject);
   private
   var
+    sUsername : String;
+    bIsUser: Boolean;
+    iProfilePicIndex : Integer;
+
     iDefaultWidth: Integer;
     iDefaultHeight: Integer;
     rWidthScale: Real;
     rHeightScale: Real;
-
-    bIsUser: Boolean;
   public
   var
     bLoggedIn: Boolean;
@@ -258,13 +260,22 @@ end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
 begin
-  if (frmLogin.bLogin) or (frmSignup.bLogin) then
+  if (frmLogin.bLogin) or (frmSignup.bLogin) then // Check if Login
     bLoggedIn := True;
 
-  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then
+  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then // Check account type
     bIsUser := False
   else if (frmLogin.bIsUser) and (frmSignup.bIsUser) then
     bIsUser := True;
+
+  if (frmLogin.sUsername <> '') then
+  begin
+    sUsername := frmLogin.sUsername;
+  end
+  else if (frmSignup.sUsername <>) then
+  begin
+    sUsername := frmSignup.sUsername;
+  end;
 
   if (bLoggedIn) and (bIsUser) then
   begin
