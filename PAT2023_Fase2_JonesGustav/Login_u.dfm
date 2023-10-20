@@ -88,6 +88,7 @@ object frmLogin: TfrmLogin
       Font.Name = 'Arial Narrow'
       Font.Style = [fsBold]
       ParentFont = False
+      PasswordChar = '*'
       TabOrder = 1
       TextHint = 'Enter Password:'
     end

@@ -27,7 +27,7 @@ begin
   iOffset := 1;
   iCommaPos := 0;
   sKey := '';
-  sOutput := '{' + #10;
+  sOutput := '{' + #13 + #10;
   bFoundComma := False;
 
   i := 1;
@@ -72,11 +72,11 @@ begin
 
     if (i <> iKeysCount) then
     begin
-      sOutput := sOutput + ',' + #10;
+      sOutput := sOutput + ',' + #13 + #10;
     end
     else
     begin
-      sOutput := sOutput + #10 + '}';
+      sOutput := sOutput + #13 + #10 + '}';
     end;
 
     iOffset := iCommaPos + 1;

@@ -216,17 +216,14 @@ end;
 
 procedure TfrmFreelanceApp.btnAccountHChangePasswordClick(Sender: TObject);
 var
-  sRawData: String;
+  sFileContent: String;
+  sPassword : String;
+  sOutput : String;
 begin
-  sRawData := FileIO_u.ReadFile('example.json');
-  // ShowMessage(Parser_u.CreateEntry('Name,Date,Description'));
-  // ShowMessage(Parser_u.ReadEntryKey(sRawData, 2));
-  // ShowMessage(Parser_u.ReadEntryValue(sRawData, 2));
-  // ShowMessage(Parser_u.WriteEntryValue(sRawData, 'Test value', 2));
-  // ShowMessage(Parser_u.WriteEntryKey(sRawData, 'Test key', 2));
-  // ShowMessage(IntToStr(Parser_u.GetPropertyIndex(sRawData, 'Description')));
-  // ShowMessage(IntToStr(Parser_u.GetEntryCount(sRawData)));
-  // ShowMessage(Parser_u.ReadEntry(sRawData, 2));
+  sFileContent := FileIO_u.ReadFile(sUsername + '.json');
+  sPassword := InputBox('Change Password', 'Enter a new Password: ', '');
+  sOutput := Parser_u.WriteEntryValue(sFileContent, sPassword, 2);
+  FileIO_u.WriteFile(sUsername + '.json', sOutput);
 end;
 
 procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);

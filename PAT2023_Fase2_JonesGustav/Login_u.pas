@@ -89,11 +89,16 @@ begin
   bLogin := False;
   bIsUser := True;
 
+  edtUsername.Text := '';
+  edtPassword.Text := '';
+
   btnLogIn.SetFocus;
 end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
+  sUsername := '';
+  iProfilePicIndex := -1;
   bLogin := False;
   bIsUser := True;
 end;

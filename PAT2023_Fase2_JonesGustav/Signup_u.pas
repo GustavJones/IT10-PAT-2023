@@ -170,6 +170,12 @@ begin
   bLogin := False;
   bIsUser := True;
 
+  edtUsername.Text := '';
+  edtPassword.Text := '';
+  edtConfirmPassword.Text := '';
+  edtName.Text := '';
+  rgpUserType.ItemIndex := -1;
+
   imgPF1.Picture.LoadFromFile('images\profiles\pf1.png');
   imgPF2.Picture.LoadFromFile('images\profiles\pf2.png');
   imgPF3.Picture.LoadFromFile('images\profiles\pf3.png');
