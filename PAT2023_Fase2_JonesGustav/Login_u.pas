@@ -70,9 +70,9 @@ begin
     exit;
   end;
 
-  if (Parser_u.ReadEntryValue(sFileContents, 4) = 1) then // Gets User type
+  if (StrToInt(Parser_u.ReadEntryValue(sFileContents, 4)) = 1) then // Gets User type
     bIsUser := True
-  else if (Parser_u.ReadEntryValue(sFileContents, 4) = 2) then
+  else if (StrToInt(Parser_u.ReadEntryValue(sFileContents, 4)) = 2) then
     bIsUser := False;
 
   iProfilePicIndex := StrToInt(Parser_u.ReadEntryValue(sFileContents, 5)); // Get User Profile Picture

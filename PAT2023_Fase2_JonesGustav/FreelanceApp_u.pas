@@ -168,13 +168,18 @@ begin
   begin
     bLoggedIn := False;
     frmLogin.bLogin := False;
+    frmSignup.bLogin := False;
 
     tsApply.TabVisible := False;
     tsCheckout.TabVisible := False;
     tsGUICreator.TabVisible := False;
+
+    tsCheckout.TabVisible := False;
+    tsTaskList.TabVisible := False;
+    tsPriceEditor.TabVisible := False;
     tsAccount.TabVisible := True;
 
-    pgcPages.TabIndex := +1;
+    pgcPages.TabIndex := 1;
 
     tsAccountH.TabVisible := False;
 
@@ -261,20 +266,31 @@ end;
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
 begin
   if (frmLogin.bLogin) or (frmSignup.bLogin) then // Check if Login
-    bLoggedIn := True;
+    bLoggedIn := True
+  else
+    bLoggedIn := False;
 
   if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then // Check account type
     bIsUser := False
   else if (frmLogin.bIsUser) and (frmSignup.bIsUser) then
     bIsUser := True;
 
-  if (frmLogin.sUsername <> '') then
+  if (frmLogin.sUsername <> '') then // Get Username
   begin
     sUsername := frmLogin.sUsername;
   end
-  else if (frmSignup.sUsername <>) then
+  else if (frmSignup.sUsername <> '') then
   begin
     sUsername := frmSignup.sUsername;
+  end;
+
+  if (frmLogin.iProfilePicIndex <> -1) then // Get PF index
+  begin
+    iProfilePicIndex := frmLogin.iProfilePicIndex;
+  end
+  else if (frmSignup.iProfilePicIndex <> -1) then
+  begin
+    iProfilePicIndex := frmSignup.iProfilePicIndex;
   end;
 
   if (bLoggedIn) and (bIsUser) then
@@ -283,6 +299,19 @@ begin
     tsCheckout.TabVisible := True;
     tsGUICreator.TabVisible := True;
     tsAccountH.TabVisible := True;
+
+    tsPriceEditor.TabVisible := False;
+    tsTaskList.TabVisible := False;
+
+    lblAccountHWelcome.Caption := 'Welcome ' + sUsername;
+
+    case iProfilePicIndex of
+      1: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
+      2: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf2.png');
+      3: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf3.png');
+      4: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf4.png');
+      5: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf5.png');
+    end;
 
     pgcPages.TabIndex := pgcPages.TabIndex - 1;
     tsAccount.TabVisible := False;
@@ -295,8 +324,22 @@ begin
     tsTaskList.TabVisible := True;
     tsAccountH.TabVisible := True;
 
-    pgcPages.TabIndex := pgcPages.TabIndex - 1;
+    tsApply.TabVisible := False;
+    tsCheckout.TabVisible := False;
+    tsGUICreator.TabVisible := False;
     tsAccount.TabVisible := False;
+
+    lblAccountHWelcome.Caption := 'Welcome ' + sUsername;
+
+    case iProfilePicIndex of
+      1: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
+      2: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf2.png');
+      3: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf3.png');
+      4: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf4.png');
+      5: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf5.png');
+    end;
+
+    pgcPages.TabIndex := pgcPages.TabIndex - 1;
 
     bmbSignOut.Enabled := True;
   end;
