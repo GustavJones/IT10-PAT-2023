@@ -22,7 +22,7 @@ begin
   while not(Eof(FileToRead)) do
   begin
     ReadLn(FileToRead, sTemp);
-    sOutput := sOutput + sTemp;
+    sOutput := sOutput + sTemp + #10;
   end;
   Close(FileToRead);
 
@@ -31,11 +31,33 @@ end;
 
 procedure WriteFile(sFileName: String; sText: String);
 var
+  i, iPrevNewlinePos: Integer;
+  sOutput: String;
   FileToWrite: TextFile;
 begin
+  iPrevNewlinePos := 0;
+
   AssignFile(FileToWrite, sFileName);
   Rewrite(FileToWrite);
-  Write(FileToWrite, sText);
+
+  for i := 1 to Length(sText) do
+  begin
+    if (sText[i] = #10) then
+    begin
+      Inc(iPrevNewlinePos);
+      sOutput := Copy(sText, iPrevNewlinePos, i - iPrevNewlinePos);
+      WriteLn(FileToWrite, sOutput);
+      iPrevNewlinePos := i;
+    end
+    else if (i = Length(sText)) then
+    begin
+      sOutput := Copy(sText, iPrevNewlinePos + 1, i - iPrevNewlinePos + 1);
+      Write(FileToWrite, sOutput);
+      iPrevNewlinePos := i;
+    end;
+  end;
+
+  // Write(FileToWrite, sText);
   Close(FileToWrite);
 end;
 

@@ -66,9 +66,6 @@ object frmApplicationInformation: TfrmApplicationInformation
     Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
-    Lines.Strings = (
-      'This will Contain Developer '
-      'comments (ReadOnly)')
     ParentFont = False
     ReadOnly = True
     ScrollBars = ssVertical

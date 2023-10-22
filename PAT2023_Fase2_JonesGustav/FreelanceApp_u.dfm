@@ -3,8 +3,8 @@ object frmFreelanceApp: TfrmFreelanceApp
   Left = 378
   Top = 89
   Caption = 'Freelance Application'
-  ClientHeight = 482
-  ClientWidth = 628
+  ClientHeight = 481
+  ClientWidth = 624
   Color = clWindow
   Constraints.MinHeight = 520
   Constraints.MinWidth = 640
@@ -25,7 +25,7 @@ object frmFreelanceApp: TfrmFreelanceApp
   object lblTitle: TLabel
     Left = 5
     Top = 2
-    Width = 618
+    Width = 614
     Height = 40
     Align = alTop
     Alignment = taCenter
@@ -39,14 +39,14 @@ object frmFreelanceApp: TfrmFreelanceApp
     ParentColor = False
     ParentFont = False
     Transparent = True
-    ExplicitWidth = 390
+    ExplicitWidth = 348
   end
   object pgcPages: TPageControl
     AlignWithMargins = True
     Left = 8
     Top = 45
-    Width = 612
-    Height = 388
+    Width = 608
+    Height = 387
     ActivePage = tsAccount
     Align = alClient
     TabOrder = 0
@@ -58,8 +58,8 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 150
         Top = 45
-        Width = 304
-        Height = 259
+        Width = 300
+        Height = 258
         Margins.Left = 150
         Margins.Top = 5
         Margins.Right = 150
@@ -4052,12 +4052,13 @@ object frmFreelanceApp: TfrmFreelanceApp
         Proportional = True
         Stretch = True
         ExplicitTop = 5
+        ExplicitWidth = 304
         ExplicitHeight = 228
       end
       object lblAccountHWelcome: TLabel
         Left = 0
         Top = 0
-        Width = 133
+        Width = 600
         Height = 40
         Align = alTop
         Alignment = taCenter
@@ -4071,18 +4072,19 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentColor = False
         ParentFont = False
         Transparent = False
+        ExplicitWidth = 133
       end
       object pnlAccountHBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 312
-        Width = 598
+        Top = 311
+        Width = 594
         Height = 43
         Align = alBottom
         TabOrder = 0
         object btnAccountHNext: TButton
           AlignWithMargins = True
-          Left = 490
+          Left = 486
           Top = 6
           Width = 100
           Height = 31
@@ -4124,8 +4126,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object imgAccountAccount: TImage
         Left = 0
         Top = 0
-        Width = 604
-        Height = 286
+        Width = 600
+        Height = 285
         Align = alClient
         Center = True
         Picture.Data = {
@@ -13278,8 +13280,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object btnAccountLogin: TButton
         AlignWithMargins = True
         Left = 170
-        Top = 325
-        Width = 264
+        Top = 324
+        Width = 260
         Height = 30
         Margins.Left = 170
         Margins.Right = 170
@@ -13297,8 +13299,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object btnAccountSignUp: TButton
         AlignWithMargins = True
         Left = 170
-        Top = 289
-        Width = 264
+        Top = 288
+        Width = 260
         Height = 30
         Margins.Left = 170
         Margins.Right = 170
@@ -13320,7 +13322,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyTitle: TLabel
         Left = 0
         Top = 0
-        Width = 604
+        Width = 600
         Height = 28
         Align = alTop
         Alignment = taCenter
@@ -13336,7 +13338,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyDescription: TLabel
         Left = 0
         Top = 63
-        Width = 604
+        Width = 600
         Height = 21
         Align = alTop
         Alignment = taCenter
@@ -13352,7 +13354,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyDueDate: TLabel
         Left = 0
         Top = 180
-        Width = 604
+        Width = 600
         Height = 25
         Align = alTop
         Alignment = taCenter
@@ -13368,14 +13370,14 @@ object frmFreelanceApp: TfrmFreelanceApp
       object pnlApplyBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 312
-        Width = 598
+        Top = 311
+        Width = 594
         Height = 43
         Align = alBottom
         TabOrder = 0
         object btnApplyNext: TButton
           AlignWithMargins = True
-          Left = 490
+          Left = 486
           Top = 6
           Width = 100
           Height = 31
@@ -13390,7 +13392,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnEditGUI: TButton
           AlignWithMargins = True
-          Left = 169
+          Left = 165
           Top = 6
           Width = 100
           Height = 31
@@ -13422,7 +13424,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnHome: TButton
           AlignWithMargins = True
-          Left = 276
+          Left = 272
           Top = 6
           Width = 100
           Height = 31
@@ -13437,7 +13439,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnApplyBack: TButton
           AlignWithMargins = True
-          Left = 383
+          Left = 379
           Top = 6
           Width = 100
           Height = 31
@@ -13455,7 +13457,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 25
         Top = 31
-        Width = 554
+        Width = 550
         Height = 29
         Margins.Left = 25
         Margins.Right = 25
@@ -13473,7 +13475,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 25
         Top = 87
-        Width = 554
+        Width = 550
         Height = 90
         Margins.Left = 25
         Margins.Right = 25
@@ -13491,20 +13493,20 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 60
         Top = 208
-        Width = 484
+        Width = 480
         Height = 23
         Margins.Left = 60
         Margins.Right = 60
         Align = alTop
-        Date = 45189.000000000000000000
+        Date = 45220.000000000000000000
         Time = 0.573046990743023300
         TabOrder = 3
       end
       object btnApply: TButton
         AlignWithMargins = True
         Left = 250
-        Top = 281
-        Width = 104
+        Top = 280
+        Width = 100
         Height = 23
         Margins.Left = 250
         Margins.Top = 5
@@ -13519,7 +13521,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 250
         Top = 241
-        Width = 104
+        Width = 100
         Height = 24
         Margins.Left = 250
         Margins.Top = 7
@@ -13543,7 +13545,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblCheckoutInformation: TLabel
         Left = 0
         Top = 0
-        Width = 604
+        Width = 600
         Height = 29
         Align = alTop
         Alignment = taCenter
@@ -13556,12 +13558,12 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentFont = False
         ExplicitWidth = 260
       end
-      object ltbCheckoutItems: TListBox
+      object lstCheckoutItems: TListBox
         AlignWithMargins = True
         Left = 3
         Top = 32
-        Width = 598
-        Height = 243
+        Width = 594
+        Height = 242
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -13569,19 +13571,14 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ItemHeight = 21
-        Items.Strings = (
-          'List'
-          'Of'
-          'Individual'
-          'Items')
         ParentFont = False
         TabOrder = 0
       end
       object btnCheckoutApplicationInformation: TButton
         AlignWithMargins = True
         Left = 200
-        Top = 281
-        Width = 204
+        Top = 280
+        Width = 200
         Height = 25
         Margins.Left = 200
         Margins.Right = 200
@@ -13593,14 +13590,14 @@ object frmFreelanceApp: TfrmFreelanceApp
       object pnlCheckoutBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 312
-        Width = 598
+        Top = 311
+        Width = 594
         Height = 43
         Align = alBottom
         TabOrder = 2
         object btnCheckoutNext: TButton
           AlignWithMargins = True
-          Left = 490
+          Left = 486
           Top = 6
           Width = 100
           Height = 31
@@ -13615,7 +13612,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnCheckoutCreateGUI: TButton
           AlignWithMargins = True
-          Left = 169
+          Left = 165
           Top = 6
           Width = 100
           Height = 31
@@ -13628,26 +13625,9 @@ object frmFreelanceApp: TfrmFreelanceApp
           TabOrder = 1
           OnClick = btnEditGUIClick
         end
-        object bmbCheckoutReset: TBitBtn
-          AlignWithMargins = True
-          Left = 8
-          Top = 6
-          Width = 81
-          Height = 31
-          Margins.Left = 7
-          Margins.Top = 5
-          Margins.Right = 0
-          Margins.Bottom = 5
-          Align = alLeft
-          Caption = 'Reset'
-          Kind = bkRetry
-          NumGlyphs = 2
-          TabOrder = 2
-          OnClick = bmbResetClick
-        end
         object btnCheckoutHome: TButton
           AlignWithMargins = True
-          Left = 276
+          Left = 272
           Top = 6
           Width = 100
           Height = 31
@@ -13657,12 +13637,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           Margins.Bottom = 5
           Align = alRight
           Caption = 'Home'
-          TabOrder = 3
+          TabOrder = 2
           OnClick = btnHomeClick
         end
         object btnCheckoutBack: TButton
           AlignWithMargins = True
-          Left = 383
+          Left = 379
           Top = 6
           Width = 100
           Height = 31
@@ -13672,7 +13652,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Margins.Bottom = 5
           Align = alRight
           Caption = 'Back'
-          TabOrder = 4
+          TabOrder = 3
           OnClick = btnBackClick
         end
       end
@@ -13685,8 +13665,8 @@ object frmFreelanceApp: TfrmFreelanceApp
         AlignWithMargins = True
         Left = 15
         Top = 15
-        Width = 574
-        Height = 260
+        Width = 570
+        Height = 259
         Margins.Left = 15
         Margins.Top = 15
         Margins.Right = 15
@@ -13697,24 +13677,20 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ItemHeight = 21
-        Items.Strings = (
-          'List'
-          'Of'
-          'Tasks')
         ParentFont = False
         TabOrder = 0
       end
       object pnlTaskListBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 312
-        Width = 598
+        Top = 311
+        Width = 594
         Height = 43
         Align = alBottom
         TabOrder = 1
         object btnTaskListNext: TButton
           AlignWithMargins = True
-          Left = 490
+          Left = 486
           Top = 6
           Width = 100
           Height = 31
@@ -13746,7 +13722,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnTaskListHome: TButton
           AlignWithMargins = True
-          Left = 276
+          Left = 272
           Top = 6
           Width = 100
           Height = 31
@@ -13761,7 +13737,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnTaskListBack: TButton
           AlignWithMargins = True
-          Left = 383
+          Left = 379
           Top = 6
           Width = 100
           Height = 31
@@ -13778,8 +13754,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object btnTaskListEdit: TButton
         AlignWithMargins = True
         Left = 250
-        Top = 281
-        Width = 104
+        Top = 280
+        Width = 100
         Height = 25
         Margins.Left = 250
         Margins.Right = 250
@@ -13795,10 +13771,10 @@ object frmFreelanceApp: TfrmFreelanceApp
       TabVisible = False
       object imgPriceEditorMoneyIcon: TImage
         AlignWithMargins = True
-        Left = 304
+        Left = 300
         Top = 10
         Width = 297
-        Height = 249
+        Height = 248
         Margins.Top = 10
         Margins.Bottom = 15
         Align = alRight
@@ -14621,12 +14597,14 @@ object frmFreelanceApp: TfrmFreelanceApp
           426082}
         Proportional = True
         Stretch = True
+        ExplicitLeft = 304
+        ExplicitHeight = 249
       end
       object pnlPriceEditorBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 312
-        Width = 598
+        Top = 311
+        Width = 594
         Height = 43
         Align = alBottom
         TabOrder = 0
@@ -14649,7 +14627,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnPriceEditorHome: TButton
           AlignWithMargins = True
-          Left = 383
+          Left = 379
           Top = 6
           Width = 100
           Height = 31
@@ -14664,7 +14642,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnPriceEditorBack: TButton
           AlignWithMargins = True
-          Left = 490
+          Left = 486
           Top = 6
           Width = 100
           Height = 31
@@ -14681,8 +14659,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object btnPriceEditorSave: TButton
         AlignWithMargins = True
         Left = 150
-        Top = 284
-        Width = 304
+        Top = 283
+        Width = 300
         Height = 25
         Margins.Left = 150
         Margins.Top = 10
@@ -14696,14 +14674,14 @@ object frmFreelanceApp: TfrmFreelanceApp
         Left = 0
         Top = 0
         Width = 298
-        Height = 274
+        Height = 273
         Align = alLeft
         TabOrder = 2
         object lblPriceEditorConsultFee: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 76
-          Width = 105
+          Width = 290
           Height = 25
           Margins.Top = 15
           Align = alTop
@@ -14717,12 +14695,13 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
+          ExplicitWidth = 105
         end
         object lblPriceEditorPricePerLine: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 4
-          Width = 124
+          Width = 290
           Height = 25
           Align = alTop
           Caption = 'Price Per Line: '
@@ -14735,12 +14714,13 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
+          ExplicitWidth = 124
         end
         object lblPriceEditorPriorityCost: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 148
-          Width = 111
+          Width = 290
           Height = 25
           Margins.Top = 15
           Align = alTop
@@ -14754,6 +14734,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
+          ExplicitWidth = 111
         end
         object edtPriceEditorPricePerLine: TEdit
           AlignWithMargins = True
@@ -14794,8 +14775,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object pnlGUICreatorBottom: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 312
-        Width = 598
+        Top = 311
+        Width = 594
         Height = 43
         Align = alBottom
         TabOrder = 0
@@ -14818,7 +14799,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnGUICreatorHome: TButton
           AlignWithMargins = True
-          Left = 383
+          Left = 379
           Top = 6
           Width = 100
           Height = 31
@@ -14833,7 +14814,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
         object btnGUICreatorBack: TButton
           AlignWithMargins = True
-          Left = 490
+          Left = 486
           Top = 6
           Width = 100
           Height = 31
@@ -14850,8 +14831,8 @@ object frmFreelanceApp: TfrmFreelanceApp
       object pnlGUICreatorForm: TPanel
         Left = 145
         Top = 0
-        Width = 335
-        Height = 309
+        Width = 331
+        Height = 308
         Align = alClient
         TabOrder = 1
       end
@@ -14859,7 +14840,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Left = 0
         Top = 0
         Width = 145
-        Height = 309
+        Height = 308
         Align = alLeft
         Caption = 'Object List'
         Font.Charset = ANSI_CHARSET
@@ -14874,7 +14855,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 31
-          Width = 37
+          Width = 137
           Height = 21
           Margins.Top = 30
           Align = alTop
@@ -14886,6 +14867,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 37
         end
         object btnGUICreatorButton: TButton
           AlignWithMargins = True
@@ -14988,10 +14970,10 @@ object frmFreelanceApp: TfrmFreelanceApp
         end
       end
       object pnlGUICreatorObjectEditor: TPanel
-        Left = 480
+        Left = 476
         Top = 0
         Width = 124
-        Height = 309
+        Height = 308
         Align = alRight
         Caption = 'Object Editor'
         Ctl3D = True
@@ -15008,7 +14990,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 41
-          Width = 61
+          Width = 116
           Height = 17
           Margins.Top = 40
           Align = alTop
@@ -15019,12 +15001,13 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 61
         end
         object lblGUICreatorPosY: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 97
-          Width = 60
+          Width = 116
           Height = 17
           Align = alTop
           Caption = 'Position Y:'
@@ -15034,12 +15017,13 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 60
         end
         object lblGUICreatorCaption: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 153
-          Width = 48
+          Width = 116
           Height = 17
           Align = alTop
           Caption = 'Caption:'
@@ -15049,6 +15033,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          ExplicitWidth = 48
         end
         object sedGUICreatorPosX: TSpinEdit
           AlignWithMargins = True
@@ -15108,8 +15093,8 @@ object frmFreelanceApp: TfrmFreelanceApp
   object pnlBottom: TPanel
     AlignWithMargins = True
     Left = 8
-    Top = 438
-    Width = 612
+    Top = 437
+    Width = 608
     Height = 41
     Margins.Top = 2
     Margins.Bottom = 1
@@ -15121,7 +15106,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     TabOrder = 1
     object bmbClose: TBitBtn
       AlignWithMargins = True
-      Left = 516
+      Left = 512
       Top = 7
       Width = 81
       Height = 27
@@ -15138,7 +15123,7 @@ object frmFreelanceApp: TfrmFreelanceApp
     end
     object bmbHelp: TBitBtn
       AlignWithMargins = True
-      Left = 405
+      Left = 401
       Top = 7
       Width = 81
       Height = 27

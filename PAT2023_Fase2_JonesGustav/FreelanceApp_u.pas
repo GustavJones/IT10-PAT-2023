@@ -37,7 +37,7 @@ type
     btnAccountSignUp: TButton;
     tsGUICreator: TTabSheet;
     lblCheckoutInformation: TLabel;
-    ltbCheckoutItems: TListBox;
+    lstCheckoutItems: TListBox;
     btnCheckoutApplicationInformation: TButton;
     btnHome: TButton;
     tsAccountH: TTabSheet;
@@ -49,7 +49,6 @@ type
     pnlCheckoutBottom: TPanel;
     btnCheckoutNext: TButton;
     btnCheckoutCreateGUI: TButton;
-    bmbCheckoutReset: TBitBtn;
     btnCheckoutHome: TButton;
     btnApplyBack: TButton;
     btnCheckoutBack: TButton;
@@ -114,9 +113,9 @@ type
     procedure btnAccountHChangePasswordClick(Sender: TObject);
   private
   var
-    sUsername : String;
+    sUsername: String;
     bIsUser: Boolean;
-    iProfilePicIndex : Integer;
+    iProfilePicIndex: Integer;
 
     iDefaultWidth: Integer;
     iDefaultHeight: Integer;
@@ -154,7 +153,9 @@ end;
 
 procedure TfrmFreelanceApp.bmbResetClick(Sender: TObject);
 begin
-  //
+  edtApplyTaskName.Text := '';
+  redApplyDescription.Lines.Clear;
+  chkApplyPriority.Checked := False;
 end;
 
 procedure TfrmFreelanceApp.bmbSignOutClick(Sender: TObject);
@@ -195,7 +196,56 @@ end;
 
 procedure TfrmFreelanceApp.btnCheckoutApplicationInformationClick
   (Sender: TObject);
+var
+  sFileInput: String;
+  sComments: String;
+  i, iPrevNewlinePos: Integer;
+
+  rCost: Real;
+
 begin
+  iPrevNewlinePos := 1;
+
+  if (lstCheckoutItems.ItemIndex = -1) then
+  begin
+    ShowMessage('Please select a task');
+    exit;
+  end;
+
+  sFileInput := FileIO_u.ReadFile(lstCheckoutItems.Items
+    [lstCheckoutItems.ItemIndex] + '.json');
+
+  if (Parser_u.ReadEntryValue(sFileInput, 4) = '0') then
+  begin
+    frmApplicationInformation.lblStatus.Caption := 'In Progress';
+  end
+  else
+  begin
+    frmApplicationInformation.lblStatus.Caption := 'Completed';
+  end;
+
+  frmApplicationInformation.lblLinesOfCode.Caption := 'Lines Of Code: ' +
+    Parser_u.ReadEntryValue(sFileInput, 5);
+
+  sComments := Parser_u.ReadEntryValue(sFileInput, 6);
+
+  for i := 1 to Length(sComments) do
+  begin
+    if (sComments[i] = '\') then
+    begin
+      if (i <> Length(sComments)) and (sComments[i + 1] = 'n') then
+
+        frmApplicationInformation.redComments.Lines.Add
+          (Copy(sComments, iPrevNewlinePos, i - iPrevNewlinePos));
+      iPrevNewlinePos := i;
+    end;
+  end;
+
+  rCost := StrToFloat(Parser_u.ReadEntryValue(sFileInput, 7));
+
+  frmApplicationInformation.lblTotalCost.Caption := 'Total Cost: ' +
+    FloatToStrF(rCost, ffCurrency, 10, 2);
+
   frmApplicationInformation.Show;
 end;
 
@@ -217,11 +267,17 @@ end;
 procedure TfrmFreelanceApp.btnAccountHChangePasswordClick(Sender: TObject);
 var
   sFileContent: String;
-  sPassword : String;
-  sOutput : String;
+  sPassword: String;
+  sOutput: String;
 begin
   sFileContent := FileIO_u.ReadFile(sUsername + '.json');
   sPassword := InputBox('Change Password', 'Enter a new Password: ', '');
+
+  if (sPassword = '') then
+  begin
+    exit;
+  end;
+
   sOutput := Parser_u.WriteEntryValue(sFileContent, sPassword, 2);
   FileIO_u.WriteFile(sUsername + '.json', sOutput);
 end;
@@ -238,36 +294,209 @@ end;
 
 procedure TfrmFreelanceApp.btnApplyClick(Sender: TObject);
 var
-  sName: String;
+  sTaskName: String;
   sDescription: String;
-  dDate: TDate;
+  dDueDate: TDate;
   bPriority: Boolean;
   i: Integer;
+  sOutput: String;
+  sUserOutput: String;
+  sTaskList: String;
 begin
-  sName := edtApplyTaskName.Text;
-  for i := 1 to redApplyDescription.Lines.Count do
+  sTaskName := edtApplyTaskName.Text;
+
+  if (Length(sTaskName) < 1) or (Length(sTaskName) > 50) then
   begin
-    sDescription := sDescription + redApplyDescription.Lines[i];
+    ShowMessage('Incorrect Message Length');
+    exit;
   end;
 
-  // sDescription := redApplyDescription.Lines;
-  dDate := dtpApplyDueDate.Date;
+  for i := 1 to Length(sTaskName) do
+  begin
+    if (sTaskName[i] in ['@', '#', '$', '%', '^', '*', '(', ')']) then
+    begin
+      ShowMessage('Please remove special character from task name');
+      exit;
+    end;
+  end;
+
+  for i := 1 to redApplyDescription.Lines.Count do
+  begin
+    sDescription := sDescription + redApplyDescription.Lines[i] + '\n';
+  end;
+
+  dDueDate := dtpApplyDueDate.Date;
   bPriority := chkApplyPriority.Checked;
+
+  if (sTaskName = '') then
+  begin
+    ShowMessage('Please enter a name');
+    exit;
+  end;
+
+  if (sDescription = '') then
+  begin
+    ShowMessage('Please enter a description');
+    exit;
+  end;
+
+  if (dDueDate <= Date()) then
+  begin
+    ShowMessage('Please request date in the future');
+    exit;
+  end;
+
+  sOutput := Parser_u.CreateEntry
+    ('Description,Date,Priority,Status,LinesOfCode,Comments,TotalCost');
+  sOutput := Parser_u.WriteEntryValue(sOutput, sDescription, 1);
+  sOutput := Parser_u.WriteEntryValue(sOutput, DateToStr(dDueDate), 2);
+
+  if (bPriority) then
+  begin
+    sOutput := Parser_u.WriteEntryValue(sOutput, 'True', 3);
+  end
+  else
+  begin
+    sOutput := Parser_u.WriteEntryValue(sOutput, 'False', 3);
+  end;
+
+  sOutput := Parser_u.WriteEntryValue(sOutput, '0', 4);
+  sOutput := Parser_u.WriteEntryValue(sOutput, '0', 5);
+  sOutput := Parser_u.WriteEntryValue(sOutput, '0', 7);
+
+  FileIO_u.CreateFile(sTaskName + '.json');
+  FileIO_u.WriteFile(sTaskName + '.json', sOutput);
+
+  ShowMessage('Application Requested! Thanks For using Code Hub Marketplace');
+  lstCheckoutItems.Items.Add(sTaskName);
+  sUserOutput := FileIO_u.ReadFile(sUsername + '.json');
+
+  sTaskList := Parser_u.ReadEntryValue(sUserOutput, 6);
+
+  if (sTaskList = '') then
+  begin
+    sUserOutput := Parser_u.WriteEntryValue(sUserOutput, sTaskName, 6);
+  end
+  else
+  begin
+    sUserOutput := Parser_u.WriteEntryValue(sUserOutput,
+      sTaskList + ',' + sTaskName, 6);
+  end;
+
+  FileIO_u.WriteFile(sUsername + '.json', sUserOutput);
+
+  FileIO_u.WriteFile('tasks.txt', FileIO_u.ReadFile('tasks.txt') +
+    sTaskName + #10);
 end;
 
 procedure TfrmFreelanceApp.btnTaskListEditClick(Sender: TObject);
+var
+  sFileInput : String;
+  sTaskName : String;
+  sDescription : String;
+  sDescriptionLine : String;
+  sComments : String;
+  sCommentsLine : String;
+  bPriority : Boolean;
+
+  i, iPrevNewlinePos : Integer;
 begin
+  iPrevNewlinePos := 1;
+  frmTaskEditor.lblProjectName.Caption := 'Project Name: ';
+  frmTaskEditor.redDescription.Lines.Clear;
+  frmTaskEditor.chkPriority.Checked := False;
+  frmTaskEditor.sedLinesOfCode.Value := 0;
+
+  if (lstTaskListItems.ItemIndex = -1) then
+  begin
+    ShowMessage('Please Select a task');
+    exit;
+  end;
+
+  sTaskName := lstTaskListItems.Items[lstTaskListItems.ItemIndex];
+
+  frmTaskEditor.lblProjectName.Caption := 'Project Name: ' + sTaskName;
+
+  sFileInput := FileIO_u.ReadFile(sTaskName + '.json');
+  sDescription := Parser_u.ReadEntryValue(sFileInput, 1);
+
+  for i := 1 to Length(sDescription) do
+  begin
+    if (i < Length(sDescription)) and (sDescription[i] = '\') and (sDescription[i + 1] = 'n') then
+    begin
+      sDescriptionLine := Copy(sDescription, iPrevNewlinePos, i - iPrevNewlinePos);
+      if (sDescriptionLine = '') then
+      begin
+        frmTaskEditor.redDescription.Lines.Add('');
+      end
+      else
+        frmTaskEditor.redDescription.Lines.Add(sDescriptionLine);
+      iPrevNewlinePos := i + 2;
+    end;
+  end;
+
+  sComments := Parser_u.ReadEntryValue(sFileInput, 6);
+  iPrevNewlinePos := 1;
+
+  for i := 1 to Length(sComments) do
+  begin
+    if (i < Length(sComments)) and (sComments[i] = '\') and (sComments[i + 1] = 'n') then
+    begin
+      sCommentsLine := Copy(sComments, iPrevNewlinePos, i - iPrevNewlinePos);
+      if (sCommentsLine = '') then
+      begin
+        frmTaskEditor.redComments.Lines.Add('');
+      end
+      else
+        frmTaskEditor.redComments.Lines.Add(sCommentsLine);
+      iPrevNewlinePos := i + 2;
+    end;
+  end;
+
+  if (Parser_u.ReadEntryValue(sFileInput, 3) = 'True') then
+  begin
+    bPriority := True;
+  end
+  else
+  begin
+    bPriority := False;
+  end;
+
+  frmTaskEditor.bPriority := bPriority;
+  frmTaskEditor.chkPriority.Checked := bPriority;
+  frmTaskEditor.sedLinesOfCode.Value := StrToInt(Parser_u.ReadEntryValue(sFileInput, 5));
+  if (Parser_u.ReadEntryValue(sFileInput, 4) = '0') then
+  begin
+    frmTaskEditor.chkCompleted.Checked := False;
+  end
+  else
+  begin
+    frmTaskEditor.chkCompleted.Checked := True;
+  end;
+
   frmTaskEditor.Show;
 end;
 
 procedure TfrmFreelanceApp.FormActivate(Sender: TObject);
+var
+  sName: String;
+  sTasks: String;
+  i, iPrevNewlinePos: Integer;
 begin
+  iPrevNewlinePos := 1;
+
+  if not(FileIO_u.FileExists('tasks.txt')) then
+  begin
+    FileIO_u.CreateFile('tasks.txt');
+  end;
+
   if (frmLogin.bLogin) or (frmSignup.bLogin) then // Check if Login
     bLoggedIn := True
   else
     bLoggedIn := False;
 
-  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then // Check account type
+  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then
+    // Check account type
     bIsUser := False
   else if (frmLogin.bIsUser) and (frmSignup.bIsUser) then
     bIsUser := True;
@@ -290,7 +519,7 @@ begin
     iProfilePicIndex := frmSignup.iProfilePicIndex;
   end;
 
-  if (bLoggedIn) and (bIsUser) then
+  if (bLoggedIn) and (bIsUser) then // Activate tabsheets
   begin
     tsApply.TabVisible := True;
     tsCheckout.TabVisible := True;
@@ -300,14 +529,40 @@ begin
     tsPriceEditor.TabVisible := False;
     tsTaskList.TabVisible := False;
 
-    lblAccountHWelcome.Caption := 'Welcome ' + sUsername;
+    lstCheckoutItems.Items.Clear;
+    sTasks := Parser_u.ReadEntryValue
+      (FileIO_u.ReadFile(sUsername + '.json'), 6);
+
+    for i := 1 to Length(sTasks) do // Update Task List
+    begin
+      if (sTasks[i] = ',') then
+      begin
+        lstCheckoutItems.Items.Add(Copy(sTasks, iPrevNewlinePos,
+          i - iPrevNewlinePos));
+        iPrevNewlinePos := i + 1;
+      end
+      else if (i = Length(sTasks)) then
+      begin
+        lstCheckoutItems.Items.Add(Copy(sTasks, iPrevNewlinePos,
+          i - iPrevNewlinePos + 1));
+      end;
+    end;
+
+    sName := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 1);
+
+    lblAccountHWelcome.Caption := 'Welcome ' + sName;
 
     case iProfilePicIndex of
-      1: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
-      2: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf2.png');
-      3: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf3.png');
-      4: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf4.png');
-      5: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf5.png');
+      1:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
+      2:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf2.png');
+      3:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf3.png');
+      4:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf4.png');
+      5:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf5.png');
     end;
 
     pgcPages.TabIndex := pgcPages.TabIndex - 1;
@@ -326,20 +581,45 @@ begin
     tsGUICreator.TabVisible := False;
     tsAccount.TabVisible := False;
 
-    lblAccountHWelcome.Caption := 'Welcome ' + sUsername;
+    lstTaskListItems.Items.Clear;
+    sTasks := FileIO_u.ReadFile('tasks.txt');
+
+    for i := 1 to Length(sTasks) do // Update Task List
+    begin
+      if (sTasks[i] = #10) then
+      begin
+        lstTaskListItems.Items.Add(Copy(sTasks, iPrevNewlinePos,
+          i - iPrevNewlinePos));
+        iPrevNewlinePos := i + 1;
+      end
+      else if (i = Length(sTasks)) then
+      begin
+        lstTaskListItems.Items.Add(Copy(sTasks, iPrevNewlinePos,
+          i - iPrevNewlinePos + 1));
+      end;
+    end;
+
+    sName := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 1);
+    lblAccountHWelcome.Caption := 'Welcome ' + sName;
 
     case iProfilePicIndex of
-      1: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
-      2: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf2.png');
-      3: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf3.png');
-      4: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf4.png');
-      5: imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf5.png');
+      1:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
+      2:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf2.png');
+      3:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf3.png');
+      4:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf4.png');
+      5:
+        imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf5.png');
     end;
 
     pgcPages.TabIndex := pgcPages.TabIndex - 1;
 
     bmbSignOut.Enabled := True;
   end;
+
 end;
 
 procedure TfrmFreelanceApp.FormCreate(Sender: TObject);

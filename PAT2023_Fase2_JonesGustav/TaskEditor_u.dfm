@@ -16,9 +16,9 @@ object frmTaskEditor: TfrmTaskEditor
   object lblProjectName: TLabel
     Left = 8
     Top = 16
-    Width = 266
+    Width = 123
     Height = 25
-    Caption = 'Project Name: $PROJECT NAME'
+    Caption = 'Project Name: '
   end
   object lblDescription: TLabel
     Left = 8
@@ -49,9 +49,9 @@ object frmTaskEditor: TfrmTaskEditor
     Caption = 'Total Cost: '
   end
   object sedLinesOfCode: TSpinEdit
-    Left = 224
+    Left = 176
     Top = 260
-    Width = 169
+    Width = 217
     Height = 35
     MaxValue = 0
     MinValue = 0
@@ -60,16 +60,14 @@ object frmTaskEditor: TfrmTaskEditor
   end
   object redDescription: TRichEdit
     Left = 8
-    Top = 95
+    Top = 96
     Width = 385
-    Height = 50
+    Height = 63
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
-    Lines.Strings = (
-      'This will Contain the user description (ReadOnly)')
     ParentFont = False
     ReadOnly = True
     ScrollBars = ssVertical
@@ -90,6 +88,7 @@ object frmTaskEditor: TfrmTaskEditor
     Height = 25
     Caption = 'Save'
     TabOrder = 3
+    OnClick = btnSaveClick
   end
   object redComments: TRichEdit
     Left = 8
@@ -101,8 +100,6 @@ object frmTaskEditor: TfrmTaskEditor
     Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
-    Lines.Strings = (
-      'This will Contain the developer comments')
     ParentFont = False
     ScrollBars = ssVertical
     TabOrder = 4
@@ -121,5 +118,16 @@ object frmTaskEditor: TfrmTaskEditor
     Kind = bkRetry
     NumGlyphs = 2
     TabOrder = 5
+    OnClick = bmbResetClick
+  end
+  object chkPriority: TCheckBox
+    Left = 224
+    Top = 64
+    Width = 97
+    Height = 26
+    Alignment = taLeftJustify
+    Caption = 'Priority: '
+    TabOrder = 6
+    OnMouseLeave = chkPriorityMouseLeave
   end
 end

@@ -13,7 +13,7 @@ type
     edtUsername: TEdit;
     pnlSignUp: TPanel;
     edtPassword: TEdit;
-    lblCrededentials: TLabel;
+    lblCredentials: TLabel;
     edtConfirmPassword: TEdit;
     btnSignUp: TButton;
     pnlIcons: TPanel;
@@ -41,8 +41,8 @@ type
   public
   var
     bLogin: Boolean;
-    sUsername : String;
-    iProfilePicIndex : Integer;
+    sUsername: String;
+    iProfilePicIndex: Integer;
     bIsUser: Boolean;
   end;
 
@@ -137,7 +137,7 @@ begin
     FileIO_u.CreateFile(sUsername + '.json');
   end;
 
-  sEntry := Parser_u.CreateEntry('Name,Password,Age,UserType,ProfilePic');
+  sEntry := Parser_u.CreateEntry('Name,Password,Age,UserType,ProfilePic,Tasks,PPL,ConsultFee,PriorityCost');
 
   sEntry := Parser_u.WriteEntryValue(sEntry, sName, 1);
   sEntry := Parser_u.WriteEntryValue(sEntry, sPassword, 2);
