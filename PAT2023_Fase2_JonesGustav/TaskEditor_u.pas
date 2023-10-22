@@ -47,14 +47,17 @@ var
   iPrevNewlinePos : Integer;
   i : Integer;
 begin
+  // Clears comments and get taskname
   redComments.Lines.Clear;
   sTaskName := Copy(lblProjectName.Caption, Length('Project Name: ') + 1, Length(lblProjectName.Caption) - Length('Project Name: '));
 
+  // Read task file
   sFileInput := FileIO_u.ReadFile(sTaskName + '.json');
 
   sComments := Parser_u.ReadEntryValue(sFileInput, 6);
   iPrevNewlinePos := 1;
 
+  // Output comments from file to redComments
   for i := 1 to Length(sComments) do
   begin
     if (i < Length(sComments)) and (sComments[i] = '\') and (sComments[i + 1] = 'n') then
@@ -70,6 +73,7 @@ begin
     end;
   end;
 
+  // Get Priority status
   if (Parser_u.ReadEntryValue(sFileInput, 3) = 'True') then
   begin
     bPriority := True;
@@ -103,8 +107,10 @@ var
   sFileInput : String;
   i : Integer;
 begin
+  // Get Taskname
   sTaskName := Copy(lblProjectName.Caption, Length('Project Name: ') + 1, Length(lblProjectName.Caption) - Length('Project Name: '));
 
+  // Read comments from redComments
   for i := 1 to redComments.Lines.Count do
   begin
     if not (redComments.Lines[i - 1] = '') then
@@ -116,6 +122,7 @@ begin
   iLinesOfCode := sedLinesOfCode.Value;
   bCompleted := chkCompleted.Checked;
 
+  // Read Task file
   sFileInput := FileIO_u.ReadFile(sTaskName + '.json');
   sFileInput := Parser_u.WriteEntryValue(sFileInput, sComments, 6);
   sFileInput := Parser_u.WriteEntryValue(sFileInput, IntToStr(iLinesOfCode), 5);
@@ -130,6 +137,7 @@ begin
     sFileInput := Parser_u.WriteEntryValue(sFileInput, '0', 4);
   end;
 
+  // Intitialize price variables
   rPricePerLine := 0;
   rConsultFee := 0;
   rPriorityFee := 0;
@@ -137,6 +145,7 @@ begin
   rCost := 0;
   rTotalCost := 0;
 
+  // Read prices from file
   if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 7) = '') then
     rPricePerLine := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 7));
   if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 8) = '') then
@@ -144,6 +153,7 @@ begin
   if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 9) = '') then
     rPriorityFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 9));
 
+  // Calculate cost
   rCost := iLinesOfCode * rPricePerLine;
   rTotalCost := rCost + rConsultFee;
 
@@ -154,13 +164,16 @@ begin
 
   sFileInput := Parser_u.WriteEntryValue(sFileInput, FloatToStr(rTotalCost), 7);
 
+  // Output cost
   lblTotalCost.Caption := 'Total Cost: ' + FloatToStrF(rTotalCost, ffCurrency, 10, 2);
 
+  // Update cost in file
   FileIO_u.WriteFile(sTaskName + '.json', sFileInput);
 end;
 
 procedure TfrmTaskEditor.chkPriorityMouseLeave(Sender: TObject);
 begin
+  // Change priority to default set value if changed
   chkPriority.Checked := bPriority;
 end;
 

@@ -112,10 +112,6 @@
             <Form>frmLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Help_u.pas">
-            <Form>frmHelp</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="TaskEditor_u.pas">
             <Form>frmTaskEditor</Form>
             <FormType>dfm</FormType>
@@ -153,7 +149,12 @@
             </Platforms>
             <Deployment Version="4">
                 <DeployFile LocalName="FreelanceApp_p.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="FreelanceApp_p.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="FreelanceApp_p.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>FreelanceApp_p.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

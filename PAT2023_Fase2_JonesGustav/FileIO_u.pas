@@ -12,6 +12,7 @@ procedure CreateFile(sFileName: String);
 
 implementation
 
+// Function to read file contents
 function ReadFile(sFileName: string): string;
 var
   FileToRead: TextFile;
@@ -19,6 +20,7 @@ var
 begin
   AssignFile(FileToRead, sFileName);
   Reset(FileToRead);
+  // Loop through file lines
   while not(Eof(FileToRead)) do
   begin
     ReadLn(FileToRead, sTemp);
@@ -40,6 +42,7 @@ begin
   AssignFile(FileToWrite, sFileName);
   Rewrite(FileToWrite);
 
+  // Loop through text to write
   for i := 1 to Length(sText) do
   begin
     if (sText[i] = #10) then
@@ -57,7 +60,6 @@ begin
     end;
   end;
 
-  // Write(FileToWrite, sText);
   Close(FileToWrite);
 end;
 
@@ -65,6 +67,7 @@ procedure ClearFile(sFileName: String);
 var
   FileToClear: TextFile;
 begin
+  // Clears File Text
   AssignFile(FileToClear, sFileName);
   Rewrite(FileToClear);
   Write(FileToClear, '');
@@ -73,6 +76,8 @@ end;
 
 function FileExists(sFileName: String): Boolean;
 begin
+  // Check if a file exists
+
   if (System.SysUtils.FileExists(sFileName)) then
   begin
     Result := True;
@@ -87,6 +92,7 @@ procedure CreateFile(sFileName: String);
 var
   FileToCreate: File;
 begin
+  // Creates a file to use
   System.SysUtils.FileClose(System.SysUtils.FileCreate(sFileName));
 end;
 

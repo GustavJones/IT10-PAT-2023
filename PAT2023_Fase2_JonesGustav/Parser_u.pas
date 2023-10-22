@@ -23,6 +23,7 @@ var
   sOutput: String;
   bFoundComma: Boolean;
 begin
+  // Intitialize
   iKeysCount := 1;
   iOffset := 1;
   iCommaPos := 0;
@@ -31,8 +32,7 @@ begin
   bFoundComma := False;
 
   i := 1;
-  while (i <> Length(sKeysSepByComma)) do
-  // loop through keys string
+  while (i <> Length(sKeysSepByComma)) do // loop through keys string to get keys amount
   begin
     if (sKeysSepByComma[i] = ',') then
     begin
@@ -42,12 +42,11 @@ begin
     Inc(i);
   end;
 
+  // Create output formatted text
   for i := 1 to iKeysCount do
   begin
-    // iCommaPos := Pos(',', sKeysSepByComma, iOffset);
-
     j := iOffset;
-    while not(bFoundComma) do
+    while not(bFoundComma) do // Get Comma positions
     begin
       if (sKeysSepByComma[j] = ',') then
       begin
@@ -63,14 +62,14 @@ begin
       Inc(j);
     end;
 
-    for j := iOffset to iCommaPos - 1 do
+    for j := iOffset to iCommaPos - 1 do // Get key
     begin
       sKey := sKey + sKeysSepByComma[j]
     end;
 
-    sOutput := sOutput + '    "' + sKey + '": ""';
+    sOutput := sOutput + '    "' + sKey + '": ""'; // Output formatted key value pair
 
-    if (i <> iKeysCount) then
+    if (i <> iKeysCount) then // Adds newline if needed
     begin
       sOutput := sOutput + ',' + #10;
     end
@@ -84,6 +83,7 @@ begin
     sKey := '';
   end;
 
+  // Output formatted text
   Result := sOutput;
 end;
 
@@ -105,7 +105,7 @@ begin
   begin
     exit;
   end;
-
+  // Initialize
   iPropertyCount := 0;
   iPropertyPos := 0;
   iKeyQuoteCount := 0;
@@ -135,6 +135,7 @@ begin
     end;
   end;
 
+  // Get Key Start pos
   j := iPropertyPos;
   while not(bHasKey) do // Loop through text
   begin
@@ -151,6 +152,7 @@ begin
     Dec(j);
   end;
 
+  // Get Value end pos
   k := iPropertyPos;
   while not(bHasValue) do
   begin
@@ -172,6 +174,7 @@ begin
     Inc(k);
   end;
 
+  // Get Key value pair middle pos
   for m := 1 to Length(sOutput) do
   begin
     if (sOutput[m] = ':') then
@@ -180,6 +183,7 @@ begin
     end;
   end;
 
+  // Get Seperate start and end pos for key
   for m := iOutputKeyMidPos downto 1 do
   begin
     if (sOutput[m] = '"') then
@@ -193,11 +197,13 @@ begin
     end;
   end;
 
+  // Get Key string
   for n := iOutputKeyStart + 1 to iOutputKeyEnd - 1 do
   begin
     sKeyOutput := sKeyOutput + sOutput[n];
   end;
 
+  // Output key string
   Result := sKeyOutput;
 
 end;
@@ -221,6 +227,7 @@ begin
     exit;
   end;
 
+  // Initialize
   iPropertyCount := 0;
   iPropertyPos := 0;
   iKeyQuoteCount := 0;
@@ -250,6 +257,7 @@ begin
     end;
   end;
 
+  // Get Key start pos
   j := iPropertyPos;
   while not(bHasKey) do // Loop through text
   begin
@@ -266,6 +274,7 @@ begin
     Dec(j);
   end;
 
+  // Get value end pos
   k := iPropertyPos;
   while not(bHasValue) do
   begin
@@ -287,6 +296,7 @@ begin
     Inc(k);
   end;
 
+  // Get Key value pair middle pos
   for m := 1 to Length(sOutput) do
   begin
     if (sOutput[m] = ':') then
@@ -295,6 +305,7 @@ begin
     end;
   end;
 
+  // Get start and end pos for value
   for m := iOutputValueMidPos to Length(sOutput) do
   begin
     if (sOutput[m] = '"') then
@@ -308,11 +319,13 @@ begin
     end;
   end;
 
+  // Extract value from text
   for n := iOutputValueStart + 1 to iOutputValueEnd - 1 do
   begin
     sValueOutput := sValueOutput + sOutput[n];
   end;
 
+  // Output value
   Result := sValueOutput;
 
 end;
@@ -323,6 +336,7 @@ var
 begin
   iEntryCount := 0;
 
+  // Check for amount of : to indicate key value pairs
   for i := 1 to Length(sEntry) do // Loop through text
   begin
     if (sEntry[i] = ':') then // Check for key value pairs
@@ -344,13 +358,14 @@ var
   bPropertyPos: Boolean;
   bPropertyIndex: Boolean;
 begin
-  iKeyPos := Pos(sKey, sEntry);
+  iKeyPos := Pos(sKey, sEntry); // Get Key pos in text
   iQuoteCount := 0;
   iPropertyCount := 0;
   iPropertyPos := 0;
   bPropertyPos := False;
   bPropertyIndex := False;
 
+  // Get Key value pair pos
   i := iKeyPos;
   while not(bPropertyPos) do
   begin
@@ -368,6 +383,7 @@ begin
     Inc(i);
   end;
 
+  // Count key value pairs till at iPropertyPos
   i := 1;
   while not(bPropertyIndex) do
   begin
@@ -384,6 +400,7 @@ begin
     Inc(i);
   end;
 
+  // Output count
   Result := iPropertyCount;
 end;
 
@@ -402,6 +419,7 @@ begin
   iValueEndPos := 0;
   bHasValue := False;
 
+  // Get Property pos and Count
   for i := 1 to Length(sEntry) do // Loop through text
   begin
     if (iPropertyCount = iPropertyIndex) and (sEntry[i - 1] = ':') then
@@ -415,6 +433,7 @@ begin
     end;
   end;
 
+  // Get Value Start and end pos
   i := iPropertyPos;
   while not(bHasValue) do
   begin
@@ -435,8 +454,10 @@ begin
     Inc(i);
   end;
 
+  // Delete old value
   Delete(sEntry, iValueStartPos, iValueEndPos - iValueStartPos + 1);
 
+  // Replace new value
   Insert('"' + sValue + '"', sEntry, iValueStartPos);
 
   Result := sEntry;
@@ -457,6 +478,7 @@ begin
   iKeyEndPos := 0;
   bHasKey := False;
 
+  // Get property count and pos
   for i := 1 to Length(sEntry) do // Loop through text
   begin
     if (iPropertyCount = iPropertyIndex) and (sEntry[i - 1] = ':') then
@@ -470,6 +492,7 @@ begin
     end;
   end;
 
+  // Get key start and end pos
   i := iPropertyPos;
   while not(bHasKey) do
   begin
@@ -490,8 +513,10 @@ begin
     Dec(i);
   end;
 
+  // Delete old key
   Delete(sEntry, iKeyStartPos, iKeyEndPos - iKeyStartPos + 1);
 
+  // Replace new key
   Insert('"' + sKey + '"', sEntry, iKeyStartPos);
 
   Result := sEntry;

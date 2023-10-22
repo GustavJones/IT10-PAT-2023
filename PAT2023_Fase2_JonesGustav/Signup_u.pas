@@ -69,6 +69,7 @@ begin
   sPassword := edtPassword.Text;
   sPassword2 := edtConfirmPassword.Text;
 
+  // Validation
   if (rgpUserType.ItemIndex = 0) then
   begin
     bIsUser := True;
@@ -137,6 +138,7 @@ begin
     FileIO_u.CreateFile(sUsername + '.json');
   end;
 
+  // Create user file text
   sEntry := Parser_u.CreateEntry('Name,Password,Age,UserType,ProfilePic,Tasks,PPL,ConsultFee,PriorityCost');
 
   sEntry := Parser_u.WriteEntryValue(sEntry, sName, 1);
@@ -154,6 +156,7 @@ begin
 
   sEntry := Parser_u.WriteEntryValue(sEntry, IntToStr(iProfilePicIndex), 5);
 
+  // Write user file
   FileIO_u.WriteFile(sUsername + '.json', sEntry);
 
   bLogin := True;
@@ -163,6 +166,7 @@ end;
 
 procedure TfrmSignup.FormActivate(Sender: TObject);
 begin
+  // Set default values
   btnSignUp.SetFocus;
   bPFSelect := False;
   sUsername := '';
@@ -192,6 +196,7 @@ end;
 
 procedure TfrmSignup.imgPF1Click(Sender: TObject);
 begin
+  // Change selected profile pic
   imgPF1.Picture.LoadFromFile('images\profiles\pf1_Clicked.png');
   bPFSelect := True;
   iProfilePicIndex := 1;
@@ -204,6 +209,7 @@ end;
 
 procedure TfrmSignup.imgPF2Click(Sender: TObject);
 begin
+  // Change selected profile pic
   imgPF2.Picture.LoadFromFile('images\profiles\pf2_Clicked.png');
   bPFSelect := True;
   iProfilePicIndex := 2;
@@ -216,6 +222,7 @@ end;
 
 procedure TfrmSignup.imgPF3Click(Sender: TObject);
 begin
+  // Change selected profile pic
   imgPF3.Picture.LoadFromFile('images\profiles\pf3_Clicked.png');
   bPFSelect := True;
   iProfilePicIndex := 3;
@@ -228,6 +235,7 @@ end;
 
 procedure TfrmSignup.imgPF4Click(Sender: TObject);
 begin
+  // Change selected profile pic
   imgPF4.Picture.LoadFromFile('images\profiles\pf4_Clicked.png');
   bPFSelect := True;
   iProfilePicIndex := 4;
@@ -240,6 +248,7 @@ end;
 
 procedure TfrmSignup.imgPF5Click(Sender: TObject);
 begin
+  // Change selected profile pic
   imgPF5.Picture.LoadFromFile('images\profiles\pf5_Clicked.png');
   bPFSelect := True;
   iProfilePicIndex := 5;

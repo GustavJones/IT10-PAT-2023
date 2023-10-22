@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons, Vcl.ComCtrls,
   Vcl.ExtCtrls, Vcl.Imaging.pngimage, Math, UITypes, Vcl.Samples.Spin,
-  Login_u, Signup_u, Help_u, TaskEditor_u, ApplicationInformation_u, Parser_u,
+  Login_u, Signup_u, TaskEditor_u, ApplicationInformation_u, Parser_u,
   FileIO_u;
 
 type
@@ -79,7 +79,6 @@ type
     procedure btnAccountSignUpClick(Sender: TObject);
     procedure btnAccountLoginClick(Sender: TObject);
     procedure bmbHelpClick(Sender: TObject);
-    procedure btnEditGUIClick(Sender: TObject);
     procedure btnNextClick(Sender: TObject);
     procedure btnHomeClick(Sender: TObject);
     procedure btnBackClick(Sender: TObject);
@@ -115,8 +114,7 @@ procedure TfrmFreelanceApp.bmbCloseClick(Sender: TObject);
 var
   iExit: Integer;
 begin
-  iExit := MessageDlg('Are you sure you want to exit?', mtInformation,
-    mbYesNo, 0);
+  iExit := MessageDlg('Are you sure you want to exit?', mtInformation, mbYesNo, 0); // Exit dialog
 
   if iExit = idYes then
   begin
@@ -126,11 +124,37 @@ end;
 
 procedure TfrmFreelanceApp.bmbHelpClick(Sender: TObject);
 begin
-  frmHelp.Show;
+  // Shows help on all pages
+
+  if (pgcPages.ActivePage = tsAccount) then
+  begin
+    ShowMessage('Press Sign up to create an account or log in');
+  end
+  else if (pgcPages.ActivePage = tsAccountH) then
+  begin
+    ShowMessage('Press Change Password to change your account password');
+  end
+  else if (pgcPages.ActivePage = tsApply) then
+  begin
+    ShowMessage('Enter task details and press apply to create a task for a developer');
+  end
+  else if (pgcPages.ActivePage = tsCheckout) then
+  begin
+    ShowMessage('Select a task and press Display Application Information to monitor task info');
+  end
+  else if (pgcPages.ActivePage = tsTaskList) then
+  begin
+    ShowMessage('Select a task and press Edit Task to edit task info');
+  end
+  else if (pgcPages.ActivePage = tsPriceEditor) then
+  begin
+    ShowMessage('Enter desired prices for your service and save to user account');
+  end;
 end;
 
 procedure TfrmFreelanceApp.bmbResetClick(Sender: TObject);
 begin
+  // Resets All input fields
   edtApplyTaskName.Text := '';
   redApplyDescription.Lines.Clear;
   chkApplyPriority.Checked := False;
@@ -144,6 +168,8 @@ procedure TfrmFreelanceApp.bmbSignOutClick(Sender: TObject);
 var
   iSignOut: Integer;
 begin
+  // Disable tabsheets and return to home page
+
   iSignOut := MessageDlg('Are you sure you want to sign out?', mtInformation,
     mbYesNo, 0);
 
@@ -172,6 +198,7 @@ end;
 
 procedure TfrmFreelanceApp.btnNextClick(Sender: TObject);
 begin
+  // Moves tabsheet index up 1
   pgcPages.TabIndex := pgcPages.TabIndex + 1;
 end;
 
@@ -180,8 +207,9 @@ var
   sFileInput : String;
   dTemp : Double;
 begin
-  sFileInput := FileIO_u.ReadFile(sUsername + '.json');
+  sFileInput := FileIO_u.ReadFile(sUsername + '.json'); // Read User file
 
+  // Check if data is type double (AKA real)
   if not (TryStrToFloat(edtPriceEditorPricePerLine.Text, dTemp)) then
   begin
     ShowMessage('Enter Correct Desimal value at Price Per Line');
@@ -204,6 +232,7 @@ begin
   sFileInput := Parser_u.WriteEntryValue(sFileInput, edtPriceEditorConsultFee.Text, 8);
   sFileInput := Parser_u.WriteEntryValue(sFileInput, edtPriceEditorPriorityCost.Text, 9);
 
+  // Write Prices to user file
   FileIO_u.WriteFile(sUsername + '.json', sFileInput);
 
   ShowMessage('Success!');
@@ -221,15 +250,15 @@ var
 begin
   iPrevNewlinePos := 1;
 
-  if (lstCheckoutItems.ItemIndex = -1) then
+  if (lstCheckoutItems.ItemIndex = -1) then // Checks if task is selected
   begin
     ShowMessage('Please select a task');
     exit;
   end;
 
-  sFileInput := FileIO_u.ReadFile(lstCheckoutItems.Items
-    [lstCheckoutItems.ItemIndex] + '.json');
+  sFileInput := FileIO_u.ReadFile(lstCheckoutItems.Items[lstCheckoutItems.ItemIndex] + '.json'); // Read Task File
 
+  // Update Output components
   if (Parser_u.ReadEntryValue(sFileInput, 4) = '0') then
   begin
     frmApplicationInformation.lblStatus.Caption := 'In Progress';
@@ -246,38 +275,33 @@ begin
 
   frmApplicationInformation.redComments.Clear;
 
-  for i := 1 to Length(sComments) do
+  for i := 1 to Length(sComments) do // Output Comments from file to redComments
   begin
     if (sComments[i] = '\') then
     begin
       if (i <> Length(sComments)) and (sComments[i + 1] = 'n') then
 
-        frmApplicationInformation.redComments.Lines.Add
-          (Copy(sComments, iPrevNewlinePos, i - iPrevNewlinePos));
+        frmApplicationInformation.redComments.Lines.Add(Copy(sComments, iPrevNewlinePos, i - iPrevNewlinePos));
       iPrevNewlinePos := i + 2;
     end;
   end;
 
   rCost := StrToFloat(Parser_u.ReadEntryValue(sFileInput, 7));
 
-  frmApplicationInformation.lblTotalCost.Caption := 'Total Cost: ' +
-    FloatToStrF(rCost, ffCurrency, 10, 2);
+  frmApplicationInformation.lblTotalCost.Caption := 'Total Cost: ' + FloatToStrF(rCost, ffCurrency, 10, 2); // Output Cost
 
   frmApplicationInformation.Show;
 end;
 
 procedure TfrmFreelanceApp.btnBackClick(Sender: TObject);
 begin
+  // Moves tabsheets down 1
   pgcPages.TabIndex := pgcPages.TabIndex - 1;
-end;
-
-procedure TfrmFreelanceApp.btnEditGUIClick(Sender: TObject);
-begin
-  pgcPages.TabIndex := pgcPages.PageCount - 4;
 end;
 
 procedure TfrmFreelanceApp.btnHomeClick(Sender: TObject);
 begin
+  // Goes to home page
   pgcPages.TabIndex := 0;
 end;
 
@@ -287,25 +311,31 @@ var
   sPassword: String;
   sOutput: String;
 begin
+  // Get User File and input
   sFileContent := FileIO_u.ReadFile(sUsername + '.json');
-  sPassword := InputBox('Change Password', 'Enter a new Password: ', '');
+  sPassword := InputBox('Change Password', 'Enter a new Password: ', 'Password');
 
+  // Data Validation
   if (sPassword = '') then
   begin
+    ShowMessage('No Password entered. Aborting');
     exit;
   end;
 
+  // Write password to user file
   sOutput := Parser_u.WriteEntryValue(sFileContent, sPassword, 2);
   FileIO_u.WriteFile(sUsername + '.json', sOutput);
 end;
 
 procedure TfrmFreelanceApp.btnAccountLoginClick(Sender: TObject);
 begin
+  // Show log in dialog
   frmLogin.Show;
 end;
 
 procedure TfrmFreelanceApp.btnAccountSignUpClick(Sender: TObject);
 begin
+  // Show Sign up dialog
   frmSignup.Show;
 end;
 
@@ -322,12 +352,14 @@ var
 begin
   sTaskName := edtApplyTaskName.Text;
 
+  // Length Check
   if (Length(sTaskName) < 1) or (Length(sTaskName) > 50) then
   begin
-    ShowMessage('Incorrect Message Length');
+    ShowMessage('Incorrect Task Name Length. Must be between 1 and 50 words');
     exit;
   end;
 
+  // Check for special characters
   for i := 1 to Length(sTaskName) do
   begin
     if (sTaskName[i] in ['@', '#', '$', '%', '^', '*', '(', ')']) then
@@ -345,6 +377,7 @@ begin
   dDueDate := dtpApplyDueDate.Date;
   bPriority := chkApplyPriority.Checked;
 
+  // Input validation
   if (sTaskName = '') then
   begin
     ShowMessage('Please enter a name');
@@ -363,8 +396,8 @@ begin
     exit;
   end;
 
-  sOutput := Parser_u.CreateEntry
-    ('Description,Date,Priority,Status,LinesOfCode,Comments,TotalCost');
+  // Create File text for task
+  sOutput := Parser_u.CreateEntry('Description,Date,Priority,Status,LinesOfCode,Comments,TotalCost');
   sOutput := Parser_u.WriteEntryValue(sOutput, sDescription, 1);
   sOutput := Parser_u.WriteEntryValue(sOutput, DateToStr(dDueDate), 2);
 
@@ -381,15 +414,17 @@ begin
   sOutput := Parser_u.WriteEntryValue(sOutput, '0', 5);
   sOutput := Parser_u.WriteEntryValue(sOutput, '0', 7);
 
+  // Create file and write created text to it
   FileIO_u.CreateFile(sTaskName + '.json');
   FileIO_u.WriteFile(sTaskName + '.json', sOutput);
 
   ShowMessage('Application Requested! Thanks For using Code Hub Marketplace');
   lstCheckoutItems.Items.Add(sTaskName);
-  sUserOutput := FileIO_u.ReadFile(sUsername + '.json');
+  sUserOutput := FileIO_u.ReadFile(sUsername + '.json'); // Get User File
 
   sTaskList := Parser_u.ReadEntryValue(sUserOutput, 6);
 
+  // Add task to user file
   if (sTaskList = '') then
   begin
     sUserOutput := Parser_u.WriteEntryValue(sUserOutput, sTaskName, 6);
@@ -402,6 +437,7 @@ begin
 
   FileIO_u.WriteFile(sUsername + '.json', sUserOutput);
 
+  // Add file to global tasks.txt
   FileIO_u.WriteFile('tasks.txt', FileIO_u.ReadFile('tasks.txt') +
     sTaskName + #10);
 end;
@@ -425,6 +461,7 @@ var
 
   i, iPrevNewlinePos : Integer;
 begin
+  // Edit Requested tasks
   iPrevNewlinePos := 1;
   frmTaskEditor.lblProjectName.Caption := 'Project Name: ';
   frmTaskEditor.redDescription.Lines.Clear;
@@ -432,20 +469,20 @@ begin
   frmTaskEditor.chkPriority.Checked := False;
   frmTaskEditor.sedLinesOfCode.Value := 0;
 
-  if (lstTaskListItems.ItemIndex = -1) then
+  if (lstTaskListItems.ItemIndex = -1) then // Check if task is selected
   begin
     ShowMessage('Please Select a task');
     exit;
   end;
 
-  sTaskName := lstTaskListItems.Items[lstTaskListItems.ItemIndex];
+  sTaskName := lstTaskListItems.Items[lstTaskListItems.ItemIndex]; // Get Taskname
 
   frmTaskEditor.lblProjectName.Caption := 'Project Name: ' + sTaskName;
 
-  sFileInput := FileIO_u.ReadFile(sTaskName + '.json');
+  sFileInput := FileIO_u.ReadFile(sTaskName + '.json'); // Read Task File
   sDescription := Parser_u.ReadEntryValue(sFileInput, 1);
 
-  for i := 1 to Length(sDescription) do
+  for i := 1 to Length(sDescription) do // Output Description from file to redDescription
   begin
     if (i < Length(sDescription)) and (sDescription[i] = '\') and (sDescription[i + 1] = 'n') then
     begin
@@ -463,7 +500,7 @@ begin
   sComments := Parser_u.ReadEntryValue(sFileInput, 6);
   iPrevNewlinePos := 1;
 
-  for i := 1 to Length(sComments) do
+  for i := 1 to Length(sComments) do // Output Comments from file to redComments
   begin
     if (i < Length(sComments)) and (sComments[i] = '\') and (sComments[i + 1] = 'n') then
     begin
@@ -478,7 +515,7 @@ begin
     end;
   end;
 
-  if (Parser_u.ReadEntryValue(sFileInput, 3) = 'True') then
+  if (Parser_u.ReadEntryValue(sFileInput, 3) = 'True') then // Get Priority status
   begin
     bPriority := True;
   end
@@ -501,21 +538,21 @@ begin
     frmTaskEditor.chkCompleted.Checked := True;
   end;
 
-  rPricePerLine := 0;
+  rPricePerLine := 0; // Initialize Cost calc variables
   rConsultFee := 0;
   rPriorityFee := 0;
 
   rCost := 0;
   rTotalCost := 0;
 
-  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7) = '') then
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7) = '') then // Reads Prices from file
     rPricePerLine := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7));
   if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 8) = '') then
     rConsultFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 8));
   if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 9) = '') then
     rPriorityFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 9));
 
-  rCost := iLinesOfCode * rPricePerLine;
+  rCost := iLinesOfCode * rPricePerLine; // Calculate costs
   rTotalCost := rCost + rConsultFee;
 
   if (bPriority) then
@@ -526,7 +563,7 @@ begin
   sFileInput := Parser_u.WriteEntryValue(sFileInput, FloatToStr(rTotalCost), 7);
   FileIO_u.WriteFile(sTaskName + '.json', sFileInput);
 
-  frmTaskEditor.lblTotalCost.Caption := 'Total Cost: ' + FloatToStrF(rTotalCost, ffCurrency, 10, 2);
+  frmTaskEditor.lblTotalCost.Caption := 'Total Cost: ' + FloatToStrF(rTotalCost, ffCurrency, 10, 2); // Output Cost
   frmTaskEditor.sUsername := sUsername;
 
   frmTaskEditor.Show;
@@ -538,9 +575,11 @@ var
   sTasks: String;
   i, iPrevNewlinePos: Integer;
 begin
+  // Updates all forms when switching between eachother
+
   iPrevNewlinePos := 1;
 
-  if not(FileIO_u.FileExists('tasks.txt')) then
+  if not(FileIO_u.FileExists('tasks.txt')) then // Check if tasks.txt exists
   begin
     FileIO_u.CreateFile('tasks.txt');
   end;
@@ -550,7 +589,7 @@ begin
   else
     bLoggedIn := False;
 
-  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then
+  if not(frmLogin.bIsUser) or not(frmSignup.bIsUser) then // Get Login status
     // Check account type
     bIsUser := False
   else if (frmLogin.bIsUser) and (frmSignup.bIsUser) then
@@ -606,7 +645,7 @@ begin
 
     lblAccountHWelcome.Caption := 'Welcome ' + sName;
 
-    case iProfilePicIndex of
+    case iProfilePicIndex of // Sets profile pic
       1:
         imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
       2:
@@ -652,6 +691,7 @@ begin
       end;
     end;
 
+    // Updates Prices from file
     edtPriceEditorPricePerLine.Text := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7);
     edtPriceEditorConsultFee.Text := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 8);
     edtPriceEditorPriorityCost.Text := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 9);
@@ -659,7 +699,7 @@ begin
     sName := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 1);
     lblAccountHWelcome.Caption := 'Welcome ' + sName;
 
-    case iProfilePicIndex of
+    case iProfilePicIndex of // Sets profile pic
       1:
         imgAccountHProfile.Picture.LoadFromFile('images\profiles\pf1.png');
       2:
@@ -681,25 +721,19 @@ end;
 
 procedure TfrmFreelanceApp.FormCreate(Sender: TObject);
 begin
+  // Get Original size on startup
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
-
-  bIsUser := False; // User Override (Temporary)
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);
 begin
+  // Resizes the application font when window resizes
+
   rWidthScale := (ClientWidth / iDefaultWidth);
   rHeightScale := (ClientHeight / iDefaultHeight);
 
   lblTitle.Font.Size := Trunc(rWidthScale * 25);
-
-  // btnLogin.Margins.Left := Trunc(rWidthScale * 180);
-  // btnLogin.Margins.Right := Trunc(rWidthScale * 180);
-  //
-  // btnSignUp.Margins.Left := Trunc(rWidthScale * 180);
-  // btnSignUp.Margins.Right := Trunc(rWidthScale * 180);
-
 end;
 
 end.

@@ -41,9 +41,11 @@ var
 
   sFileContents: String;
 begin
+  // Input
   sUsername := edtUsername.Text;
   sPassword := edtPassword.Text;
 
+  // Data validation
   if (sUsername = '') then
   begin
     ShowMessage('Enter a username');
@@ -84,6 +86,7 @@ end;
 
 procedure TfrmLogin.FormActivate(Sender: TObject);
 begin
+  // Initialize values
   sUsername := '';
   iProfilePicIndex := -1;
   bLogin := False;
@@ -97,6 +100,7 @@ end;
 
 procedure TfrmLogin.FormCreate(Sender: TObject);
 begin
+  // Sets default values
   sUsername := '';
   iProfilePicIndex := -1;
   bLogin := False;
