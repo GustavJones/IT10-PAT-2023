@@ -28,6 +28,7 @@ type
 
   public
     bPriority : Boolean;
+    sUsername : String;
   end;
 
 var
@@ -94,7 +95,9 @@ procedure TfrmTaskEditor.btnSaveClick(Sender: TObject);
 var
   sTaskName : String;
   sComments : String;
-  iLinesNum : Integer;
+  iLinesOfCode : Integer;
+  rPricePerLine, rConsultFee, rPriorityFee : Real;
+  rCost, rTotalCost : Real;
   bCompleted : Boolean;
 
   sFileInput : String;
@@ -104,16 +107,19 @@ begin
 
   for i := 1 to redComments.Lines.Count do
   begin
-    sComments := sComments + redComments.Lines[i] + '\n';
+    if not (redComments.Lines[i - 1] = '') then
+    begin
+      sComments := sComments + redComments.Lines[i - 1] + '\n';
+    end;
   end;
 
-  iLinesNum := sedLinesOfCode.Value;
+  iLinesOfCode := sedLinesOfCode.Value;
   bCompleted := chkCompleted.Checked;
 
   sFileInput := FileIO_u.ReadFile(sTaskName + '.json');
   sFileInput := Parser_u.WriteEntryValue(sFileInput, sComments, 6);
-  sFileInput := Parser_u.WriteEntryValue(sFileInput, IntToStr(iLinesNum), 5);
-  sFileInput := Parser_u.WriteEntryValue(sFileInput, IntToStr(iLinesNum), 5);
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, IntToStr(iLinesOfCode), 5);
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, IntToStr(iLinesOfCode), 5);
 
   if (bCompleted) then
   begin
@@ -123,6 +129,32 @@ begin
   begin
     sFileInput := Parser_u.WriteEntryValue(sFileInput, '0', 4);
   end;
+
+  rPricePerLine := 0;
+  rConsultFee := 0;
+  rPriorityFee := 0;
+
+  rCost := 0;
+  rTotalCost := 0;
+
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 7) = '') then
+    rPricePerLine := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 7));
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 8) = '') then
+    rConsultFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 8));
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 9) = '') then
+    rPriorityFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUserName + '.json'), 9));
+
+  rCost := iLinesOfCode * rPricePerLine;
+  rTotalCost := rCost + rConsultFee;
+
+  if (StrToBool(Parser_u.ReadEntryValue(sFileInput, 3))) then
+  begin
+    rTotalCost := rTotalCost + rPriorityFee;
+  end;
+
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, FloatToStr(rTotalCost), 7);
+
+  lblTotalCost.Caption := 'Total Cost: ' + FloatToStrF(rTotalCost, ffCurrency, 10, 2);
 
   FileIO_u.WriteFile(sTaskName + '.json', sFileInput);
 end;

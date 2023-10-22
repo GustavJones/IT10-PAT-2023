@@ -26,7 +26,6 @@ type
     tsAccount: TTabSheet;
     redApplyDescription: TRichEdit;
     lblApplyDescription: TLabel;
-    btnEditGUI: TButton;
     bmbSignOut: TBitBtn;
     dtpApplyDueDate: TDateTimePicker;
     lblApplyDueDate: TLabel;
@@ -35,7 +34,6 @@ type
     imgAccountAccount: TImage;
     btnAccountLogin: TButton;
     btnAccountSignUp: TButton;
-    tsGUICreator: TTabSheet;
     lblCheckoutInformation: TLabel;
     lstCheckoutItems: TListBox;
     btnCheckoutApplicationInformation: TButton;
@@ -48,14 +46,9 @@ type
     btnAccountHNext: TButton;
     pnlCheckoutBottom: TPanel;
     btnCheckoutNext: TButton;
-    btnCheckoutCreateGUI: TButton;
     btnCheckoutHome: TButton;
     btnApplyBack: TButton;
     btnCheckoutBack: TButton;
-    pnlGUICreatorBottom: TPanel;
-    bmbGUICreatorReset: TBitBtn;
-    btnGUICreatorHome: TButton;
-    btnGUICreatorBack: TButton;
     tsTaskList: TTabSheet;
     lstTaskListItems: TListBox;
     pnlTaskListBottom: TPanel;
@@ -64,15 +57,6 @@ type
     btnTaskListHome: TButton;
     btnTaskListBack: TButton;
     btnTaskListEdit: TButton;
-    pnlGUICreatorForm: TPanel;
-    pnlGUICreatorObjectList: TPanel;
-    lblGUICreatorLabel: TLabel;
-    btnGUICreatorButton: TButton;
-    pnlGUICreatorPanel: TPanel;
-    edtGUICreatorEdit: TEdit;
-    chkGUICreatorCheckbox: TCheckBox;
-    sedGUICreatorSpinEdit: TSpinEdit;
-    pnlGUICreatorObjectEditor: TPanel;
     tsPriceEditor: TTabSheet;
     lblPriceEditorConsultFee: TLabel;
     edtPriceEditorPricePerLine: TEdit;
@@ -83,12 +67,6 @@ type
     bmbPriceEditorReset: TBitBtn;
     btnPriceEditorHome: TButton;
     btnPriceEditorBack: TButton;
-    sedGUICreatorPosX: TSpinEdit;
-    lblGUICreatorPosX: TLabel;
-    lblGUICreatorPosY: TLabel;
-    sedGUICreatorPosY: TSpinEdit;
-    lblGUICreatorCaption: TLabel;
-    edtGUICreatorCaption: TEdit;
     btnPriceEditorSave: TButton;
     pnlPriceEditorTop: TPanel;
     lblPriceEditorPriorityCost: TLabel;
@@ -111,6 +89,7 @@ type
     procedure btnCheckoutApplicationInformationClick(Sender: TObject);
     procedure btnApplyClick(Sender: TObject);
     procedure btnAccountHChangePasswordClick(Sender: TObject);
+    procedure btnPriceEditorSaveClick(Sender: TObject);
   private
   var
     sUsername: String;
@@ -173,7 +152,6 @@ begin
 
     tsApply.TabVisible := False;
     tsCheckout.TabVisible := False;
-    tsGUICreator.TabVisible := False;
 
     tsCheckout.TabVisible := False;
     tsTaskList.TabVisible := False;
@@ -192,6 +170,40 @@ end;
 procedure TfrmFreelanceApp.btnNextClick(Sender: TObject);
 begin
   pgcPages.TabIndex := pgcPages.TabIndex + 1;
+end;
+
+procedure TfrmFreelanceApp.btnPriceEditorSaveClick(Sender: TObject);
+var
+  sFileInput : String;
+  dTemp : Double;
+begin
+  sFileInput := FileIO_u.ReadFile(sUsername + '.json');
+
+  if not (TryStrToFloat(edtPriceEditorPricePerLine.Text, dTemp)) then
+  begin
+    ShowMessage('Enter Correct Desimal value at Price Per Line');
+    exit;
+  end;
+
+  if not (TryStrToFloat(edtPriceEditorConsultFee.Text, dTemp)) then
+  begin
+    ShowMessage('Enter Correct Desimal value at Consult Fee');
+    exit;
+  end;
+
+  if not (TryStrToFloat(edtPriceEditorPriorityCost.Text, dTemp)) then
+  begin
+    ShowMessage('Enter Correct Desimal value at Priority Cost');
+    exit;
+  end;
+
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, edtPriceEditorPricePerLine.Text, 7);
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, edtPriceEditorConsultFee.Text, 8);
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, edtPriceEditorPriorityCost.Text, 9);
+
+  FileIO_u.WriteFile(sUsername + '.json', sFileInput);
+
+  ShowMessage('Success!');
 end;
 
 procedure TfrmFreelanceApp.btnCheckoutApplicationInformationClick
@@ -229,6 +241,8 @@ begin
 
   sComments := Parser_u.ReadEntryValue(sFileInput, 6);
 
+  frmApplicationInformation.redComments.Clear;
+
   for i := 1 to Length(sComments) do
   begin
     if (sComments[i] = '\') then
@@ -237,7 +251,7 @@ begin
 
         frmApplicationInformation.redComments.Lines.Add
           (Copy(sComments, iPrevNewlinePos, i - iPrevNewlinePos));
-      iPrevNewlinePos := i;
+      iPrevNewlinePos := i + 2;
     end;
   end;
 
@@ -322,7 +336,7 @@ begin
 
   for i := 1 to redApplyDescription.Lines.Count do
   begin
-    sDescription := sDescription + redApplyDescription.Lines[i] + '\n';
+    sDescription := sDescription + redApplyDescription.Lines[i - 1] + '\n';
   end;
 
   dDueDate := dtpApplyDueDate.Date;
@@ -399,11 +413,19 @@ var
   sCommentsLine : String;
   bPriority : Boolean;
 
+  iLinesOfCode : Integer;
+  rPricePerLine : Real;
+  rConsultFee : Real;
+  rPriorityFee : Real;
+  rCost : Real;
+  rTotalCost : Real;
+
   i, iPrevNewlinePos : Integer;
 begin
   iPrevNewlinePos := 1;
   frmTaskEditor.lblProjectName.Caption := 'Project Name: ';
   frmTaskEditor.redDescription.Lines.Clear;
+  frmTaskEditor.redComments.Lines.Clear;
   frmTaskEditor.chkPriority.Checked := False;
   frmTaskEditor.sedLinesOfCode.Value := 0;
 
@@ -462,9 +484,11 @@ begin
     bPriority := False;
   end;
 
+  iLinesOfCode := StrToInt(Parser_u.ReadEntryValue(sFileInput, 5));
+
   frmTaskEditor.bPriority := bPriority;
   frmTaskEditor.chkPriority.Checked := bPriority;
-  frmTaskEditor.sedLinesOfCode.Value := StrToInt(Parser_u.ReadEntryValue(sFileInput, 5));
+  frmTaskEditor.sedLinesOfCode.Value := iLinesOfCode;
   if (Parser_u.ReadEntryValue(sFileInput, 4) = '0') then
   begin
     frmTaskEditor.chkCompleted.Checked := False;
@@ -473,6 +497,34 @@ begin
   begin
     frmTaskEditor.chkCompleted.Checked := True;
   end;
+
+  rPricePerLine := 0;
+  rConsultFee := 0;
+  rPriorityFee := 0;
+
+  rCost := 0;
+  rTotalCost := 0;
+
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7) = '') then
+    rPricePerLine := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7));
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 8) = '') then
+    rConsultFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 8));
+  if not (Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 9) = '') then
+    rPriorityFee := StrToFloat(Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 9));
+
+  rCost := iLinesOfCode * rPricePerLine;
+  rTotalCost := rCost + rConsultFee;
+
+  if (bPriority) then
+  begin
+    rTotalCost := rTotalCost + rPriorityFee;
+  end;
+
+  sFileInput := Parser_u.WriteEntryValue(sFileInput, FloatToStr(rTotalCost), 7);
+  FileIO_u.WriteFile(sTaskName + '.json', sFileInput);
+
+  frmTaskEditor.lblTotalCost.Caption := 'Total Cost: ' + FloatToStrF(rTotalCost, ffCurrency, 10, 2);
+  frmTaskEditor.sUsername := sUsername;
 
   frmTaskEditor.Show;
 end;
@@ -523,7 +575,6 @@ begin
   begin
     tsApply.TabVisible := True;
     tsCheckout.TabVisible := True;
-    tsGUICreator.TabVisible := True;
     tsAccountH.TabVisible := True;
 
     tsPriceEditor.TabVisible := False;
@@ -578,7 +629,6 @@ begin
 
     tsApply.TabVisible := False;
     tsCheckout.TabVisible := False;
-    tsGUICreator.TabVisible := False;
     tsAccount.TabVisible := False;
 
     lstTaskListItems.Items.Clear;
@@ -598,6 +648,10 @@ begin
           i - iPrevNewlinePos + 1));
       end;
     end;
+
+    edtPriceEditorPricePerLine.Text := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 7);
+    edtPriceEditorConsultFee.Text := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 8);
+    edtPriceEditorPriorityCost.Text := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 9);
 
     sName := Parser_u.ReadEntryValue(FileIO_u.ReadFile(sUsername + '.json'), 1);
     lblAccountHWelcome.Caption := 'Welcome ' + sName;

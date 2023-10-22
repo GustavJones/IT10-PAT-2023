@@ -4058,7 +4058,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblAccountHWelcome: TLabel
         Left = 0
         Top = 0
-        Width = 600
+        Width = 133
         Height = 40
         Align = alTop
         Alignment = taCenter
@@ -4072,7 +4072,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         ParentColor = False
         ParentFont = False
         Transparent = False
-        ExplicitWidth = 133
       end
       object pnlAccountHBottom: TPanel
         AlignWithMargins = True
@@ -13322,7 +13321,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblApplyTitle: TLabel
         Left = 0
         Top = 0
-        Width = 600
+        Width = 238
         Height = 28
         Align = alTop
         Alignment = taCenter
@@ -13333,12 +13332,11 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 238
       end
       object lblApplyDescription: TLabel
         Left = 0
         Top = 63
-        Width = 600
+        Width = 164
         Height = 21
         Align = alTop
         Alignment = taCenter
@@ -13349,12 +13347,11 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 164
       end
       object lblApplyDueDate: TLabel
         Left = 0
         Top = 180
-        Width = 600
+        Width = 91
         Height = 25
         Align = alTop
         Alignment = taCenter
@@ -13365,7 +13362,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Microsoft YaHei UI'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 91
       end
       object pnlApplyBottom: TPanel
         AlignWithMargins = True
@@ -13390,21 +13386,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           TabOrder = 0
           OnClick = btnNextClick
         end
-        object btnEditGUI: TButton
-          AlignWithMargins = True
-          Left = 165
-          Top = 6
-          Width = 100
-          Height = 31
-          Margins.Left = 0
-          Margins.Top = 5
-          Margins.Right = 7
-          Margins.Bottom = 5
-          Align = alRight
-          Caption = 'Create GUI'
-          TabOrder = 1
-          OnClick = btnEditGUIClick
-        end
         object bmbApplyReset: TBitBtn
           AlignWithMargins = True
           Left = 8
@@ -13419,7 +13400,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Caption = 'Reset'
           Kind = bkRetry
           NumGlyphs = 2
-          TabOrder = 2
+          TabOrder = 1
           OnClick = bmbResetClick
         end
         object btnHome: TButton
@@ -13434,7 +13415,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Margins.Bottom = 5
           Align = alRight
           Caption = 'Home'
-          TabOrder = 3
+          TabOrder = 2
           OnClick = btnHomeClick
         end
         object btnApplyBack: TButton
@@ -13449,7 +13430,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Margins.Bottom = 5
           Align = alRight
           Caption = 'Back'
-          TabOrder = 4
+          TabOrder = 3
           OnClick = btnBackClick
         end
       end
@@ -13545,7 +13526,7 @@ object frmFreelanceApp: TfrmFreelanceApp
       object lblCheckoutInformation: TLabel
         Left = 0
         Top = 0
-        Width = 600
+        Width = 260
         Height = 29
         Align = alTop
         Alignment = taCenter
@@ -13556,7 +13537,6 @@ object frmFreelanceApp: TfrmFreelanceApp
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 260
       end
       object lstCheckoutItems: TListBox
         AlignWithMargins = True
@@ -13610,21 +13590,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           TabOrder = 0
           OnClick = btnNextClick
         end
-        object btnCheckoutCreateGUI: TButton
-          AlignWithMargins = True
-          Left = 165
-          Top = 6
-          Width = 100
-          Height = 31
-          Margins.Left = 0
-          Margins.Top = 5
-          Margins.Right = 7
-          Margins.Bottom = 5
-          Align = alRight
-          Caption = 'Create GUI'
-          TabOrder = 1
-          OnClick = btnEditGUIClick
-        end
         object btnCheckoutHome: TButton
           AlignWithMargins = True
           Left = 272
@@ -13637,7 +13602,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Margins.Bottom = 5
           Align = alRight
           Caption = 'Home'
-          TabOrder = 2
+          TabOrder = 1
           OnClick = btnHomeClick
         end
         object btnCheckoutBack: TButton
@@ -13652,7 +13617,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           Margins.Bottom = 5
           Align = alRight
           Caption = 'Back'
-          TabOrder = 3
+          TabOrder = 2
           OnClick = btnBackClick
         end
       end
@@ -14669,6 +14634,7 @@ object frmFreelanceApp: TfrmFreelanceApp
         Align = alBottom
         Caption = 'Save'
         TabOrder = 1
+        OnClick = btnPriceEditorSaveClick
       end
       object pnlPriceEditorTop: TPanel
         Left = 0
@@ -14681,7 +14647,7 @@ object frmFreelanceApp: TfrmFreelanceApp
           AlignWithMargins = True
           Left = 4
           Top = 76
-          Width = 290
+          Width = 105
           Height = 25
           Margins.Top = 15
           Align = alTop
@@ -14695,13 +14661,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
-          ExplicitWidth = 105
         end
         object lblPriceEditorPricePerLine: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 4
-          Width = 290
+          Width = 124
           Height = 25
           Align = alTop
           Caption = 'Price Per Line: '
@@ -14714,13 +14679,12 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
-          ExplicitWidth = 124
         end
         object lblPriceEditorPriorityCost: TLabel
           AlignWithMargins = True
           Left = 4
           Top = 148
-          Width = 290
+          Width = 111
           Height = 25
           Margins.Top = 15
           Align = alTop
@@ -14734,7 +14698,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           ParentColor = False
           ParentFont = False
           Transparent = True
-          ExplicitWidth = 111
         end
         object edtPriceEditorPricePerLine: TEdit
           AlignWithMargins = True
@@ -14765,327 +14728,6 @@ object frmFreelanceApp: TfrmFreelanceApp
           Align = alTop
           TabOrder = 2
           TextHint = 'Priority Cost added to total:'
-        end
-      end
-    end
-    object tsGUICreator: TTabSheet
-      Caption = 'GUI Creator'
-      ImageIndex = 3
-      TabVisible = False
-      object pnlGUICreatorBottom: TPanel
-        AlignWithMargins = True
-        Left = 3
-        Top = 311
-        Width = 594
-        Height = 43
-        Align = alBottom
-        TabOrder = 0
-        object bmbGUICreatorReset: TBitBtn
-          AlignWithMargins = True
-          Left = 8
-          Top = 6
-          Width = 81
-          Height = 31
-          Margins.Left = 7
-          Margins.Top = 5
-          Margins.Right = 0
-          Margins.Bottom = 5
-          Align = alLeft
-          Caption = 'Reset'
-          Kind = bkRetry
-          NumGlyphs = 2
-          TabOrder = 0
-          OnClick = bmbResetClick
-        end
-        object btnGUICreatorHome: TButton
-          AlignWithMargins = True
-          Left = 379
-          Top = 6
-          Width = 100
-          Height = 31
-          Margins.Left = 0
-          Margins.Top = 5
-          Margins.Right = 7
-          Margins.Bottom = 5
-          Align = alRight
-          Caption = 'Home'
-          TabOrder = 1
-          OnClick = btnHomeClick
-        end
-        object btnGUICreatorBack: TButton
-          AlignWithMargins = True
-          Left = 486
-          Top = 6
-          Width = 100
-          Height = 31
-          Margins.Left = 0
-          Margins.Top = 5
-          Margins.Right = 7
-          Margins.Bottom = 5
-          Align = alRight
-          Caption = 'Back'
-          TabOrder = 2
-          OnClick = btnBackClick
-        end
-      end
-      object pnlGUICreatorForm: TPanel
-        Left = 145
-        Top = 0
-        Width = 331
-        Height = 308
-        Align = alClient
-        TabOrder = 1
-      end
-      object pnlGUICreatorObjectList: TPanel
-        Left = 0
-        Top = 0
-        Width = 145
-        Height = 308
-        Align = alLeft
-        Caption = 'Object List'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -19
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 2
-        VerticalAlignment = taAlignTop
-        object lblGUICreatorLabel: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 31
-          Width = 137
-          Height = 21
-          Margins.Top = 30
-          Align = alTop
-          Alignment = taCenter
-          Caption = 'Label'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ExplicitWidth = 37
-        end
-        object btnGUICreatorButton: TButton
-          AlignWithMargins = True
-          Left = 26
-          Top = 65
-          Width = 93
-          Height = 25
-          Margins.Left = 25
-          Margins.Top = 10
-          Margins.Right = 25
-          Align = alTop
-          Caption = 'Button'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-        end
-        object pnlGUICreatorPanel: TPanel
-          AlignWithMargins = True
-          Left = 26
-          Top = 108
-          Width = 93
-          Height = 57
-          Margins.Left = 25
-          Margins.Top = 15
-          Margins.Right = 25
-          Align = alTop
-          Caption = 'Panel'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-        end
-        object edtGUICreatorEdit: TEdit
-          AlignWithMargins = True
-          Left = 26
-          Top = 183
-          Width = 93
-          Height = 29
-          Margins.Left = 25
-          Margins.Top = 15
-          Margins.Right = 25
-          Align = alTop
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 2
-          Text = 'Edit'
-        end
-        object chkGUICreatorCheckbox: TCheckBox
-          AlignWithMargins = True
-          Left = 26
-          Top = 230
-          Width = 93
-          Height = 17
-          Margins.Left = 25
-          Margins.Top = 15
-          Margins.Right = 25
-          Align = alTop
-          Caption = 'CheckBox'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-        end
-        object sedGUICreatorSpinEdit: TSpinEdit
-          AlignWithMargins = True
-          Left = 26
-          Top = 265
-          Width = 93
-          Height = 31
-          Margins.Left = 25
-          Margins.Top = 15
-          Margins.Right = 25
-          Align = alTop
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          MaxValue = 0
-          MinValue = 0
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 4
-          Value = 0
-        end
-      end
-      object pnlGUICreatorObjectEditor: TPanel
-        Left = 476
-        Top = 0
-        Width = 124
-        Height = 308
-        Align = alRight
-        Caption = 'Object Editor'
-        Ctl3D = True
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -19
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentCtl3D = False
-        ParentFont = False
-        TabOrder = 3
-        VerticalAlignment = taAlignTop
-        object lblGUICreatorPosX: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 41
-          Width = 116
-          Height = 17
-          Margins.Top = 40
-          Align = alTop
-          Caption = 'Position X:'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ExplicitWidth = 61
-        end
-        object lblGUICreatorPosY: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 97
-          Width = 116
-          Height = 17
-          Align = alTop
-          Caption = 'Position Y:'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ExplicitWidth = 60
-        end
-        object lblGUICreatorCaption: TLabel
-          AlignWithMargins = True
-          Left = 4
-          Top = 153
-          Width = 116
-          Height = 17
-          Align = alTop
-          Caption = 'Caption:'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          ExplicitWidth = 48
-        end
-        object sedGUICreatorPosX: TSpinEdit
-          AlignWithMargins = True
-          Left = 4
-          Top = 64
-          Width = 116
-          Height = 27
-          Align = alTop
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          MaxValue = 0
-          MinValue = 0
-          ParentFont = False
-          TabOrder = 0
-          Value = 0
-        end
-        object sedGUICreatorPosY: TSpinEdit
-          AlignWithMargins = True
-          Left = 4
-          Top = 120
-          Width = 116
-          Height = 27
-          Align = alTop
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          MaxValue = 0
-          MinValue = 0
-          ParentFont = False
-          TabOrder = 1
-          Value = 0
-        end
-        object edtGUICreatorCaption: TEdit
-          AlignWithMargins = True
-          Left = 4
-          Top = 176
-          Width = 116
-          Height = 25
-          Align = alTop
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 2
-          TextHint = 'Caption'
         end
       end
     end
