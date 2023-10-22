@@ -120,6 +120,12 @@ begin
   end;
 
   iLinesOfCode := sedLinesOfCode.Value;
+
+  if (iLinesOfCode < 100) then
+  begin
+    ShowMessage('Note: Lines is below 100 lines. No charge will be given');
+  end;
+
   bCompleted := chkCompleted.Checked;
 
   // Read Task file
@@ -160,6 +166,11 @@ begin
   if (StrToBool(Parser_u.ReadEntryValue(sFileInput, 3))) then
   begin
     rTotalCost := rTotalCost + rPriorityFee;
+  end;
+
+  if (iLinesOfCode < 100) then
+  begin
+    rTotalCost := 0;
   end;
 
   sFileInput := Parser_u.WriteEntryValue(sFileInput, FloatToStr(rTotalCost), 7);

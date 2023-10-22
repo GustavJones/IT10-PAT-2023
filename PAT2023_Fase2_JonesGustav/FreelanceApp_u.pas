@@ -560,6 +560,11 @@ begin
     rTotalCost := rTotalCost + rPriorityFee;
   end;
 
+  if (iLinesOfCode < 100) then
+  begin
+    rTotalCost := 0;
+  end;
+
   sFileInput := Parser_u.WriteEntryValue(sFileInput, FloatToStr(rTotalCost), 7);
   FileIO_u.WriteFile(sTaskName + '.json', sFileInput);
 
