@@ -53,7 +53,6 @@ type
     lstTaskListItems: TListBox;
     pnlTaskListBottom: TPanel;
     btnTaskListNext: TButton;
-    bmbTaskListReset: TBitBtn;
     btnTaskListHome: TButton;
     btnTaskListBack: TButton;
     btnTaskListEdit: TButton;
@@ -135,6 +134,10 @@ begin
   edtApplyTaskName.Text := '';
   redApplyDescription.Lines.Clear;
   chkApplyPriority.Checked := False;
+
+  edtPriceEditorPricePerLine.Text	:= '';
+  edtPriceEditorConsultFee.Text := '';
+  edtPriceEditorPriorityCost.Text	 := '';
 end;
 
 procedure TfrmFreelanceApp.bmbSignOutClick(Sender: TObject);
