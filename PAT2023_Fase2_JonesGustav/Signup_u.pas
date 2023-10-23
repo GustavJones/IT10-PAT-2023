@@ -189,6 +189,7 @@ end;
 
 procedure TfrmSignup.FormCreate(Sender: TObject);
 begin
+  iProfilePicIndex := -1;
   bPFSelect := False;
   bLogin := False;
   bIsUser := True;

@@ -192,6 +192,13 @@ begin
     tsAccountH.TabVisible := False;
 
     bmbSignOut.Enabled := False;
+
+    frmSignup.sUsername := '';
+    frmSignup.iProfilePicIndex := -1;
+    frmLogin.sUsername := '';
+    frmLogin.iProfilePicIndex := -1;
+
+    bmbResetClick(Sender)
   end;
 
 end;
@@ -729,6 +736,10 @@ begin
   // Get Original size on startup
   iDefaultWidth := ClientWidth;
   iDefaultHeight := ClientHeight;
+
+  sUsername := '';
+  bIsUser := True;
+  iProfilePicIndex := -1;
 end;
 
 procedure TfrmFreelanceApp.FormResize(Sender: TObject);
