@@ -609,13 +609,13 @@ begin
     sUsername := frmLogin.sUsername;
   end;
 
-  if (frmLogin.iProfilePicIndex <> -1) then // Get PF index
-  begin
-    iProfilePicIndex := frmLogin.iProfilePicIndex;
-  end
-  else if (frmSignup.iProfilePicIndex <> -1) then
+  if (frmSignup.iProfilePicIndex <> -1) then // Get PF index
   begin
     iProfilePicIndex := frmSignup.iProfilePicIndex;
+  end
+  else if (frmLogin.iProfilePicIndex <> -1) then
+  begin
+    iProfilePicIndex := frmLogin.iProfilePicIndex;
   end;
 
   if (bLoggedIn) and (bIsUser) then // Activate tabsheets
