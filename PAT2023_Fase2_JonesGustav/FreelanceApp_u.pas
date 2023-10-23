@@ -600,13 +600,13 @@ begin
   else if (frmLogin.bIsUser) and (frmSignup.bIsUser) then
     bIsUser := True;
 
-  if (frmLogin.sUsername <> '') then // Get Username
-  begin
-    sUsername := frmLogin.sUsername;
-  end
-  else if (frmSignup.sUsername <> '') then
+  if (frmSignup.sUsername <> '') then // Get Username
   begin
     sUsername := frmSignup.sUsername;
+  end
+  else if (frmLogin.sUsername <> '') then
+  begin
+    sUsername := frmLogin.sUsername;
   end;
 
   if (frmLogin.iProfilePicIndex <> -1) then // Get PF index
